@@ -1,99 +1,206 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html>
+  <head>
+     
+    <meta charset="UTF-8">
+    <title>d0ud</title>
+    <link rel="shortcut icon" href="/static/img/icon.png">
+    <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
+    
+<link rel="stylesheet" href="/static/kico.css">
+<link rel="stylesheet" href="/static/hingle.css">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>エラー発生。</title>
-  <style>
-    @font-face {
-      font-family: 'JetBrains Mono';
-      src: local('JetBrains Mono'), url('/font/JetBrainsMono-Regular.woff2') format('woff2');
-    }
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome/css/font-awesome.min.css">
 
-    html,
-    body {
-      height: 100%;
-    }
-
-    body {
-      margin: 0;
-      color: #FFF;
-      background-color: #141516;
-      background-position: 50% 50%;
-      background-repeat: no-repeat;
-      background-image: url(https://ak.hypergryph.com/assets/index/images/ak/pc/bk.jpg);
-    }
-
-    main {
-      text-align: center;
-    }
-
-    #logo {
-      vertical-align: middle;
-      display: inline-block;
-    }
-
-    #logo img {
-      width: 300px;
-    }
-
-    #error {
-      vertical-align: middle;
-      display: inline-block;
-    }
-
-    #error a {
-      color: #2BF;
-      padding: 3px 10px;
-      font-size: larger;
-      text-decoration: none;
-    }
-
-    #error a:hover {
-      color: #000;
-      background-color: #2BF;
-    }
-
-    h1 {
-      font-size: 60px;
-      color: #FE2;
-    }
-
-    h2 {
-      font-size: 32px;
-      font-family: "JetBrains Mono";
-    }
-
-    @media (max-width: 768px) {
-      #logo img {
-        width: auto;
-        height: 380px;
-        opacity: .23;
-        position: fixed;
-        bottom: -30px;
-        left: -38%;
-        pointer-events: none;
-      }      
-    }
-  </style>
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
+    <meta property="og:site_name" content="d0ud">
+    <meta property="og:title" content=""/>
+    
+    <style>body:before{ content: ''; background-image: url(https://null-d0ud.github.io/img/bk.jpg) }</style>
+    
+<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="d0ud" type="application/atom+xml">
 </head>
 
-<body>
-  <main>
-    <a id="logo" href="/">
-      <img src="https://ak.hypergryph.com/assets/index/images/ak/pc/faction/1.png" alt="to home" />
-    </a>
-    <div id="error">
-      <h1>エラー発生。</h1>
-      <h2 style="text-align: left;">404 NOT FOUND</h2>
-      <p style="text-align: left;">
-        <a href="/">首页</a>
-        <a onClick="history.back();">上一页</a>
-      </p>
+  <body>
+    <header>
+    <div class="head-title">
+        <h4>d0ud</h4>
     </div>
-  </main>
+    <div class="head-action">
+        <div class="toggle-btn"></div>
+        <div class="light-btn"></div>
+        <div class="search-btn"></div>
+    </div>
+    <!--<form class="head-search" method="post">
+        <input type="text" name="s" placeholder="搜索什么？">
+    </form>-->
+    <nav class="head-menu">
+        <a href="/">首页</a>
+        <div class="has-child">
+            <a>分类</a>
+            <div class="sub-menu">
+                <a class="category-link" href="/categories/php/">php</a><a class="category-link" href="/categories/sql%E6%B3%A8%E5%85%A5/">sql注入</a>
+            </div>
+        </div>
+        
+            <a href="/friends">ctfers</a>
+        
+    </nav>
+</header>
 
-</body>
+    <main>
+    <div class="wrap min">
+        <section class="home-title">
+            <h1>d0ud</h1>
+            <span></span>
+            
 
+        </section>
+        <section class="home-posts">
+    
+    <div class="post-item">
+        <h2>
+            <a href="/%5BGWCTF%202019%5D%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96/">&lt;GWCTF 2019&gt;枯燥的抽奖</a>
+        </h2>
+    
+        <p>打开题目，从源码里发现check.php访问得到源码
+123456789101112131415161718192021222324252627282930ljiUB7yF7i&amp;lt;?php#...</p>
+    
+        <div class="post-meta">
+            <time class="date">2021.12.02</time>
+            
+                <span class="category"><a class="category-link" href="/categories/php/">php</a></span>
+            
+            
+                <span class="tags"><a class="-none-link" href="/tags/GWCTF/" rel="tag">GWCTF</a></span>
+            
+        </div>
+    </div>
+    
+    <div class="post-item">
+        <h2>
+            <a href="/%5BNCTF2019%5DSQLi/">&lt;NCTF2019&gt;SQLi</a>
+        </h2>
+    
+        <p>打开题目
+
+sqlquery : select * from users where username=’’ and passwd=’’
+
+存在robots.txt，得到提示
+123456$bl...</p>
+    
+        <div class="post-meta">
+            <time class="date">2021.12.01</time>
+            
+                <span class="category"><a class="category-link" href="/categories/sql%E6%B3%A8%E5%85%A5/">sql注入</a></span>
+            
+            
+                <span class="tags"><a class="-none-link" href="/tags/NCTF/" rel="tag">NCTF</a></span>
+            
+        </div>
+    </div>
+    
+    <div class="post-item">
+        <h2>
+            <a href="/%5BRCTF2015%5DEasySQL/">&lt;RCTF2015&gt;EasySQL</a>
+        </h2>
+    
+        <p>打开题目，测试功能。注册，登录，修改密码，那么极有可能存在二次注入。经过测试，发现如果注册的用户名含有双引号，在修改密码后页面回显报错信息。例如
+
+You have an error in yo...</p>
+    
+        <div class="post-meta">
+            <time class="date">2021.11.25</time>
+            
+                <span class="category"><a class="category-link" href="/categories/sql%E6%B3%A8%E5%85%A5/">sql注入</a></span>
+            
+            
+                <span class="tags"><a class="-none-link" href="/tags/RCTF/" rel="tag">RCTF</a></span>
+            
+        </div>
+    </div>
+    
+    <div class="post-item">
+        <h2>
+            <a href="/%5BWUSTCTF2020%5D%E9%A2%9C%E5%80%BC%E6%88%90%E7%BB%A9%E6%9F%A5%E8%AF%A2/">&lt;WUSTCTF2020&gt;颜值成绩查询</a>
+        </h2>
+    
+        <p>常规布尔盲注，甚至没有什么过滤
+1234567891011121314151617import requeststar_url=&amp;quot;...............&amp;quot;par=&amp;#...</p>
+    
+        <div class="post-meta">
+            <time class="date">2021.11.23</time>
+            
+                <span class="category"><a class="category-link" href="/categories/sql%E6%B3%A8%E5%85%A5/">sql注入</a></span>
+            
+            
+                <span class="tags"><a class="-none-link" href="/tags/WUSTCTF/" rel="tag">WUSTCTF</a></span>
+            
+        </div>
+    </div>
+    
+    <div class="post-item">
+        <h2>
+            <a href="/GYCTF2020Ezsqli/">&lt;GYCTF2020&gt;Ezsqli</a>
+        </h2>
+    
+        <p>打开题目，显然是SQL注入
+测试为数字型注入，测试过滤的关键字，可用布尔盲注，脚本如下
+1234567891011121314import requeststar_url=&amp;quot;http:...</p>
+    
+        <div class="post-meta">
+            <time class="date">2021.11.22</time>
+            
+                <span class="category"><a class="category-link" href="/categories/sql%E6%B3%A8%E5%85%A5/">sql注入</a></span>
+            
+            
+                <span class="tags"><a class="-none-link" href="/tags/GYCTF/" rel="tag">GYCTF</a></span>
+            
+        </div>
+    </div>
+    
+</section>
+
+        <section class="page-navigator">
+            <span class="page-number current">1</span>
+        </section>
+    </div>
+</main>
+
+    <footer>
+    <div class="buttons">
+        <a class="to-top" href="#"></a>
+    </div>
+    <div class="wrap min">
+        <section class="widget">
+            <div class="row">
+                <div class="col-m-4">
+                    <h3 class="title-recent">最新文章：</h3>
+                    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/%5BGWCTF%202019%5D%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96/"><GWCTF 2019>枯燥的抽奖</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BNCTF2019%5DSQLi/"><NCTF2019>SQLi</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BRCTF2015%5DEasySQL/"><RCTF2015>EasySQL</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BWUSTCTF2020%5D%E9%A2%9C%E5%80%BC%E6%88%90%E7%BB%A9%E6%9F%A5%E8%AF%A2/"><WUSTCTF2020>颜值成绩查询</a></li><li class="post-list-item"><a class="post-list-link" href="/GYCTF2020Ezsqli/"><GYCTF2020>Ezsqli</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-date">历史：</h3>
+                    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-tags">标签：</h3>
+                    <a href="/tags/GWCTF/" style="font-size: 10px;">GWCTF</a> <a href="/tags/GYCTF/" style="font-size: 10px;">GYCTF</a> <a href="/tags/NCTF/" style="font-size: 10px;">NCTF</a> <a href="/tags/RCTF/" style="font-size: 10px;">RCTF</a> <a href="/tags/WUSTCTF/" style="font-size: 10px;">WUSTCTF</a>
+                </div>
+            </div>
+        </section>
+        <section class="sub-footer">
+            <p>© 2022 <a href="/">d0ud</a>. All Rights Reserved. Theme By <a href="https://github.com/Dreamer-Paul/Hingle" target="_blank" rel="nofollow">Hingle</a>.</p>
+        </section>
+    </div>
+</footer>
+
+
+<script src="/static/kico.js"></script>
+<script src="/static/hingle.js"></script>
+
+
+<script>var hingle = new Paul_Hingle({"copyright":false,"night":false});</script>
+
+  </body>
 </html>
