@@ -3,7 +3,7 @@
   <head>
      
     <meta charset="UTF-8">
-    <title>GYCTF - d0ud</title>
+    <title>代码审计 - d0ud</title>
     <link rel="shortcut icon" href="/static/img/icon.png">
     <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
     
@@ -53,28 +53,29 @@
     <div class="wrap min">
         <section class="home-title">
             
-            <h1>“GYCTF”</h1>
+            <h1>“代码审计”</h1>
         </section>
         <section class="home-posts">
     
     <div class="post-item">
         <h2>
-            <a href="/GYCTF2020Ezsqli/">&lt;GYCTF2020&gt;Ezsqli</a>
+            <a href="/%5BGWCTF%202019%5D%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96/">&lt;GWCTF 2019&gt;枯燥的抽奖</a>
         </h2>
     
-        <p>打开题目，显然是SQL注入
-测试为数字型注入，测试过滤的关键字，可用布尔盲注，脚本如下
-import requests
+        <p>打开题目，从源码里发现check.php访问得到源码
+ljiUB7yF7i
 
-tar_url=&#34;http://7772275b-dfab-48c8-9...</p>
+&amp;lt;?php
+#这不是抽奖程序的源代码！不许看！
+header(&#34;Content-Type: text/html...</p>
     
         <div class="post-meta">
-            <time class="date">2021.11.22</time>
+            <time class="date">2021.12.02</time>
             
-                <span class="category"><a class="category-link" href="/categories/sql%E6%B3%A8%E5%85%A5/">sql注入</a></span>
+                <span class="category"><a class="category-link" href="/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">代码审计</a></span>
             
             
-                <span class="tags"><a class="-none-link" href="/tags/GYCTF/" rel="tag">GYCTF</a></span>
+                <span class="tags"><a class="-none-link" href="/tags/GWCTF/" rel="tag">GWCTF</a></span>
             
         </div>
     </div>
