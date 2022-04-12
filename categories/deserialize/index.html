@@ -3,7 +3,7 @@
   <head>
      
     <meta charset="UTF-8">
-    <title>sql注入 - d0ud</title>
+    <title>deserialize - d0ud</title>
     <link rel="shortcut icon" href="/static/img/icon.png">
     <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
     
@@ -40,7 +40,7 @@
         <div class="has-child">
             <a>分类</a>
             <div class="sub-menu">
-                <a class="category-link" href="/categories/sql%E6%B3%A8%E5%85%A5/">sql注入</a><a class="category-link" href="/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">代码审计</a><a class="category-link" href="/categories/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">反序列化</a><a class="category-link" href="/categories/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">文件上传</a>
+                <a class="category-link" href="/categories/SQL-injection/">SQL injection</a><a class="category-link" href="/categories/code/">code</a><a class="category-link" href="/categories/code-audit/">code audit</a><a class="category-link" href="/categories/deserialize/">deserialize</a><a class="category-link" href="/categories/file-upload/">file upload</a>
             </div>
         </div>
         
@@ -53,87 +53,24 @@
     <div class="wrap min">
         <section class="home-title">
             
-            <h1>“sql注入”</h1>
+            <h1>“deserialize”</h1>
         </section>
         <section class="home-posts">
     
     <div class="post-item">
         <h2>
-            <a href="/%5BNCTF2019%5DSQLi/">&lt;NCTF2019&gt;SQLi</a>
+            <a href="/%5BSWPUCTF%202018%5DSimplePHP/">&lt;SWPUCTF 2018&gt;SimplePHP</a>
         </h2>
     
-        <p>打开题目
-
-sqlquery : select * from users where username=’’ and passwd=’’
-
-存在robots.txt，得到提示
-$black_li...</p>
+        <p>打开题目，文件上传，但查看文件功能有漏洞，控制url可以查看服务端代码
+查看代码可以发现并不存在文件上传漏洞，反而是file.php?file=这个参数大有可为
+file.php中部分代码
+in...</p>
     
         <div class="post-meta">
-            <time class="date">2021.12.01</time>
+            <time class="date">2021.11.19</time>
             
-                <span class="category"><a class="category-link" href="/categories/sql%E6%B3%A8%E5%85%A5/">sql注入</a></span>
-            
-            
-        </div>
-    </div>
-    
-    <div class="post-item">
-        <h2>
-            <a href="/%5BRCTF2015%5DEasySQL/">&lt;RCTF2015&gt;EasySQL</a>
-        </h2>
-    
-        <p>打开题目，测试功能。注册，登录，修改密码，那么极有可能存在二次注入。经过测试，发现如果注册的用户名含有双引号，在修改密码后页面回显报错信息。例如
-
-You have an error in yo...</p>
-    
-        <div class="post-meta">
-            <time class="date">2021.11.25</time>
-            
-                <span class="category"><a class="category-link" href="/categories/sql%E6%B3%A8%E5%85%A5/">sql注入</a></span>
-            
-            
-        </div>
-    </div>
-    
-    <div class="post-item">
-        <h2>
-            <a href="/%5BWUSTCTF2020%5D%E9%A2%9C%E5%80%BC%E6%88%90%E7%BB%A9%E6%9F%A5%E8%AF%A2/">&lt;WUSTCTF2020&gt;颜值成绩查询</a>
-        </h2>
-    
-        <p>常规布尔盲注，甚至没有什么过滤
-import requests
-
-tar_url=&#34;...............&#34;
-par=&amp;#123;&#34;stunum&#34;:&#34;&#34;&amp;#125;
-an=&#34;&#34;
-
-for...</p>
-    
-        <div class="post-meta">
-            <time class="date">2021.11.23</time>
-            
-                <span class="category"><a class="category-link" href="/categories/sql%E6%B3%A8%E5%85%A5/">sql注入</a></span>
-            
-            
-        </div>
-    </div>
-    
-    <div class="post-item">
-        <h2>
-            <a href="/GYCTF2020Ezsqli/">&lt;GYCTF2020&gt;Ezsqli</a>
-        </h2>
-    
-        <p>打开题目，显然是SQL注入
-测试为数字型注入，测试过滤的关键字，可用布尔盲注，脚本如下
-import requests
-
-tar_url=&#34;http://7772275b-dfab-48c8-9...</p>
-    
-        <div class="post-meta">
-            <time class="date">2021.11.22</time>
-            
-                <span class="category"><a class="category-link" href="/categories/sql%E6%B3%A8%E5%85%A5/">sql注入</a></span>
+                <span class="category"><a class="category-link" href="/categories/deserialize/">deserialize</a></span>
             
             
         </div>

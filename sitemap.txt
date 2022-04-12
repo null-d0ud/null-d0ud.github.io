@@ -7,8 +7,10 @@ http://example.com/[NPUCTF2020]ezinclude/
 http://example.com/[NCTF2019]SQLi/
 http://example.com/[GWCTF%202019]%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96/
 http://example.com/[BJDCTF2020]EasySearch%201/
+http://example.com/race_conditions_1/
 http://example.com/
-http://example.com/categories/sql%E6%B3%A8%E5%85%A5/
-http://example.com/categories/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/
-http://example.com/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/
-http://example.com/categories/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/
+http://example.com/categories/code-audit/
+http://example.com/categories/SQL-injection/
+http://example.com/categories/file-upload/
+http://example.com/categories/deserialize/
+http://example.com/categories/code/

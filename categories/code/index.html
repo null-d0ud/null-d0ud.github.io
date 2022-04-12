@@ -3,7 +3,7 @@
   <head>
      
     <meta charset="UTF-8">
-    <title>2021 年 11 月 - d0ud</title>
+    <title>code - d0ud</title>
     <link rel="shortcut icon" href="/static/img/icon.png">
     <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
     
@@ -53,96 +53,9 @@
     <div class="wrap min">
         <section class="home-title">
             
-            <h1>“2021 年 11 月”</h1>
+            <h1>“code”</h1>
         </section>
         <section class="home-posts">
-    
-    <div class="post-item">
-        <h2>
-            <a href="/%5BRCTF2015%5DEasySQL/">&lt;RCTF2015&gt;EasySQL</a>
-        </h2>
-    
-        <p>打开题目，测试功能。注册，登录，修改密码，那么极有可能存在二次注入。经过测试，发现如果注册的用户名含有双引号，在修改密码后页面回显报错信息。例如
-
-You have an error in yo...</p>
-    
-        <div class="post-meta">
-            <time class="date">2021.11.25</time>
-            
-                <span class="category"><a class="category-link" href="/categories/SQL-injection/">SQL injection</a></span>
-            
-            
-        </div>
-    </div>
-    
-    <div class="post-item">
-        <h2>
-            <a href="/%5BWUSTCTF2020%5D%E9%A2%9C%E5%80%BC%E6%88%90%E7%BB%A9%E6%9F%A5%E8%AF%A2/">&lt;WUSTCTF2020&gt;颜值成绩查询</a>
-        </h2>
-    
-        <p>常规布尔盲注，甚至没有什么过滤
-import requests
-
-tar_url=&#34;...............&#34;
-par=&amp;#123;&#34;stunum&#34;:&#34;&#34;&amp;#125;
-an=&#34;&#34;
-
-for...</p>
-    
-        <div class="post-meta">
-            <time class="date">2021.11.23</time>
-            
-                <span class="category"><a class="category-link" href="/categories/SQL-injection/">SQL injection</a></span>
-            
-            
-        </div>
-    </div>
-    
-    <div class="post-item">
-        <h2>
-            <a href="/GYCTF2020Ezsqli/">&lt;GYCTF2020&gt;Ezsqli</a>
-        </h2>
-    
-        <p>打开题目，显然是SQL注入
-测试为数字型注入，测试过滤的关键字，可用布尔盲注，脚本如下
-import requests
-
-tar_url=&#34;http://7772275b-dfab-48c8-9...</p>
-    
-        <div class="post-meta">
-            <time class="date">2021.11.22</time>
-            
-                <span class="category"><a class="category-link" href="/categories/SQL-injection/">SQL injection</a></span>
-            
-            
-        </div>
-    </div>
-    
-    <div class="post-item">
-        <h2>
-            <a href="/%5BNPUCTF2020%5Dezinclude/">&lt;NPUCTF2020&gt;ezinclude</a>
-        </h2>
-    
-        <p>打开题目
-
-username/password error
-
-扫描目录
-
-config.phpdir.phpindex.phpindex.php/login
-
-在网页源码中得到提示
-
-&amp;lt;!...</p>
-    
-        <div class="post-meta">
-            <time class="date">2021.11.21</time>
-            
-                <span class="category"><a class="category-link" href="/categories/file-upload/">file upload</a></span>
-            
-            
-        </div>
-    </div>
     
     <div class="post-item">
         <h2>
@@ -160,67 +73,6 @@ ur=&#39;http://9fe5d7d...</p>
             <time class="date">2021.11.21</time>
             
                 <span class="category"><a class="category-link" href="/categories/code/">code</a></span>
-            
-            
-        </div>
-    </div>
-    
-    <div class="post-item">
-        <h2>
-            <a href="/%5BSWPUCTF%202018%5DSimplePHP/">&lt;SWPUCTF 2018&gt;SimplePHP</a>
-        </h2>
-    
-        <p>打开题目，文件上传，但查看文件功能有漏洞，控制url可以查看服务端代码
-查看代码可以发现并不存在文件上传漏洞，反而是file.php?file=这个参数大有可为
-file.php中部分代码
-in...</p>
-    
-        <div class="post-meta">
-            <time class="date">2021.11.19</time>
-            
-                <span class="category"><a class="category-link" href="/categories/deserialize/">deserialize</a></span>
-            
-            
-        </div>
-    </div>
-    
-    <div class="post-item">
-        <h2>
-            <a href="/%5BBJDCTF2020%5DEasySearch%201/">&lt;BJDCTF2020&gt;EasySearch 1</a>
-        </h2>
-    
-        <p>扫描目录得到index.php.swp
-&amp;lt;?php
-	ob_start();
-	function get_hash()&amp;#123;
-		$chars = &#39;ABCDEFGHIJKLMNOP...</p>
-    
-        <div class="post-meta">
-            <time class="date">2021.11.17</time>
-            
-                <span class="category"><a class="category-link" href="/categories/code-audit/">code audit</a></span>
-            
-            
-        </div>
-    </div>
-    
-    <div class="post-item">
-        <h2>
-            <a href="/%5BNPUCTF2020%5DReadlezPHP/">&lt;NPUCTF2020&gt;ReadlezPHP</a>
-        </h2>
-    
-        <p>打开题目，无提示，扫描目录，无果，在源代码里搜索php，发现隐藏链接
-打开得到源码
-&amp;lt;?php
-#error_reporting(0);
-class HelloPhp
-&amp;#123;
-   ...</p>
-    
-        <div class="post-meta">
-            <time class="date">2021.11.17</time>
-            
-                <span class="category"><a class="category-link" href="/categories/code-audit/">code audit</a></span>
             
             
         </div>
