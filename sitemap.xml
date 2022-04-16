@@ -2,90 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.com/[HFCTF2020]EasyLogin/</loc>
+    <loc>http://example.com/[BJDCTF2020]ZJCTF%EF%BC%8C%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/</loc>
     
-    <lastmod>2022-04-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/forge%20jwt/</loc>
-    
-    <lastmod>2022-04-13</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/GYCTF2020Ezsqli/</loc>
-    
-    <lastmod>2022-04-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/[WUSTCTF2020]%E9%A2%9C%E5%80%BC%E6%88%90%E7%BB%A9%E6%9F%A5%E8%AF%A2/</loc>
-    
-    <lastmod>2022-04-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/[SWPUCTF%202018]SimplePHP/</loc>
-    
-    <lastmod>2022-04-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/[RCTF2015]EasySQL/</loc>
-    
-    <lastmod>2022-04-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/[NPUCTF2020]ReadlezPHP/</loc>
-    
-    <lastmod>2022-04-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/[NPUCTF2020]ezinclude/</loc>
-    
-    <lastmod>2022-04-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/[NCTF2019]SQLi/</loc>
-    
-    <lastmod>2022-04-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/[GWCTF%202019]%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96/</loc>
-    
-    <lastmod>2022-04-12</lastmod>
+    <lastmod>2022-04-16</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -94,7 +13,70 @@
   <url>
     <loc>http://example.com/[BJDCTF2020]EasySearch%201/</loc>
     
-    <lastmod>2022-04-12</lastmod>
+    <lastmod>2022-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/[GWCTF%202019]%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96/</loc>
+    
+    <lastmod>2022-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/[MRCTF2020]PYWebsite/</loc>
+    
+    <lastmod>2022-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/[NCTF2019]SQLi/</loc>
+    
+    <lastmod>2022-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/[NPUCTF2020]ezinclude/</loc>
+    
+    <lastmod>2022-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/[NPUCTF2020]ReadlezPHP/</loc>
+    
+    <lastmod>2022-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/[RCTF2015]EasySQL/</loc>
+    
+    <lastmod>2022-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/[SWPUCTF%202018]SimplePHP/</loc>
+    
+    <lastmod>2022-04-16</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -103,7 +85,43 @@
   <url>
     <loc>http://example.com/race_conditions_1/</loc>
     
-    <lastmod>2022-04-12</lastmod>
+    <lastmod>2022-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/[WUSTCTF2020]%E9%A2%9C%E5%80%BC%E6%88%90%E7%BB%A9%E6%9F%A5%E8%AF%A2/</loc>
+    
+    <lastmod>2022-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/GYCTF2020Ezsqli/</loc>
+    
+    <lastmod>2022-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/forge%20jwt/</loc>
+    
+    <lastmod>2022-04-16</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/[HFCTF2020]EasyLogin/</loc>
+    
+    <lastmod>2022-04-13</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -112,7 +130,7 @@
 
   <url>
     <loc>http://example.com/</loc>
-    <lastmod>2022-04-13</lastmod>
+    <lastmod>2022-04-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -120,7 +138,14 @@
   
   <url>
     <loc>http://example.com/tags/wp/</loc>
-    <lastmod>2022-04-13</lastmod>
+    <lastmod>2022-04-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/script/</loc>
+    <lastmod>2022-04-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -129,42 +154,49 @@
   
   <url>
     <loc>http://example.com/categories/code-audit/</loc>
-    <lastmod>2022-04-13</lastmod>
+    <lastmod>2022-04-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/categories/SQL-injection/</loc>
-    <lastmod>2022-04-13</lastmod>
+    <lastmod>2022-04-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/categories/file-upload/</loc>
-    <lastmod>2022-04-13</lastmod>
+    <lastmod>2022-04-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/categories/deserialize/</loc>
-    <lastmod>2022-04-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/categories/code/</loc>
-    <lastmod>2022-04-13</lastmod>
+    <lastmod>2022-04-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://example.com/categories/authentication/</loc>
-    <lastmod>2022-04-13</lastmod>
+    <lastmod>2022-04-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/categories/pseudo-protocol/</loc>
+    <lastmod>2022-04-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/categories/another/</loc>
+    <lastmod>2022-04-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

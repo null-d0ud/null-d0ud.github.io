@@ -3,7 +3,7 @@
   <head>
      
     <meta charset="UTF-8">
-    <title>file upload - d0ud</title>
+    <title>&lt;MRCTF2020&gt;PYWebsite - d0ud</title>
     <link rel="shortcut icon" href="/static/img/icon.png">
     <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
     
@@ -15,7 +15,7 @@
 
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
     <meta property="og:site_name" content="d0ud">
-    <meta property="og:title" content=""/>
+    <meta property="og:title" content="&lt;MRCTF2020&gt;PYWebsite"/>
     
     <style>body:before{ content: ''; background-image: url(https://null-d0ud.github.io/img/bgg.png) }</style>
     
@@ -51,68 +51,53 @@
 
     <main>
     <div class="wrap min">
-        <section class="home-title">
+        <section class="post-title">
+            <h2>&lt;MRCTF2020&gt;PYWebsite</h2>
+            <div class="post-meta">
+                <time class="date">2022.04.16</time>
             
-            <h1>“file upload”</h1>
+                <span class="category"><a class="category-link" href="/categories/another/">another</a></span>
+            
+            </div>
         </section>
-        <section class="home-posts">
-    
-    <div class="post-item">
-        <h2>
-            <a href="/%5BNPUCTF2020%5Dezinclude/">&lt;NPUCTF2020&gt;ezinclude</a>
-        </h2>
-    
-        <p>打开题目
+        <article class="post-content">
+        
+            <p>打开题目，需要授权码获取<code>flag</code>,查看源码发现存在<code>flag.php</code>，直接访问，得到</p>
+<blockquote>
+<p>我已经把购买者的IP保存了，显然你没有购买</p>
+<p>验证逻辑是在后端的，除了购买者和我自己，没有人可以看到flag</p>
+</blockquote>
+<p>修改请求头，添加<code>x-Forwarded-For:127.0.0.1</code>,得到<code>flag</code></p>
 
-username/password error
-
-扫描目录
-
-config.phpdir.phpindex.phpindex.php/login
-
-在网页源码中得到提示
-
-&amp;lt;!...</p>
-    
-        <div class="post-meta">
-            <time class="date">2021.11.21</time>
-            
-                <span class="category"><a class="category-link" href="/categories/file-upload/">file upload</a></span>
-            
-            
-                <span class="tags"><a class="-none-link" href="/tags/wp/" rel="tag">wp</a></span>
-            
-        </div>
-    </div>
-    
-    <div class="post-item">
-        <h2>
-            <a href="/race_conditions_1/">race conditions</a>
-        </h2>
-    
-        <p>import requests
-import io
-from threading import Thread
-from time import sleep
-
-ur=&#39;http://9fe5d7d...</p>
-    
-        <div class="post-meta">
-            <time class="date">2021.11.21</time>
-            
-                <span class="category"><a class="category-link" href="/categories/file-upload/">file upload</a></span>
-            
-            
-                <span class="tags"><a class="-none-link" href="/tags/script/" rel="tag">script</a></span>
-            
-        </div>
-    </div>
-    
-</section>
-
-        <section class="page-navigator">
-            <span class="page-number current">1</span>
+        </article>
+        <section class="post-near">
+            <ul>
+                
+                    <li>上一篇: <a href="/%5BBJDCTF2020%5DZJCTF%EF%BC%8C%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/">&lt;BJDCTF2020&gt;ZJCTF，不过如此</a></li>
+                
+                
+                    <li>下一篇: <a href="/forge%20jwt/">jwt forge</a></li>
+                
+            </ul>
         </section>
+        
+            <section class="post-tags">
+            <a class="-none-link" href="/tags/wp/" rel="tag">wp</a>
+            </section>
+        
+    
+        <section class="post-author">
+        
+            <figure class="author-avatar">
+                <img src="https://null-d0ud.github.io/img/logo.jpg" alt="d0ud" />
+            </figure>
+        
+            <div class="author-info">
+                <h4>d0ud</h4>
+                <p>a ctfer</p>
+            </div>
+        </section>
+    
     </div>
 </main>
 

