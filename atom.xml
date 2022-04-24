@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-04-16T09:15:51.736Z</updated>
+  <updated>2022-04-24T04:49:27.175Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>&lt;SUCTF 2019&gt;Pythonginx</title>
+    <link href="http://example.com/[SUCTF%202019]Pythonginx/"/>
+    <id>http://example.com/[SUCTF%202019]Pythonginx/</id>
+    <published>2022-04-21T16:00:00.000Z</published>
+    <updated>2022-04-24T04:49:27.175Z</updated>
+    
+    <content type="html"><![CDATA[<p>打开题目，得到部分源码</p><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/getUrl'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token keyword">def</span> <span class="token function">getUrl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>    url <span class="token operator">=</span> request<span class="token punctuation">.</span>args<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">"url"</span><span class="token punctuation">)</span>    host <span class="token operator">=</span> parse<span class="token punctuation">.</span>urlparse<span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">.</span>hostname    <span class="token keyword">if</span> host <span class="token operator">==</span> <span class="token string">'suctf.cc'</span><span class="token punctuation">:</span>        <span class="token keyword">return</span> <span class="token string">"我扌 your problem? 111"</span>    parts <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>urlsplit<span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">)</span>    host <span class="token operator">=</span> parts<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>    <span class="token keyword">if</span> host <span class="token operator">==</span> <span class="token string">'suctf.cc'</span><span class="token punctuation">:</span>        <span class="token keyword">return</span> <span class="token string">"我扌 your problem? 222 "</span> <span class="token operator">+</span> host    newhost <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>    <span class="token keyword">for</span> h <span class="token keyword">in</span> host<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>        newhost<span class="token punctuation">.</span>append<span class="token punctuation">(</span>h<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'idna'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>    parts<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'.'</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>newhost<span class="token punctuation">)</span>    <span class="token comment">#去掉 url 中的空格</span>    finalUrl <span class="token operator">=</span> urlunsplit<span class="token punctuation">(</span>parts<span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>    host <span class="token operator">=</span> parse<span class="token punctuation">.</span>urlparse<span class="token punctuation">(</span>finalUrl<span class="token punctuation">)</span><span class="token punctuation">.</span>hostname    <span class="token keyword">if</span> host <span class="token operator">==</span> <span class="token string">'suctf.cc'</span><span class="token punctuation">:</span>        <span class="token keyword">return</span> urllib<span class="token punctuation">.</span>request<span class="token punctuation">.</span>urlopen<span class="token punctuation">(</span>finalUrl<span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token keyword">else</span><span class="token punctuation">:</span>        <span class="token keyword">return</span> <span class="token string">"我扌 your problem? 333"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>显然是要设法访问<code>suctf.cc</code>,<br>注意到意义不明的<code>newhost.append(h.encode(&#39;idna&#39;).decode(&#39;utf-8&#39;))</code>，<br>先用<code>idna</code>编码又用<code>utf-8</code>解码，嗯，耐人寻味，查了下<code>idna</code>编码，<br>发现就有现成的字符<code>℆</code>，<del>大概是师傅们都是从这题了解的</del>,<br>但是这样的话，只能得到<code>suctf.cc/u*</code>下的文件，遇事不决，先把能看的都看看，<br>在看配置文件时候<code>file://suctf.c℆sr/local/nginx/conf/nginx.conf</code></p><p>回显</p><blockquote><p>server { listen 80; location / { try_files $uri @app; } location @app { include uwsgi_params; uwsgi_pass unix:///tmp/uwsgi.sock; } location /static { alias /app/static; } # location /flag { # alias /usr/fffffflag; # } }</p></blockquote><p>很显然了，<code>file://suctf.c℆sr/fffffflag</code>，得到<code>flag</code></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;打开题目，得到部分源码&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-python&quot; data-language=&quot;python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token decorat</summary>
+      
+    
+    
+    
+    <category term="code audit" scheme="http://example.com/categories/code-audit/"/>
+    
+    
+    <category term="wp" scheme="http://example.com/tags/wp/"/>
+    
+  </entry>
   
   <entry>
     <title>&lt;BJDCTF2020&gt;ZJCTF，不过如此</title>
