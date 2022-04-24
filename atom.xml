@@ -378,4 +378,30 @@
     
   </entry>
   
+  <entry>
+    <title>web directory</title>
+    <link href="http://example.com/basic_web_directory/"/>
+    <id>http://example.com/basic_web_directory/</id>
+    <published>1970-01-01T00:00:00.000Z</published>
+    <updated>2022-04-22T08:29:32.914Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>nginx</code>网站目录</p><pre class="line-numbers language-none"><code class="language-none">配置文件存放目录：&#x2F;etc&#x2F;nginx主配置文件：&#x2F;etc&#x2F;nginx&#x2F;conf&#x2F;nginx.conf管理脚本：&#x2F;usr&#x2F;lib64&#x2F;systemd&#x2F;system&#x2F;nginx.service模块：&#x2F;usr&#x2F;lisb64&#x2F;nginx&#x2F;modules应用程序：&#x2F;usr&#x2F;sbin&#x2F;nginx程序默认存放位置：&#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html日志默认存放位置：&#x2F;var&#x2F;log&#x2F;nginx配置文件目录为：&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;conf&#x2F;nginx.conf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;code&gt;nginx&lt;/code&gt;网站目录&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-none&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;配置文件存放目录：&amp;#x2F;etc&amp;#x2F;nginx
+主配置文件：&amp;#x2F;</summary>
+      
+    
+    
+    
+    <category term="record" scheme="http://example.com/categories/record/"/>
+    
+    
+    <category term="basic" scheme="http://example.com/tags/basic/"/>
+    
+  </entry>
+  
 </feed>

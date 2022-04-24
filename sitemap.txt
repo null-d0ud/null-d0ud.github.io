@@ -1,3 +1,4 @@
+http://example.com/basic_web_directory/
 http://example.com/[BJDCTF2020]ZJCTF%EF%BC%8C%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/
 http://example.com/[BJDCTF2020]EasySearch%201/
 http://example.com/[GWCTF%202019]%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96/
@@ -15,6 +16,7 @@ http://example.com/[HFCTF2020]EasyLogin/
 http://example.com/
 http://example.com/tags/wp/
 http://example.com/tags/script/
+http://example.com/tags/basic/
 http://example.com/categories/code-audit/
 http://example.com/categories/SQL-injection/
 http://example.com/categories/file-upload/
@@ -22,3 +24,4 @@ http://example.com/categories/deserialize/
 http://example.com/categories/authentication/
 http://example.com/categories/pseudo-protocol/
 http://example.com/categories/another/
+http://example.com/categories/record/
