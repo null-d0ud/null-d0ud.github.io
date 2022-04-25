@@ -3,7 +3,7 @@
   <head>
      
     <meta charset="UTF-8">
-    <title>1970 年 - d0ud</title>
+    <title>shell upload - d0ud</title>
     <link rel="shortcut icon" href="/static/img/icon.png">
     <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
     
@@ -15,7 +15,7 @@
 
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
     <meta property="og:site_name" content="d0ud">
-    <meta property="og:title" content=""/>
+    <meta property="og:title" content="shell upload"/>
     
     <style>body:before{ content: ''; background-image: url(https://null-d0ud.github.io/img/bgg.png) }</style>
     
@@ -51,134 +51,85 @@
 
     <main>
     <div class="wrap min">
-        <section class="home-title">
-            
-            <h1>“1970 年”</h1>
-        </section>
-        <section class="home-posts">
-    
-    <div class="post-item">
-        <h2>
-            <a href="/basic_web_directory/">web directory</a>
-        </h2>
-    
-        <p>nginx网站目录
-配置文件存放目录：&amp;#x2F;etc&amp;#x2F;nginx
-主配置文件：&amp;#x2F;etc&amp;#x2F;nginx&amp;#x2F;conf&amp;#x2F;nginx.conf
-管理脚本...</p>
-    
-        <div class="post-meta">
-            <time class="date">1970.01.01</time>
-            
-                <span class="category"><a class="category-link" href="/categories/another/">another</a></span>
-            
-            
-                <span class="tags"><a class="-none-link" href="/tags/basic/" rel="tag">basic</a></span>
-            
-        </div>
-    </div>
-    
-    <div class="post-item">
-        <h2>
-            <a href="/php_serialize/">php serialize</a>
-        </h2>
-    
-        <p>
-PHP序列化函数和反序列化函数为serialize(),unserialize()
-
-序列化字符串格式为
-布尔值（bool） 		b:value 
-整数型（int）			i:value
-字符串...</p>
-    
-        <div class="post-meta">
-            <time class="date">1970.01.01</time>
-            
-                <span class="category"><a class="category-link" href="/categories/deserialize/">deserialize</a></span>
-            
-            
-                <span class="tags"><a class="-none-link" href="/tags/basic/" rel="tag">basic</a></span>
-            
-        </div>
-    </div>
-    
-    <div class="post-item">
-        <h2>
-            <a href="/shell%20upload/">shell upload</a>
-        </h2>
-    
-        <p>前端文件后缀限制
-
-抓包修改
-
-后端文件后缀限制
-
-上传.user.ini文件或.htaccess文件
-PHP 支持基于每个目录的 INI 文件配置。此类文件 仅被 CGI／FastCGI SA...</p>
-    
-        <div class="post-meta">
-            <time class="date">1970.01.01</time>
+        <section class="post-title">
+            <h2>shell upload</h2>
+            <div class="post-meta">
+                <time class="date">1970.01.01</time>
             
                 <span class="category"><a class="category-link" href="/categories/file-upload/">file upload</a></span>
             
-            
-                <span class="tags"><a class="-none-link" href="/tags/basic/" rel="tag">basic</a></span>
-            
-        </div>
-    </div>
-    
-    <div class="post-item">
-        <h2>
-            <a href="/php%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E6%95%B0%E5%80%BC%E6%AF%94%E8%BE%83/">php字符串与数值比较</a>
-        </h2>
-    
-        <p>PHP是一门弱类型语言，当涉及“==”判断时，它的表现是有一些奇特的。例如，“a==0”将会得到true，“a==1”将会得到false。
-原理：PHP语言中在涉及“==”判断时，如果运算符两边...</p>
-    
-        <div class="post-meta">
-            <time class="date">1970.01.01</time>
-            
-                <span class="category"><a class="category-link" href="/categories/code-audit/">code audit</a></span>
-            
-            
-                <span class="tags"><a class="-none-link" href="/tags/basic/" rel="tag">basic</a></span>
-            
-        </div>
-    </div>
-    
-    <div class="post-item">
-        <h2>
-            <a href="/sql%20injection/">sql injection</a>
-        </h2>
-    
-        <p>
-堆叠注入
-union注入
-报错注入 updatexml() , extractvalue()
-布尔盲注 if(,,)  、^
-
-截断字符串
-
-substr()
-mid()
-substring(...</p>
-    
-        <div class="post-meta">
-            <time class="date">1970.01.01</time>
-            
-                <span class="category"><a class="category-link" href="/categories/SQL-injection/">SQL injection</a></span>
-            
-            
-                <span class="tags"><a class="-none-link" href="/tags/basic/" rel="tag">basic</a></span>
-            
-        </div>
-    </div>
-    
-</section>
-
-        <section class="page-navigator">
-            <span class="page-number current">1</span>
+            </div>
         </section>
+        <article class="post-content">
+        
+            <blockquote>这篇文章上次修改于 19108 天前，可能其部分内容已经发生变化，如有疑问可询问作者。</blockquote>
+        
+            <p>前端文件后缀限制</p>
+<ol>
+<li>抓包修改</li>
+</ol>
+<p>后端文件后缀限制</p>
+<ol>
+<li>上传.user.ini文件或.htaccess文件<blockquote>
+<p>PHP 支持基于每个目录的 INI 文件配置。此类文件 仅被 CGI／FastCGI SAPI 处理。此功能使得 PECL 的 htscanner 扩展作废。如果你的 PHP 以模块化运行在 Apache 里，则用 .htaccess 文件有同样效果。</p>
+<p>除了主 php.ini 之外，PHP 还会在每个目录下扫描 INI 文件，从被执行的 PHP 文件所在目录开始一直上升到 web 根目录（$_SERVER[‘DOCUMENT_ROOT’] 所指定的）。如果被执行的 PHP 文件在 web 根目录之外，则只扫描该目录。</p>
+<p>在 .user.ini 风格的 INI 文件中只有具有 PHP_INI_PERDIR 和 PHP_INI_USER 模式的 INI 设置可被识别。</p>
+<p>两个新的 INI 指令， user_ini.filename 和 user_ini.cache_ttl 控制着用户 INI 文件的使用。</p>
+<p>user_ini.filename 设定了 PHP 会在每个目录下搜寻的文件名；如果设定为空字符串则 PHP 不会搜寻。默认值是 .user.ini。</p>
+<p>user_ini.cache_ttl 控制着重新读取用户 INI 文件的间隔时间。默认是 300 秒（5 分钟）。</p>
+</blockquote>
+</li>
+</ol>
+<p>.user.ini</p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">auto_prepend_file=<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>file_path</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>.htaccess</p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">AddType application/x-httpd-php .jpg <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>FileMatch</span> <span class="token attr-name">"&lt;file_name</span><span class="token punctuation">></span></span>">
+SetHandler application/x-httpd-php
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>FileMatch</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>利用解析漏洞，加上无法解析的后缀，如上传shell.php.abc</li>
+</ol>
+<p>文件头检查</p>
+<ol>
+<li>加上图片文件头，如GIF8a</li>
+</ol>
+<p>文件内容检查</p>
+<ol>
+<li>&lt;script language=’php’&gt; 代替 &lt;?php</li>
+<li></li>
+</ol>
+
+        </article>
+        <section class="post-near">
+            <ul>
+                
+                    <li>上一篇: <a href="/php_serialize/">php serialize</a></li>
+                
+                
+                    <li>下一篇: <a href="/php%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E6%95%B0%E5%80%BC%E6%AF%94%E8%BE%83/">php字符串与数值比较</a></li>
+                
+            </ul>
+        </section>
+        
+            <section class="post-tags">
+            <a class="-none-link" href="/tags/basic/" rel="tag">basic</a>
+            </section>
+        
+    
+        <section class="post-author">
+        
+            <figure class="author-avatar">
+                <img src="https://null-d0ud.github.io/img/logo.jpg" alt="d0ud" />
+            </figure>
+        
+            <div class="author-info">
+                <h4>d0ud</h4>
+                <p>a ctfer</p>
+            </div>
+        </section>
+    
     </div>
 </main>
 

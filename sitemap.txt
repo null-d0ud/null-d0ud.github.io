@@ -1,5 +1,9 @@
-http://example.com/[SUCTF%202019]Pythonginx/
 http://example.com/basic_web_directory/
+http://example.com/sql%20injection/
+http://example.com/php%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E6%95%B0%E5%80%BC%E6%AF%94%E8%BE%83/
+http://example.com/shell%20upload/
+http://example.com/php_serialize/
+http://example.com/[SUCTF%202019]Pythonginx/
 http://example.com/[BJDCTF2020]ZJCTF%EF%BC%8C%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/
 http://example.com/[BJDCTF2020]EasySearch%201/
 http://example.com/[GWCTF%202019]%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96/
@@ -25,4 +29,3 @@ http://example.com/categories/deserialize/
 http://example.com/categories/authentication/
 http://example.com/categories/pseudo-protocol/
 http://example.com/categories/another/
-http://example.com/categories/record/

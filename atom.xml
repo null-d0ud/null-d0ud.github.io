@@ -408,7 +408,7 @@
     <link href="http://example.com/basic_web_directory/"/>
     <id>http://example.com/basic_web_directory/</id>
     <published>1970-01-01T00:00:00.000Z</published>
-    <updated>2022-04-22T08:29:32.914Z</updated>
+    <updated>2022-04-25T05:12:49.869Z</updated>
     
     <content type="html"><![CDATA[<p><code>nginx</code>网站目录</p><pre class="line-numbers language-none"><code class="language-none">配置文件存放目录：&#x2F;etc&#x2F;nginx主配置文件：&#x2F;etc&#x2F;nginx&#x2F;conf&#x2F;nginx.conf管理脚本：&#x2F;usr&#x2F;lib64&#x2F;systemd&#x2F;system&#x2F;nginx.service模块：&#x2F;usr&#x2F;lisb64&#x2F;nginx&#x2F;modules应用程序：&#x2F;usr&#x2F;sbin&#x2F;nginx程序默认存放位置：&#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html日志默认存放位置：&#x2F;var&#x2F;log&#x2F;nginx配置文件目录为：&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;conf&#x2F;nginx.conf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
     
@@ -422,7 +422,122 @@
     
     
     
-    <category term="record" scheme="http://example.com/categories/record/"/>
+    <category term="another" scheme="http://example.com/categories/another/"/>
+    
+    
+    <category term="basic" scheme="http://example.com/tags/basic/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>php serialize</title>
+    <link href="http://example.com/php_serialize/"/>
+    <id>http://example.com/php_serialize/</id>
+    <published>1970-01-01T00:00:00.000Z</published>
+    <updated>2022-04-25T04:59:34.243Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li><p>PHP序列化函数和反序列化函数为serialize(),unserialize()</p></li><li><p>序列化字符串格式为</p><pre class="line-numbers language-html" data-language="html"><code class="language-html">布尔值（bool） b:value 整数型（int）i:value字符串型（str）s:length:"value" 数组型（array）a:length:&#123;...&#125;对象型（object）O:length:class_name:properties_number&#123;...&#125; NULL型<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li><li><p>__wakeup()绕过<br>CVE-2016-7124<br>当反序列化的字符串中属性个数大于真实个数时，__wakeup()方法将不生效</p></li><li><p>PHP魔术方法</p><pre class="line-numbers language-html" data-language="html"><code class="language-html">__construct()，类的构造函数__destruct()，类的析构函数__call()，在对象中调用一个不可访问方法时调用__callStatic()，用静态方式中调用一个不可访问方法时调用__get()，获得一个类的成员变量时调用__set()，设置一个类的成员变量时调用__isset()，当对不可访问属性调用isset()或empty()时调用__unset()，当对不可访问属性调用unset()时被调用。__sleep()，执行serialize()时，先会调用这个函数__wakeup()，执行unserialize()时，先会调用这个函数__toString()，类被当成字符串时的回应方法__invoke()，调用函数的方式调用一个对象时的回应方法__set_state()，调用var_export()导出类时，此静态方法会被调用。__clone()，当对象复制完成时调用__autoload()，尝试加载未定义的类__debugInfo()，打印所需调试信息<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li><li><p>protected属性被序列化的时候属性值会变成%00*%00属性名<br>private属性被序列化的时候属性值会变成%00类名%00属性名</p></li><li><p>php通过value的长度取值。</p></li><li></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;PHP序列化函数和反序列化函数为serialize(),unserialize()&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;序列化字符串格式为&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-html&quot; data-language=&quot;</summary>
+      
+    
+    
+    
+    <category term="deserialize" scheme="http://example.com/categories/deserialize/"/>
+    
+    
+    <category term="basic" scheme="http://example.com/tags/basic/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>shell upload</title>
+    <link href="http://example.com/shell%20upload/"/>
+    <id>http://example.com/shell%20upload/</id>
+    <published>1970-01-01T00:00:00.000Z</published>
+    <updated>2022-04-25T05:04:46.140Z</updated>
+    
+    <content type="html"><![CDATA[<p>前端文件后缀限制</p><ol><li>抓包修改</li></ol><p>后端文件后缀限制</p><ol><li>上传.user.ini文件或.htaccess文件<blockquote><p>PHP 支持基于每个目录的 INI 文件配置。此类文件 仅被 CGI／FastCGI SAPI 处理。此功能使得 PECL 的 htscanner 扩展作废。如果你的 PHP 以模块化运行在 Apache 里，则用 .htaccess 文件有同样效果。</p><p>除了主 php.ini 之外，PHP 还会在每个目录下扫描 INI 文件，从被执行的 PHP 文件所在目录开始一直上升到 web 根目录（$_SERVER[‘DOCUMENT_ROOT’] 所指定的）。如果被执行的 PHP 文件在 web 根目录之外，则只扫描该目录。</p><p>在 .user.ini 风格的 INI 文件中只有具有 PHP_INI_PERDIR 和 PHP_INI_USER 模式的 INI 设置可被识别。</p><p>两个新的 INI 指令， user_ini.filename 和 user_ini.cache_ttl 控制着用户 INI 文件的使用。</p><p>user_ini.filename 设定了 PHP 会在每个目录下搜寻的文件名；如果设定为空字符串则 PHP 不会搜寻。默认值是 .user.ini。</p><p>user_ini.cache_ttl 控制着重新读取用户 INI 文件的间隔时间。默认是 300 秒（5 分钟）。</p></blockquote></li></ol><p>.user.ini</p><pre class="line-numbers language-html" data-language="html"><code class="language-html">auto_prepend_file=<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>file_path</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>.htaccess</p><pre class="line-numbers language-html" data-language="html"><code class="language-html">AddType application/x-httpd-php .jpg <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>FileMatch</span> <span class="token attr-name">"&lt;file_name</span><span class="token punctuation">></span></span>">SetHandler application/x-httpd-php<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>FileMatch</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><ol start="2"><li>利用解析漏洞，加上无法解析的后缀，如上传shell.php.abc</li></ol><p>文件头检查</p><ol><li>加上图片文件头，如GIF8a</li></ol><p>文件内容检查</p><ol><li>&lt;script language=’php’&gt; 代替 &lt;?php</li><li></li></ol>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;前端文件后缀限制&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;抓包修改&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;后端文件后缀限制&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;上传.user.ini文件或.htaccess文件&lt;blockquote&gt;
+&lt;p&gt;PHP 支持基于每个目录的 INI 文件配置。此类文件 仅被 CG</summary>
+      
+    
+    
+    
+    <category term="file upload" scheme="http://example.com/categories/file-upload/"/>
+    
+    
+    <category term="basic" scheme="http://example.com/tags/basic/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>php字符串与数值比较</title>
+    <link href="http://example.com/php%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E6%95%B0%E5%80%BC%E6%AF%94%E8%BE%83/"/>
+    <id>http://example.com/php%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E6%95%B0%E5%80%BC%E6%AF%94%E8%BE%83/</id>
+    <published>1970-01-01T00:00:00.000Z</published>
+    <updated>2022-04-25T05:07:26.010Z</updated>
+    
+    <content type="html"><![CDATA[<p>PHP是一门弱类型语言，当涉及“==”判断时，它的表现是有一些奇特的。<br>例如，“a==0”将会得到true，“a==1”将会得到false。</p><p>原理：PHP语言中在涉及“==”判断时，如果运算符两边分别为字符串（不以数字开头的字符串），会将字符串转化为数字0，再进行比较。如果是以数字开头的字符串，那么它将会转化成开头的数字（即第一个字母前的所有数字）。</p><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token punctuation">(</span><span class="token keyword type-casting">int</span><span class="token punctuation">)</span><span class="token string double-quoted-string">"787abe"</span><span class="token operator">=</span><span class="token number">787</span>   <span class="token punctuation">(</span><span class="token keyword type-casting">int</span><span class="token punctuation">)</span><span class="token string double-quoted-string">"abc"</span><span class="token operator">=</span><span class="token number">0</span>    <span class="token punctuation">(</span><span class="token keyword type-casting">int</span><span class="token punctuation">)</span><span class="token string double-quoted-string">"1a2b"</span><span class="token operator">=</span><span class="token number">1</span>    <span class="token punctuation">(</span><span class="token keyword type-casting">int</span><span class="token punctuation">)</span><span class="token string double-quoted-string">"a12b"</span><span class="token operator">=</span><span class="token number">0</span>    <span class="token punctuation">(</span><span class="token keyword type-casting">int</span><span class="token punctuation">)</span><span class="token string double-quoted-string">"000123abc"</span><span class="token operator">=</span><span class="token number">123</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>例外：(int)”1e2”==100，在PHP中若像这种格式的字符串转化成数字，PHP会将其视为科学计数法。<br>(int)”1e2abc”=(int)”1e2”=100<br>(int )”1eabce”=1</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;PHP是一门弱类型语言，当涉及“==”判断时，它的表现是有一些奇特的。&lt;br&gt;例如，“a==0”将会得到true，“a==1”将会得到false。&lt;/p&gt;
+&lt;p&gt;原理：PHP语言中在涉及“==”判断时，如果运算符两边分别为字符串（不以数字开头的字符串），会将字符串转化为数字</summary>
+      
+    
+    
+    
+    <category term="code audit" scheme="http://example.com/categories/code-audit/"/>
+    
+    
+    <category term="basic" scheme="http://example.com/tags/basic/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>sql injection</title>
+    <link href="http://example.com/sql%20injection/"/>
+    <id>http://example.com/sql%20injection/</id>
+    <published>1970-01-01T00:00:00.000Z</published>
+    <updated>2022-04-25T05:10:20.722Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li>堆叠注入</li><li>union注入</li><li>报错注入 updatexml() , extractvalue()</li><li>布尔盲注 if(,,)  、^</li></ol><p><strong>截断字符串</strong></p><ul><li>substr()</li><li>mid()</li><li>substring()</li><li>left() </li><li>right()</li></ul><p><strong>常用函数</strong></p><ul><li>database()</li><li>version()</li><li>user()</li><li>concat()</li><li>group_concat()</li><li></li></ul><p><strong>绕过</strong></p><ul><li>（）和Tab 代替空格</li><li>双写</li><li>大小写</li><li>内联注释</li><li>handler &lt;table&gt; open &lt;name&gt;;handler &lt;name&gt; read first</li></ul><p><strong>可利用的表</strong></p><ul><li>information_schema.tables    <code>table_schema</code> <code>table_name</code></li><li>information_schema.columns <code>table_schema</code> <code>table_name</code> <code>column_name</code></li><li></li><li>mysql.innodb_table_stats    <code>table_name</code> <code>database_name</code></li><li>mysql.innodb_index_stats <code>table_name</code> <code>database_name</code></li><li></li><li>sys.schema_table_statistics <code>table_schema</code> <code>table_name</code> </li><li>sys.schema_table_statistics_with_buffer <code>table_schema</code> <code>table_name</code></li><li>sys.schema_auto_increment_columns <code>table_schema</code> <code>table_name</code> </li></ul><p><strong>额外</strong></p><ul><li>无列名注入</li><li></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;堆叠注入&lt;/li&gt;
+&lt;li&gt;union注入&lt;/li&gt;
+&lt;li&gt;报错注入 updatexml() , extractvalue()&lt;/li&gt;
+&lt;li&gt;布尔盲注 if(,,)  、^&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;截断字符串&lt;/strong&gt;&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    <category term="SQL injection" scheme="http://example.com/categories/SQL-injection/"/>
     
     
     <category term="basic" scheme="http://example.com/tags/basic/"/>

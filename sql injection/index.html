@@ -3,7 +3,7 @@
   <head>
      
     <meta charset="UTF-8">
-    <title>record - d0ud</title>
+    <title>sql injection - d0ud</title>
     <link rel="shortcut icon" href="/static/img/icon.png">
     <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
     
@@ -15,7 +15,7 @@
 
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
     <meta property="og:site_name" content="d0ud">
-    <meta property="og:title" content=""/>
+    <meta property="og:title" content="sql injection"/>
     
     <style>body:before{ content: ''; background-image: url(https://null-d0ud.github.io/img/bgg.png) }</style>
     
@@ -40,7 +40,7 @@
         <div class="has-child">
             <a>分类</a>
             <div class="sub-menu">
-                <a class="category-link" href="/categories/SQL-injection/">SQL injection</a><a class="category-link" href="/categories/another/">another</a><a class="category-link" href="/categories/authentication/">authentication</a><a class="category-link" href="/categories/code-audit/">code audit</a><a class="category-link" href="/categories/deserialize/">deserialize</a><a class="category-link" href="/categories/file-upload/">file upload</a><a class="category-link" href="/categories/pseudo-protocol/">pseudo-protocol</a><a class="category-link" href="/categories/record/">record</a>
+                <a class="category-link" href="/categories/SQL-injection/">SQL injection</a><a class="category-link" href="/categories/another/">another</a><a class="category-link" href="/categories/authentication/">authentication</a><a class="category-link" href="/categories/code-audit/">code audit</a><a class="category-link" href="/categories/deserialize/">deserialize</a><a class="category-link" href="/categories/file-upload/">file upload</a><a class="category-link" href="/categories/pseudo-protocol/">pseudo-protocol</a>
             </div>
         </div>
         
@@ -51,38 +51,97 @@
 
     <main>
     <div class="wrap min">
-        <section class="home-title">
+        <section class="post-title">
+            <h2>sql injection</h2>
+            <div class="post-meta">
+                <time class="date">1970.01.01</time>
             
-            <h1>“record”</h1>
+                <span class="category"><a class="category-link" href="/categories/SQL-injection/">SQL injection</a></span>
+            
+            </div>
         </section>
-        <section class="home-posts">
-    
-    <div class="post-item">
-        <h2>
-            <a href="/basic_web_directory/">web directory</a>
-        </h2>
-    
-        <p>nginx网站目录
-配置文件存放目录：&amp;#x2F;etc&amp;#x2F;nginx
-主配置文件：&amp;#x2F;etc&amp;#x2F;nginx&amp;#x2F;conf&amp;#x2F;nginx.conf
-管理脚本...</p>
-    
-        <div class="post-meta">
-            <time class="date">1970.01.01</time>
-            
-                <span class="category"><a class="category-link" href="/categories/record/">record</a></span>
-            
-            
-                <span class="tags"><a class="-none-link" href="/tags/basic/" rel="tag">basic</a></span>
-            
-        </div>
-    </div>
-    
-</section>
+        <article class="post-content">
+        
+            <blockquote>这篇文章上次修改于 19108 天前，可能其部分内容已经发生变化，如有疑问可询问作者。</blockquote>
+        
+            <ol>
+<li>堆叠注入</li>
+<li>union注入</li>
+<li>报错注入 updatexml() , extractvalue()</li>
+<li>布尔盲注 if(,,)  、^</li>
+</ol>
+<p><strong>截断字符串</strong></p>
+<ul>
+<li>substr()</li>
+<li>mid()</li>
+<li>substring()</li>
+<li>left() </li>
+<li>right()</li>
+</ul>
+<p><strong>常用函数</strong></p>
+<ul>
+<li>database()</li>
+<li>version()</li>
+<li>user()</li>
+<li>concat()</li>
+<li>group_concat()</li>
+<li></li>
+</ul>
+<p><strong>绕过</strong></p>
+<ul>
+<li>（）和Tab 代替空格</li>
+<li>双写</li>
+<li>大小写</li>
+<li>内联注释</li>
+<li>handler &lt;table&gt; open &lt;name&gt;;handler &lt;name&gt; read first</li>
+</ul>
+<p><strong>可利用的表</strong></p>
+<ul>
+<li>information_schema.tables    <code>table_schema</code> <code>table_name</code></li>
+<li>information_schema.columns <code>table_schema</code> <code>table_name</code> <code>column_name</code></li>
+<li></li>
+<li>mysql.innodb_table_stats    <code>table_name</code> <code>database_name</code></li>
+<li>mysql.innodb_index_stats <code>table_name</code> <code>database_name</code></li>
+<li></li>
+<li>sys.schema_table_statistics <code>table_schema</code> <code>table_name</code> </li>
+<li>sys.schema_table_statistics_with_buffer <code>table_schema</code> <code>table_name</code></li>
+<li>sys.schema_auto_increment_columns <code>table_schema</code> <code>table_name</code> </li>
+</ul>
+<p><strong>额外</strong></p>
+<ul>
+<li>无列名注入</li>
+<li></li>
+</ul>
 
-        <section class="page-navigator">
-            <span class="page-number current">1</span>
+        </article>
+        <section class="post-near">
+            <ul>
+                
+                    <li>上一篇: <a href="/php%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E6%95%B0%E5%80%BC%E6%AF%94%E8%BE%83/">php字符串与数值比较</a></li>
+                
+                
+                    <li>下一篇: 看完啦 (つд⊂)</li>
+                
+            </ul>
         </section>
+        
+            <section class="post-tags">
+            <a class="-none-link" href="/tags/basic/" rel="tag">basic</a>
+            </section>
+        
+    
+        <section class="post-author">
+        
+            <figure class="author-avatar">
+                <img src="https://null-d0ud.github.io/img/logo.jpg" alt="d0ud" />
+            </figure>
+        
+            <div class="author-info">
+                <h4>d0ud</h4>
+                <p>a ctfer</p>
+            </div>
+        </section>
+    
     </div>
 </main>
 
@@ -103,7 +162,7 @@
                 </div>
                 <div class="col-m-4">
                     <h3 class="title-tags">标签：</h3>
-                    <a href="/tags/basic/" style="font-size: 10px;">basic</a> <a href="/tags/script/" style="font-size: 15px;">script</a> <a href="/tags/wp/" style="font-size: 20px;">wp</a>
+                    <a href="/tags/basic/" style="font-size: 15px;">basic</a> <a href="/tags/script/" style="font-size: 10px;">script</a> <a href="/tags/wp/" style="font-size: 20px;">wp</a>
                 </div>
             </div>
         </section>

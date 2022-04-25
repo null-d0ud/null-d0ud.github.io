@@ -3,7 +3,7 @@
   <head>
      
     <meta charset="UTF-8">
-    <title>1970 年 - d0ud</title>
+    <title>php serialize - d0ud</title>
     <link rel="shortcut icon" href="/static/img/icon.png">
     <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
     
@@ -15,7 +15,7 @@
 
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
     <meta property="og:site_name" content="d0ud">
-    <meta property="og:title" content=""/>
+    <meta property="og:title" content="php serialize"/>
     
     <style>body:before{ content: ''; background-image: url(https://null-d0ud.github.io/img/bgg.png) }</style>
     
@@ -51,134 +51,84 @@
 
     <main>
     <div class="wrap min">
-        <section class="home-title">
-            
-            <h1>“1970 年”</h1>
-        </section>
-        <section class="home-posts">
-    
-    <div class="post-item">
-        <h2>
-            <a href="/basic_web_directory/">web directory</a>
-        </h2>
-    
-        <p>nginx网站目录
-配置文件存放目录：&amp;#x2F;etc&amp;#x2F;nginx
-主配置文件：&amp;#x2F;etc&amp;#x2F;nginx&amp;#x2F;conf&amp;#x2F;nginx.conf
-管理脚本...</p>
-    
-        <div class="post-meta">
-            <time class="date">1970.01.01</time>
-            
-                <span class="category"><a class="category-link" href="/categories/another/">another</a></span>
-            
-            
-                <span class="tags"><a class="-none-link" href="/tags/basic/" rel="tag">basic</a></span>
-            
-        </div>
-    </div>
-    
-    <div class="post-item">
-        <h2>
-            <a href="/php_serialize/">php serialize</a>
-        </h2>
-    
-        <p>
-PHP序列化函数和反序列化函数为serialize(),unserialize()
-
-序列化字符串格式为
-布尔值（bool） 		b:value 
-整数型（int）			i:value
-字符串...</p>
-    
-        <div class="post-meta">
-            <time class="date">1970.01.01</time>
+        <section class="post-title">
+            <h2>php serialize</h2>
+            <div class="post-meta">
+                <time class="date">1970.01.01</time>
             
                 <span class="category"><a class="category-link" href="/categories/deserialize/">deserialize</a></span>
             
-            
-                <span class="tags"><a class="-none-link" href="/tags/basic/" rel="tag">basic</a></span>
-            
-        </div>
-    </div>
-    
-    <div class="post-item">
-        <h2>
-            <a href="/shell%20upload/">shell upload</a>
-        </h2>
-    
-        <p>前端文件后缀限制
-
-抓包修改
-
-后端文件后缀限制
-
-上传.user.ini文件或.htaccess文件
-PHP 支持基于每个目录的 INI 文件配置。此类文件 仅被 CGI／FastCGI SA...</p>
-    
-        <div class="post-meta">
-            <time class="date">1970.01.01</time>
-            
-                <span class="category"><a class="category-link" href="/categories/file-upload/">file upload</a></span>
-            
-            
-                <span class="tags"><a class="-none-link" href="/tags/basic/" rel="tag">basic</a></span>
-            
-        </div>
-    </div>
-    
-    <div class="post-item">
-        <h2>
-            <a href="/php%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E6%95%B0%E5%80%BC%E6%AF%94%E8%BE%83/">php字符串与数值比较</a>
-        </h2>
-    
-        <p>PHP是一门弱类型语言，当涉及“==”判断时，它的表现是有一些奇特的。例如，“a==0”将会得到true，“a==1”将会得到false。
-原理：PHP语言中在涉及“==”判断时，如果运算符两边...</p>
-    
-        <div class="post-meta">
-            <time class="date">1970.01.01</time>
-            
-                <span class="category"><a class="category-link" href="/categories/code-audit/">code audit</a></span>
-            
-            
-                <span class="tags"><a class="-none-link" href="/tags/basic/" rel="tag">basic</a></span>
-            
-        </div>
-    </div>
-    
-    <div class="post-item">
-        <h2>
-            <a href="/sql%20injection/">sql injection</a>
-        </h2>
-    
-        <p>
-堆叠注入
-union注入
-报错注入 updatexml() , extractvalue()
-布尔盲注 if(,,)  、^
-
-截断字符串
-
-substr()
-mid()
-substring(...</p>
-    
-        <div class="post-meta">
-            <time class="date">1970.01.01</time>
-            
-                <span class="category"><a class="category-link" href="/categories/SQL-injection/">SQL injection</a></span>
-            
-            
-                <span class="tags"><a class="-none-link" href="/tags/basic/" rel="tag">basic</a></span>
-            
-        </div>
-    </div>
-    
-</section>
-
-        <section class="page-navigator">
-            <span class="page-number current">1</span>
+            </div>
         </section>
+        <article class="post-content">
+        
+            <blockquote>这篇文章上次修改于 19108 天前，可能其部分内容已经发生变化，如有疑问可询问作者。</blockquote>
+        
+            <ol>
+<li><p>PHP序列化函数和反序列化函数为serialize(),unserialize()</p>
+</li>
+<li><p>序列化字符串格式为</p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">布尔值（bool） 		b:value 
+整数型（int）			i:value
+字符串型（str）			s:length:"value" 
+数组型（array）		a:length:&#123;...&#125;
+对象型（object）		O:length:class_name:properties_number&#123;...&#125; 
+NULL型<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>__wakeup()绕过<br>CVE-2016-7124<br>当反序列化的字符串中属性个数大于真实个数时，__wakeup()方法将不生效</p>
+</li>
+<li><p>PHP魔术方法</p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">__construct()，类的构造函数
+__destruct()，类的析构函数
+__call()，在对象中调用一个不可访问方法时调用
+__callStatic()，用静态方式中调用一个不可访问方法时调用
+__get()，获得一个类的成员变量时调用
+__set()，设置一个类的成员变量时调用
+__isset()，当对不可访问属性调用isset()或empty()时调用
+__unset()，当对不可访问属性调用unset()时被调用。
+__sleep()，执行serialize()时，先会调用这个函数
+__wakeup()，执行unserialize()时，先会调用这个函数
+__toString()，类被当成字符串时的回应方法
+__invoke()，调用函数的方式调用一个对象时的回应方法
+__set_state()，调用var_export()导出类时，此静态方法会被调用。
+__clone()，当对象复制完成时调用
+__autoload()，尝试加载未定义的类
+__debugInfo()，打印所需调试信息<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>protected属性被序列化的时候属性值会变成%00*%00属性名<br>private属性被序列化的时候属性值会变成%00类名%00属性名</p>
+</li>
+<li><p>php通过value的长度取值。</p>
+</li>
+<li></li>
+</ol>
+
+        </article>
+        <section class="post-near">
+            <ul>
+                
+                    <li>上一篇: <a href="/basic_web_directory/">web directory</a></li>
+                
+                
+                    <li>下一篇: <a href="/shell%20upload/">shell upload</a></li>
+                
+            </ul>
+        </section>
+        
+            <section class="post-tags">
+            <a class="-none-link" href="/tags/basic/" rel="tag">basic</a>
+            </section>
+        
+    
+        <section class="post-author">
+        
+            <figure class="author-avatar">
+                <img src="https://null-d0ud.github.io/img/logo.jpg" alt="d0ud" />
+            </figure>
+        
+            <div class="author-info">
+                <h4>d0ud</h4>
+                <p>a ctfer</p>
+            </div>
+        </section>
+    
     </div>
 </main>
 
