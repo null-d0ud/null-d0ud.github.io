@@ -40,7 +40,7 @@
         <div class="has-child">
             <a>分类</a>
             <div class="sub-menu">
-                <a class="category-link" href="/categories/SQL-injection/">SQL injection</a><a class="category-link" href="/categories/another/">another</a><a class="category-link" href="/categories/authentication/">authentication</a><a class="category-link" href="/categories/code-audit/">code audit</a><a class="category-link" href="/categories/deserialize/">deserialize</a><a class="category-link" href="/categories/file-upload/">file upload</a><a class="category-link" href="/categories/pseudo-protocol/">pseudo-protocol</a>
+                <a class="category-link" href="/categories/SQL-injection/">SQL injection</a><a class="category-link" href="/categories/another/">another</a><a class="category-link" href="/categories/authentication/">authentication</a><a class="category-link" href="/categories/code-audit/">code audit</a><a class="category-link" href="/categories/deserialize/">deserialize</a><a class="category-link" href="/categories/file-upload/">file upload</a><a class="category-link" href="/categories/pseudo-protocol/">pseudo-protocol</a><a class="category-link" href="/categories/xxe/">xxe</a>
             </div>
         </div>
         
@@ -56,6 +56,25 @@
             <h1>“归档”</h1>
         </section>
         <section class="home-posts">
+    
+    <div class="post-item">
+        <h2>
+            <a href="/%5BNCTF2019%5DFake%20XML%20cookbook/">&lt;NCTF2019&gt;Fake XML cookbook</a>
+        </h2>
+    
+        <p>首先从题目名字已经很明显了，就是XXE，打开题目是登录界面，抓包，发现回显的数据是提交的用户名，对用户名进行外部实体声明，最终发现flag就在根目录下
+&amp;lt;?xml version=&#34;1.0...</p>
+    
+        <div class="post-meta">
+            <time class="date">2022.04.27</time>
+            
+                <span class="category"><a class="category-link" href="/categories/xxe/">xxe</a></span>
+            
+            
+                <span class="tags"><a class="-none-link" href="/tags/wp/" rel="tag">wp</a></span>
+            
+        </div>
+    </div>
     
     <div class="post-item">
         <h2>
@@ -254,32 +273,10 @@ for...</p>
         </div>
     </div>
     
-    <div class="post-item">
-        <h2>
-            <a href="/GYCTF2020Ezsqli/">&lt;GYCTF2020&gt;Ezsqli</a>
-        </h2>
-    
-        <p>打开题目，显然是SQL注入
-测试为数字型注入，测试过滤的关键字，可用布尔盲注，脚本如下
-import requests
-
-tar_url=&#34;http://7772275b-dfab-48c8-9...</p>
-    
-        <div class="post-meta">
-            <time class="date">2021.11.22</time>
-            
-                <span class="category"><a class="category-link" href="/categories/SQL-injection/">SQL injection</a></span>
-            
-            
-                <span class="tags"><a class="-none-link" href="/tags/wp/" rel="tag">wp</a></span>
-            
-        </div>
-    </div>
-    
 </section>
 
         <section class="page-navigator">
-            <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">»</a>
+            <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="extend next" rel="next" href="/archives/page/2/">»</a>
         </section>
     </div>
 </main>
@@ -293,7 +290,7 @@ tar_url=&#34;http://7772275b-dfab-48c8-9...</p>
             <div class="row">
                 <div class="col-m-4">
                     <h3 class="title-recent">最新文章：</h3>
-                    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/%5BSUCTF%202019%5DPythonginx/"><SUCTF 2019>Pythonginx</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BBJDCTF2020%5DZJCTF%EF%BC%8C%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/"><BJDCTF2020>ZJCTF，不过如此</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BMRCTF2020%5DPYWebsite/"><MRCTF2020>PYWebsite</a></li><li class="post-list-item"><a class="post-list-link" href="/forge%20jwt/">jwt forge</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BHFCTF2020%5DEasyLogin/"><HFCTF2020>EasyLogin</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BGWCTF%202019%5D%E6%9E%AF%E7%87%A5%E7%9A%84%E6%8A%BD%E5%A5%96/"><GWCTF 2019>枯燥的抽奖</a></li></ul>
+                    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/%5BNCTF2019%5DFake%20XML%20cookbook/"><NCTF2019>Fake XML cookbook</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BSUCTF%202019%5DPythonginx/"><SUCTF 2019>Pythonginx</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BBJDCTF2020%5DZJCTF%EF%BC%8C%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/"><BJDCTF2020>ZJCTF，不过如此</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BMRCTF2020%5DPYWebsite/"><MRCTF2020>PYWebsite</a></li><li class="post-list-item"><a class="post-list-link" href="/forge%20jwt/">jwt forge</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BHFCTF2020%5DEasyLogin/"><HFCTF2020>EasyLogin</a></li></ul>
                 </div>
                 <div class="col-m-4">
                     <h3 class="title-date">历史：</h3>

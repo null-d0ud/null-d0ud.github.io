@@ -1,3 +1,4 @@
+http://example.com/[NCTF2019]Fake%20XML%20cookbook/
 http://example.com/basic_web_directory/
 http://example.com/sql%20injection/
 http://example.com/php%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E6%95%B0%E5%80%BC%E6%AF%94%E8%BE%83/
@@ -29,3 +30,4 @@ http://example.com/categories/deserialize/
 http://example.com/categories/authentication/
 http://example.com/categories/pseudo-protocol/
 http://example.com/categories/another/
+http://example.com/categories/xxe/

