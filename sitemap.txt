@@ -1,3 +1,4 @@
+http://example.com/[CISCN2019%20%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA]Web11/
 http://example.com/[NCTF2019]Fake%20XML%20cookbook/
 http://example.com/basic_web_directory/
 http://example.com/sql%20injection/
@@ -31,3 +32,4 @@ http://example.com/categories/authentication/
 http://example.com/categories/pseudo-protocol/
 http://example.com/categories/another/
 http://example.com/categories/xxe/
+http://example.com/categories/template-injection/
