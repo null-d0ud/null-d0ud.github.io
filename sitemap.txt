@@ -1,3 +1,4 @@
+http://example.com/%E4%B8%8D%E6%AD%BB%E9%A9%AC/
 http://example.com/[CISCN2019%20%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA]Web11/
 http://example.com/[NCTF2019]Fake%20XML%20cookbook/
 http://example.com/basic_web_directory/
