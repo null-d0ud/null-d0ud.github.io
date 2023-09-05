@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-05-07T11:28:53.246Z</updated>
+  <updated>2023-09-05T02:15:05.196Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>不死马</title>
+    <link href="http://example.com/%E5%8F%AF%E5%88%A9%E7%94%A8%E7%9A%84%E8%A1%A8/"/>
+    <id>http://example.com/%E5%8F%AF%E5%88%A9%E7%94%A8%E7%9A%84%E8%A1%A8/</id>
+    <published>2023-09-05T02:14:08.603Z</published>
+    <updated>2023-09-05T02:15:05.196Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="MYSQL中的可利用的表"><a href="#MYSQL中的可利用的表" class="headerlink" title="MYSQL中的可利用的表"></a>MYSQL中的可利用的表</h1><p><code>information_schema.tables</code> <em>所有库和表的统计</em></p><pre><code>table_schema  table_name  </code></pre><p><code>information_schema.columns</code> <em>包含库名，表名，列名</em></p><pre><code>table_schema table_namecolumn_name</code></pre><p><code>mysql.innodb_table_stats</code></p><pre><code> table_name  database_name</code></pre><p><code>mysql.innodb_index_stats</code> </p><pre><code>table_name database_name</code></pre><p><code>sys.schema_table_statistics</code> </p><pre><code>table_schema table_name</code></pre><p><code>sys.schema_table_statistics_with_buffer</code> </p><pre><code>table_schema table_name</code></pre><p><code>sys.schema_auto_increment_columns</code> </p><pre><code>table_schema table_name</code></pre>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;MYSQL中的可利用的表&quot;&gt;&lt;a href=&quot;#MYSQL中的可利用的表&quot; class=&quot;headerlink&quot; title=&quot;MYSQL中的可利用的表&quot;&gt;&lt;/a&gt;MYSQL中的可利用的表&lt;/h1&gt;&lt;p&gt;&lt;code&gt;information_schema.table</summary>
+      
+    
+    
+    
+    <category term="SQL injection" scheme="http://example.com/categories/SQL-injection/"/>
+    
+    
+    <category term="basic" scheme="http://example.com/tags/basic/"/>
+    
+  </entry>
   
   <entry>
     <title>&lt;CISCN2019 华东南赛区&gt;Web11</title>
@@ -501,37 +525,6 @@
     
     
     <category term="deserialize" scheme="http://example.com/categories/deserialize/"/>
-    
-    
-    <category term="basic" scheme="http://example.com/tags/basic/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>shell upload</title>
-    <link href="http://example.com/shell%20upload/"/>
-    <id>http://example.com/shell%20upload/</id>
-    <published>1970-01-01T00:00:00.000Z</published>
-    <updated>2022-04-25T05:04:46.140Z</updated>
-    
-    <content type="html"><![CDATA[<p>前端文件后缀限制</p><ol><li>抓包修改</li></ol><p>后端文件后缀限制</p><ol><li>上传.user.ini文件或.htaccess文件<blockquote><p>PHP 支持基于每个目录的 INI 文件配置。此类文件 仅被 CGI／FastCGI SAPI 处理。此功能使得 PECL 的 htscanner 扩展作废。如果你的 PHP 以模块化运行在 Apache 里，则用 .htaccess 文件有同样效果。</p><p>除了主 php.ini 之外，PHP 还会在每个目录下扫描 INI 文件，从被执行的 PHP 文件所在目录开始一直上升到 web 根目录（$_SERVER[‘DOCUMENT_ROOT’] 所指定的）。如果被执行的 PHP 文件在 web 根目录之外，则只扫描该目录。</p><p>在 .user.ini 风格的 INI 文件中只有具有 PHP_INI_PERDIR 和 PHP_INI_USER 模式的 INI 设置可被识别。</p><p>两个新的 INI 指令， user_ini.filename 和 user_ini.cache_ttl 控制着用户 INI 文件的使用。</p><p>user_ini.filename 设定了 PHP 会在每个目录下搜寻的文件名；如果设定为空字符串则 PHP 不会搜寻。默认值是 .user.ini。</p><p>user_ini.cache_ttl 控制着重新读取用户 INI 文件的间隔时间。默认是 300 秒（5 分钟）。</p></blockquote></li></ol><p>.user.ini</p><pre class="line-numbers language-html" data-language="html"><code class="language-html">auto_prepend_file=<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>file_path</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>.htaccess</p><pre class="line-numbers language-html" data-language="html"><code class="language-html">AddType application/x-httpd-php .jpg <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>FileMatch</span> <span class="token attr-name">"&lt;file_name</span><span class="token punctuation">></span></span>">SetHandler application/x-httpd-php<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>FileMatch</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><ol start="2"><li>利用解析漏洞，加上无法解析的后缀，如上传shell.php.abc</li></ol><p>文件头检查</p><ol><li>加上图片文件头，如GIF8a</li></ol><p>文件内容检查</p><ol><li>&lt;script language=’php’&gt; 代替 &lt;?php</li><li></li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;前端文件后缀限制&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;抓包修改&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;后端文件后缀限制&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;上传.user.ini文件或.htaccess文件&lt;blockquote&gt;
-&lt;p&gt;PHP 支持基于每个目录的 INI 文件配置。此类文件 仅被 CG</summary>
-      
-    
-    
-    
-    <category term="file upload" scheme="http://example.com/categories/file-upload/"/>
     
     
     <category term="basic" scheme="http://example.com/tags/basic/"/>
