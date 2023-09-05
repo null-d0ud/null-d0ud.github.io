@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     
+    <meta charset="UTF-8">
+    <title>&lt;GWCTF 2019&gt;枯燥的抽奖 - d0ud</title>
+    <link rel="shortcut icon" href="/static/img/icon.png">
+    <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
+    
+<link rel="stylesheet" href="/static/kico.css">
+<link rel="stylesheet" href="/static/hingle.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
+    <meta property="og:site_name" content="d0ud">
+    <meta property="og:title" content="&lt;GWCTF 2019&gt;枯燥的抽奖"/>
+    
+    <style>body:before{ content: ''; background-image: url(https://null-d0ud.github.io/img/bgg.png) }</style>
+    
+<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="d0ud" type="application/atom+xml">
+</head>
+
+  <body>
+    <header>
+    <div class="head-title">
+        <h4>d0ud</h4>
+    </div>
+    <div class="head-action">
+        <div class="toggle-btn"></div>
+        <div class="light-btn"></div>
+        <div class="search-btn"></div>
+    </div>
+    <!--<form class="head-search" method="post">
+        <input type="text" name="s" placeholder="搜索什么？">
+    </form>-->
+    <nav class="head-menu">
+        <a href="/">首页</a>
+        <div class="has-child">
+            <a>分类</a>
+            <div class="sub-menu">
+                <a class="category-link" href="/categories/SQL-injection/">SQL injection</a><a class="category-link" href="/categories/another/">another</a><a class="category-link" href="/categories/authentication/">authentication</a><a class="category-link" href="/categories/code-audit/">code audit</a><a class="category-link" href="/categories/deserialize/">deserialize</a><a class="category-link" href="/categories/file-upload/">file upload</a><a class="category-link" href="/categories/pseudo-protocol/">pseudo-protocol</a><a class="category-link" href="/categories/template-injection/">template injection</a><a class="category-link" href="/categories/xxe/">xxe</a>
+            </div>
+        </div>
+        
+            <a href="/friends">ctfers</a>
+        
+    </nav>
+</header>
+
+    <main>
+    <div class="wrap min">
+        <section class="post-title">
+            <h2>&lt;GWCTF 2019&gt;枯燥的抽奖</h2>
+            <div class="post-meta">
+                <time class="date">2021.12.02</time>
+            
+                <span class="category"><a class="category-link" href="/categories/code-audit/">code audit</a></span>
+            
+            </div>
+        </section>
+        <article class="post-content">
+        
+            <blockquote>这篇文章上次修改于 643 天前，可能其部分内容已经发生变化，如有疑问可询问作者。</blockquote>
+        
+            <p>打开题目，从源码里发现<code>check.php</code><br>访问得到源码</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">ljiUB7yF7i
+
+<span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token comment">#这不是抽奖程序的源代码！不许看！</span>
+<span class="token function">header</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"Content-Type: text/html;charset=utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">session_start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'seed'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+<span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'seed'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token function">rand</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">999999999</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token function">mt_srand</span><span class="token punctuation">(</span><span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'seed'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$str_long1</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"</span><span class="token punctuation">;</span>
+<span class="token variable">$str</span><span class="token operator">=</span><span class="token string single-quoted-string">''</span><span class="token punctuation">;</span>
+<span class="token variable">$len1</span><span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span> <span class="token variable">$i</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token variable">$i</span> <span class="token operator">&lt;</span> <span class="token variable">$len1</span><span class="token punctuation">;</span> <span class="token variable">$i</span><span class="token operator">++</span> <span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token variable">$str</span><span class="token operator">.=</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token variable">$str_long1</span><span class="token punctuation">,</span> <span class="token function">mt_rand</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token function">strlen</span><span class="token punctuation">(</span><span class="token variable">$str_long1</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       
+<span class="token punctuation">&#125;</span>
+<span class="token variable">$str_show</span> <span class="token operator">=</span> <span class="token function">substr</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string double-quoted-string">"&lt;p id='p1'>"</span><span class="token operator">.</span><span class="token variable">$str_show</span><span class="token operator">.</span><span class="token string double-quoted-string">"&lt;/p>"</span><span class="token punctuation">;</span>
+
+
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'num'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'num'</span><span class="token punctuation">]</span><span class="token operator">===</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>x
+        <span class="token keyword">echo</span> <span class="token string double-quoted-string">"&lt;p id=flag>抽奖，就是那么枯燥且无味，给你flag&#123;xxxxxxxxx&#125;&lt;/p>"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token string double-quoted-string">"&lt;p id=flag>没抽中哦，再试试吧&lt;/p>"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token function">show_source</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"check.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>利用了伪随机函数<code>mt_srand()</code>，虽然种子在服务端产生，但是是固定不变的，爆破种子推出<code>$str</code>即可</p>
+
+        </article>
+        <section class="post-near">
+            <ul>
+                
+                    <li>上一篇: <a href="/%5BHFCTF2020%5DEasyLogin/">&lt;HFCTF2020&gt;EasyLogin</a></li>
+                
+                
+                    <li>下一篇: <a href="/%5BNCTF2019%5DSQLi/">&lt;NCTF2019&gt;SQLi</a></li>
+                
+            </ul>
+        </section>
+        
+            <section class="post-tags">
+            <a class="-none-link" href="/tags/wp/" rel="tag">wp</a>
+            </section>
+        
+    
+        <section class="post-author">
+        
+            <figure class="author-avatar">
+                <img src="https://null-d0ud.github.io/img/logo.jpg" alt="d0ud" />
+            </figure>
+        
+            <div class="author-info">
+                <h4>d0ud</h4>
+                <p>a ctfer</p>
+            </div>
+        </section>
+    
+    </div>
+</main>
+
+    <footer>
+    <div class="buttons">
+        <a class="to-top" href="#"></a>
+    </div>
+    <div class="wrap min">
+        <section class="widget">
+            <div class="row">
+                <div class="col-m-4">
+                    <h3 class="title-recent">最新文章：</h3>
+                    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/%5BCISCN2019%20%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA%5DWeb11/"><CISCN2019 华东南赛区>Web11</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BNCTF2019%5DFake%20XML%20cookbook/"><NCTF2019>Fake XML cookbook</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BSUCTF%202019%5DPythonginx/"><SUCTF 2019>Pythonginx</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BBJDCTF2020%5DZJCTF%EF%BC%8C%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/"><BJDCTF2020>ZJCTF，不过如此</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BMRCTF2020%5DPYWebsite/"><MRCTF2020>PYWebsite</a></li><li class="post-list-item"><a class="post-list-link" href="/forge%20jwt/">jwt forge</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-date">历史：</h3>
+                    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1970/01/">January 1970</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-tags">标签：</h3>
+                    <a href="/tags/basic/" style="font-size: 15px;">basic</a> <a href="/tags/script/" style="font-size: 10px;">script</a> <a href="/tags/wp/" style="font-size: 20px;">wp</a>
+                </div>
+            </div>
+        </section>
+        <section class="sub-footer">
+            <p>© 2023 <a href="/">d0ud</a>. All Rights Reserved. Theme By <a href="https://github.com/Dreamer-Paul/Hingle" target="_blank" rel="nofollow">Hingle</a>.</p>
+        </section>
+    </div>
+</footer>
+
+
+<script src="/static/kico.js"></script>
+<script src="/static/hingle.js"></script>
+
+
+<script>var hingle = new Paul_Hingle({"copyright":false,"night":false});</script>
+
+  </body>
+</html>

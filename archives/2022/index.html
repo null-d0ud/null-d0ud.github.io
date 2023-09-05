@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     
+    <meta charset="UTF-8">
+    <title>2022 年 - d0ud</title>
+    <link rel="shortcut icon" href="/static/img/icon.png">
+    <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
+    
+<link rel="stylesheet" href="/static/kico.css">
+<link rel="stylesheet" href="/static/hingle.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
+    <meta property="og:site_name" content="d0ud">
+    <meta property="og:title" content=""/>
+    
+    <style>body:before{ content: ''; background-image: url(https://null-d0ud.github.io/img/bgg.png) }</style>
+    
+<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="d0ud" type="application/atom+xml">
+</head>
+
+  <body>
+    <header>
+    <div class="head-title">
+        <h4>d0ud</h4>
+    </div>
+    <div class="head-action">
+        <div class="toggle-btn"></div>
+        <div class="light-btn"></div>
+        <div class="search-btn"></div>
+    </div>
+    <!--<form class="head-search" method="post">
+        <input type="text" name="s" placeholder="搜索什么？">
+    </form>-->
+    <nav class="head-menu">
+        <a href="/">首页</a>
+        <div class="has-child">
+            <a>分类</a>
+            <div class="sub-menu">
+                <a class="category-link" href="/categories/SQL-injection/">SQL injection</a><a class="category-link" href="/categories/another/">another</a><a class="category-link" href="/categories/authentication/">authentication</a><a class="category-link" href="/categories/code-audit/">code audit</a><a class="category-link" href="/categories/deserialize/">deserialize</a><a class="category-link" href="/categories/file-upload/">file upload</a><a class="category-link" href="/categories/pseudo-protocol/">pseudo-protocol</a><a class="category-link" href="/categories/template-injection/">template injection</a><a class="category-link" href="/categories/xxe/">xxe</a>
+            </div>
+        </div>
+        
+            <a href="/friends">ctfers</a>
+        
+    </nav>
+</header>
+
+    <main>
+    <div class="wrap min">
+        <section class="home-title">
+            
+            <h1>“2022 年”</h1>
+        </section>
+        <section class="home-posts">
+    
+    <div class="post-item">
+        <h2>
+            <a href="/%5BCISCN2019%20%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA%5DWeb11/">&lt;CISCN2019 华东南赛区&gt;Web11</a>
+        </h2>
+    
+        <p>打开题目，一个不明所以的界面，重点在get ip和xff，显然，试试改动xff头，果然回显的当前ip地址为xxf头的值，那么，模板注入？
+&amp;#123;&amp;#123;system(&amp;#39;cat ...</p>
+    
+        <div class="post-meta">
+            <time class="date">2022.05.07</time>
+            
+                <span class="category"><a class="category-link" href="/categories/template-injection/">template injection</a></span>
+            
+            
+                <span class="tags"><a class="-none-link" href="/tags/wp/" rel="tag">wp</a></span>
+            
+        </div>
+    </div>
+    
+    <div class="post-item">
+        <h2>
+            <a href="/%5BNCTF2019%5DFake%20XML%20cookbook/">&lt;NCTF2019&gt;Fake XML cookbook</a>
+        </h2>
+    
+        <p>首先从题目名字已经很明显了，就是XXE，打开题目是登录界面，抓包，发现回显的数据是提交的用户名，对用户名进行外部实体声明，最终发现flag就在根目录下
+&amp;lt;?xml version=&#34;1.0...</p>
+    
+        <div class="post-meta">
+            <time class="date">2022.04.27</time>
+            
+                <span class="category"><a class="category-link" href="/categories/xxe/">xxe</a></span>
+            
+            
+                <span class="tags"><a class="-none-link" href="/tags/wp/" rel="tag">wp</a></span>
+            
+        </div>
+    </div>
+    
+    <div class="post-item">
+        <h2>
+            <a href="/%5BSUCTF%202019%5DPythonginx/">&lt;SUCTF 2019&gt;Pythonginx</a>
+        </h2>
+    
+        <p>打开题目，得到部分源码
+@app.route(&#39;/getUrl&#39;, methods=[&#39;GET&#39;, &#39;POST&#39;])
+def getUrl():
+    url = request.args.g...</p>
+    
+        <div class="post-meta">
+            <time class="date">2022.04.22</time>
+            
+                <span class="category"><a class="category-link" href="/categories/code-audit/">code audit</a></span>
+            
+            
+                <span class="tags"><a class="-none-link" href="/tags/wp/" rel="tag">wp</a></span>
+            
+        </div>
+    </div>
+    
+    <div class="post-item">
+        <h2>
+            <a href="/%5BBJDCTF2020%5DZJCTF%EF%BC%8C%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/">&lt;BJDCTF2020&gt;ZJCTF，不过如此</a>
+        </h2>
+    
+        <p>打开题目，为源码
+&amp;lt;?php
+
+error_reporting(0);
+$text = $_GET[&#34;text&#34;];
+$file = $_GET[&#34;file&#34;];
+if(isset($te...</p>
+    
+        <div class="post-meta">
+            <time class="date">2022.04.16</time>
+            
+                <span class="category"><a class="category-link" href="/categories/pseudo-protocol/">pseudo-protocol</a></span>
+            
+            
+                <span class="tags"><a class="-none-link" href="/tags/wp/" rel="tag">wp</a></span>
+            
+        </div>
+    </div>
+    
+    <div class="post-item">
+        <h2>
+            <a href="/%5BMRCTF2020%5DPYWebsite/">&lt;MRCTF2020&gt;PYWebsite</a>
+        </h2>
+    
+        <p>打开题目，需要授权码获取flag,查看源码发现存在flag.php，直接访问，得到
+
+我已经把购买者的IP保存了，显然你没有购买
+验证逻辑是在后端的，除了购买者和我自己，没有人可以看到flag
+...</p>
+    
+        <div class="post-meta">
+            <time class="date">2022.04.16</time>
+            
+                <span class="category"><a class="category-link" href="/categories/another/">another</a></span>
+            
+            
+                <span class="tags"><a class="-none-link" href="/tags/wp/" rel="tag">wp</a></span>
+            
+        </div>
+    </div>
+    
+    <div class="post-item">
+        <h2>
+            <a href="/forge%20jwt/">jwt forge</a>
+        </h2>
+    
+        <p>import base64
+a = &#39;&amp;#123;&#34;alg&#34;:&#34;none&#34;,&#34;typ&#34;:&#34;JWT&#34;&amp;#125;&#39;
+b= &#39;&amp;#123;&#34;secretid&#34;:[],&#34;username&#34;:&#34;admi...</p>
+    
+        <div class="post-meta">
+            <time class="date">2022.04.13</time>
+            
+                <span class="category"><a class="category-link" href="/categories/authentication/">authentication</a></span>
+            
+            
+                <span class="tags"><a class="-none-link" href="/tags/script/" rel="tag">script</a></span>
+            
+        </div>
+    </div>
+    
+    <div class="post-item">
+        <h2>
+            <a href="/%5BHFCTF2020%5DEasyLogin/">&lt;HFCTF2020&gt;EasyLogin</a>
+        </h2>
+    
+        <p>打开题目，一个登录框，带有注册功能，尝试注册并登录后提示有flag，但无查看权限
+那么显然我们需要以admin的身份登录，第一个方法是爆破密码，尝试了部分常见密码，无果。那么第二个方法，伪造登录...</p>
+    
+        <div class="post-meta">
+            <time class="date">2022.04.13</time>
+            
+                <span class="category"><a class="category-link" href="/categories/authentication/">authentication</a></span>
+            
+            
+                <span class="tags"><a class="-none-link" href="/tags/wp/" rel="tag">wp</a></span>
+            
+        </div>
+    </div>
+    
+</section>
+
+        <section class="page-navigator">
+            <span class="page-number current">1</span>
+        </section>
+    </div>
+</main>
+
+    <footer>
+    <div class="buttons">
+        <a class="to-top" href="#"></a>
+    </div>
+    <div class="wrap min">
+        <section class="widget">
+            <div class="row">
+                <div class="col-m-4">
+                    <h3 class="title-recent">最新文章：</h3>
+                    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/%5BCISCN2019%20%E5%8D%8E%E4%B8%9C%E5%8D%97%E8%B5%9B%E5%8C%BA%5DWeb11/"><CISCN2019 华东南赛区>Web11</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BNCTF2019%5DFake%20XML%20cookbook/"><NCTF2019>Fake XML cookbook</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BSUCTF%202019%5DPythonginx/"><SUCTF 2019>Pythonginx</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BBJDCTF2020%5DZJCTF%EF%BC%8C%E4%B8%8D%E8%BF%87%E5%A6%82%E6%AD%A4/"><BJDCTF2020>ZJCTF，不过如此</a></li><li class="post-list-item"><a class="post-list-link" href="/%5BMRCTF2020%5DPYWebsite/"><MRCTF2020>PYWebsite</a></li><li class="post-list-item"><a class="post-list-link" href="/forge%20jwt/">jwt forge</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-date">历史：</h3>
+                    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/1970/01/">January 1970</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-tags">标签：</h3>
+                    <a href="/tags/basic/" style="font-size: 15px;">basic</a> <a href="/tags/script/" style="font-size: 10px;">script</a> <a href="/tags/wp/" style="font-size: 20px;">wp</a>
+                </div>
+            </div>
+        </section>
+        <section class="sub-footer">
+            <p>© 2023 <a href="/">d0ud</a>. All Rights Reserved. Theme By <a href="https://github.com/Dreamer-Paul/Hingle" target="_blank" rel="nofollow">Hingle</a>.</p>
+        </section>
+    </div>
+</footer>
+
+
+<script src="/static/kico.js"></script>
+<script src="/static/hingle.js"></script>
+
+
+<script>var hingle = new Paul_Hingle({"copyright":false,"night":false});</script>
+
+  </body>
+</html>
