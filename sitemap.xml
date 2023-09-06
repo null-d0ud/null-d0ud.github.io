@@ -4,7 +4,7 @@
   <url>
     <loc>http://example.com/%E5%8F%AF%E5%88%A9%E7%94%A8%E7%9A%84%E8%A1%A8/</loc>
     
-    <lastmod>2023-09-05</lastmod>
+    <lastmod>2023-09-06</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -264,7 +264,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/authentication/</loc>
+    <loc>http://example.com/categories/template-injection/</loc>
     <lastmod>2023-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -278,7 +278,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/template-injection/</loc>
+    <loc>http://example.com/categories/authentication/</loc>
     <lastmod>2023-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
