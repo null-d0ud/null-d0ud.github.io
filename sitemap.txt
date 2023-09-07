@@ -11,8 +11,8 @@ http://example.com/
 http://example.com/tags/basic/
 http://example.com/tags/script/
 http://example.com/categories/another/
-http://example.com/categories/authentication/
 http://example.com/categories/code-audit/
-http://example.com/categories/SQL-injection/
 http://example.com/categories/file-upload/
+http://example.com/categories/authentication/
+http://example.com/categories/SQL-injection/
 http://example.com/categories/wp/

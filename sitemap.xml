@@ -115,13 +115,6 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/authentication/</loc>
-    <lastmod>2023-09-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://example.com/categories/code-audit/</loc>
     <lastmod>2023-09-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -129,14 +122,21 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/SQL-injection/</loc>
+    <loc>http://example.com/categories/file-upload/</loc>
     <lastmod>2023-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/file-upload/</loc>
+    <loc>http://example.com/categories/authentication/</loc>
+    <lastmod>2023-09-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/categories/SQL-injection/</loc>
     <lastmod>2023-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
