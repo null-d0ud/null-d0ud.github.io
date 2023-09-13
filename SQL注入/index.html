@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     
+    <meta charset="UTF-8">
+    <title>SQL注入 - d0ud</title>
+    <link rel="shortcut icon" href="/static/img/icon.png">
+    <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
+    
+<link rel="stylesheet" href="/static/kico.css">
+<link rel="stylesheet" href="/static/hingle.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
+    <meta property="og:site_name" content="d0ud">
+    <meta property="og:title" content="SQL注入"/>
+    
+    <style>body:before{ content: ''; background-image: url(https://null-d0ud.github.io/img/bgg.png) }</style>
+    
+<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="d0ud" type="application/atom+xml">
+</head>
+
+  <body>
+    <header>
+    <div class="head-title">
+        <h4>d0ud</h4>
+    </div>
+    <div class="head-action">
+        <div class="toggle-btn"></div>
+        <div class="light-btn"></div>
+        <div class="search-btn"></div>
+    </div>
+    <!--<form class="head-search" method="post">
+        <input type="text" name="s" placeholder="搜索什么？">
+    </form>-->
+    <nav class="head-menu">
+        <a href="/">首页</a>
+        <div class="has-child">
+            <a>分类</a>
+            <div class="sub-menu">
+                <a class="category-link" href="/categories/SQL%E6%B3%A8%E5%85%A5/">SQL注入</a><a class="category-link" href="/categories/another/">another</a><a class="category-link" href="/categories/authentication/">authentication</a><a class="category-link" href="/categories/code-audit/">code audit</a><a class="category-link" href="/categories/file-upload/">file upload</a><a class="category-link" href="/categories/wp/">wp</a>
+            </div>
+        </div>
+        
+            <a href="/friends">ctfers</a>
+        
+    </nav>
+</header>
+
+    <main>
+    <div class="wrap min">
+        <section class="post-title">
+            <h2>SQL注入</h2>
+            <div class="post-meta">
+                <time class="date">2023.09.13</time>
+            
+                <span class="category"><a class="category-link" href="/categories/SQL%E6%B3%A8%E5%85%A5/">SQL注入</a></span>
+            
+            </div>
+        </section>
+        <article class="post-content">
+        
+            <h1 id="SQL注入中的可利用的库表和列"><a href="#SQL注入中的可利用的库表和列" class="headerlink" title="SQL注入中的可利用的库表和列"></a>SQL注入中的可利用的库表和列</h1><p><code>information_schema.tables</code> <em>所有库和表的统计</em></p>
+<pre><code>table_schema  
+table_name  
+</code></pre>
+<p><code>information_schema.columns</code> <em>包含库名，表名，列名</em></p>
+<pre><code>table_schema 
+table_name
+column_name
+</code></pre>
+<p><code>mysql.innodb_table_stats</code></p>
+<pre><code> table_name 
+ database_name
+</code></pre>
+<p><code>mysql.innodb_index_stats</code> </p>
+<pre><code>table_name 
+database_name
+</code></pre>
+<p><code>sys.schema_table_statistics</code> </p>
+<pre><code>table_schema 
+table_name
+</code></pre>
+<p><code>sys.schema_table_statistics_with_buffer</code> </p>
+<pre><code>table_schema 
+table_name
+</code></pre>
+<p><code>sys.schema_auto_increment_columns</code> </p>
+<pre><code>table_schema 
+table_name
+</code></pre>
+<h1 id="注入前的基本功"><a href="#注入前的基本功" class="headerlink" title="注入前的基本功"></a>注入前的基本功</h1><h2 id="何种注入类型"><a href="#何种注入类型" class="headerlink" title="何种注入类型"></a>何种注入类型</h2><p>主要分为字符型注入和数字型注入</p>
+<p>在注入点用单引号双引号或单纯数字测试即可得出</p>
+<h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><p>SQL语句的注释有 </p>
+<p><code>#</code></p>
+<p> <code>--</code></p>
+<p> <code>/*.....*/</code></p>
+<h2 id="查询的表有多少列"><a href="#查询的表有多少列" class="headerlink" title="查询的表有多少列"></a>查询的表有多少列</h2><p>在已经有注入点的前提下，利用<code>union</code>或者<code>order by</code>来判断列数</p>
+<p><code>select a from b union select 1,2,3;</code></p>
+<p>因为<code>union</code>要求上下两张表的列数相同，不同时则报错</p>
+<p><code>select a from b order by 1;</code></p>
+<p><code>order by</code>的作用是将查询的表根据某一列来排序，当需要用来排序的那一列不存在的时候就会报错</p>
+<h2 id="关键字黑名单的绕过"><a href="#关键字黑名单的绕过" class="headerlink" title="关键字黑名单的绕过"></a>关键字黑名单的绕过</h2><ol>
+<li>Tab和()可以用来代替空格</li>
+<li>单次删除关键字可以采用双写绕过</li>
+<li>多次删除关键字可以大小写并用来绕过</li>
+<li>利用内联注释，即 <code>/*.....*/</code>也可以绕过部分关键字检测</li>
+<li>利用<code>handler</code>来获取表的数据</li>
+</ol>
+<h2 id="handler的使用"><a href="#handler的使用" class="headerlink" title="handler的使用"></a>handler的使用</h2><pre><code>HANDLER tbl_name OPEN [ [AS] alias]
+
+HANDLER tbl_name READ index_name &#123; = | &lt;= | &gt;= | &lt; | &gt; &#125; (value1,value2,...)
+    [ WHERE where_condition ] [LIMIT ... ]
+HANDLER tbl_name READ index_name &#123; FIRST | NEXT | PREV | LAST &#125;
+    [ WHERE where_condition ] [LIMIT ... ]
+HANDLER tbl_name READ &#123; FIRST | NEXT &#125;
+    [ WHERE where_condition ] [LIMIT ... ]
+
+HANDLER tbl_name CLOSE
+
+通过HANDLER tbl_name OPEN打开一张表，无返回结果，实际上我们在这里声明了一个名为tb1_name的句柄。
+通过HANDLER tbl_name READ FIRST获取句柄的第一行，通过READ NEXT依次获取其它行。最后一行执行之后再执行NEXT会返回一个空的结果。
+通过HANDLER tbl_name CLOSE来关闭打开的句柄。
+
+通过索引去查看的话可以按照一定的顺序，获取表中的数据。
+通过HANDLER tbl_name READ index_name FIRST，获取句柄第一行（索引最小的一行），NEXT获取下一行，PREV获取前一行，LAST获取最后一行（索引最大的一行）。
+
+通过索引列指定一个值，可以指定从哪一行开始。
+通过HANDLER tbl_name READ index_name = value，指定从哪一行开始，通过NEXT继续浏览。
+</code></pre>
+<p><code>handler</code>常见于过滤<code>selcet</code>的注入</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">handler</span> a <span class="token keyword">open</span><span class="token punctuation">;</span><span class="token keyword">handler</span> a <span class="token keyword">read</span> <span class="token keyword">first</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+<h1 id="判断采用何种注入方法"><a href="#判断采用何种注入方法" class="headerlink" title="判断采用何种注入方法"></a>判断采用何种注入方法</h1><h2 id="联合注入"><a href="#联合注入" class="headerlink" title="联合注入"></a>联合注入</h2><p>最简单的一种注入，利用<code>union</code>进行联合查询,</p>
+<p><code>select a from b union select c from d;</code></p>
+<p>当使用这种查询语句时，将会返回两张表，即a和c</p>
+<p>a是已经固定查询的，<code>union</code>后面的就是我们的操作空间</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">首先，判断列数，假设是三列
+<span class="token keyword">select</span> a <span class="token keyword">from</span> b <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">;</span>
+则在此时报错，我们得知是三列
+
+获取关键信息，例如获取当前库下的所有表名
+<span class="token keyword">select</span> a <span class="token keyword">from</span> b <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span> <span class="token keyword">from</span> infromation_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">where</span> table_schema<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+从已知表名获取列名，假设我们已得知一表名为<span class="token string">'TA'</span>
+<span class="token keyword">select</span> a <span class="token keyword">from</span> b <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>column_name<span class="token punctuation">)</span> <span class="token keyword">from</span> infromation_schema<span class="token punctuation">.</span><span class="token keyword">columns</span> <span class="token keyword">where</span> table_name<span class="token operator">=</span><span class="token string">'TA'</span><span class="token punctuation">;</span>
+
+获取数据，假设我们得知列名为<span class="token string">'passwd'</span>
+<span class="token keyword">select</span> a <span class="token keyword">from</span> b <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>passwd<span class="token punctuation">)</span> <span class="token keyword">from</span> TA<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a>堆叠注入</h1><h1 id="尚在更新中"><a href="#尚在更新中" class="headerlink" title="尚在更新中"></a>尚在更新中</h1>
+        </article>
+        <section class="post-near">
+            <ul>
+                
+                    <li>上一篇: 看完啦 (つд⊂)</li>
+                
+                
+                    <li>下一篇: <a href="/%E9%A2%98%E8%A7%A3/">一些CTF题解</a></li>
+                
+            </ul>
+        </section>
+        
+    
+        <section class="post-author">
+        
+            <figure class="author-avatar">
+                <img src="https://null-d0ud.github.io/img/logo.jpg" alt="d0ud" />
+            </figure>
+        
+            <div class="author-info">
+                <h4>d0ud</h4>
+                <p>a ctfer</p>
+            </div>
+        </section>
+    
+    </div>
+</main>
+
+    <footer>
+    <div class="buttons">
+        <a class="to-top" href="#"></a>
+    </div>
+    <div class="wrap min">
+        <section class="widget">
+            <div class="row">
+                <div class="col-m-4">
+                    <h3 class="title-recent">最新文章：</h3>
+                    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/SQL%E6%B3%A8%E5%85%A5/">SQL注入</a></li><li class="post-list-item"><a class="post-list-link" href="/%E9%A2%98%E8%A7%A3/">一些CTF题解</a></li><li class="post-list-item"><a class="post-list-link" href="/%E4%B8%8D%E6%AD%BB%E9%A9%AC/">不死马</a></li><li class="post-list-item"><a class="post-list-link" href="/shell%20upload/">shell upload</a></li><li class="post-list-item"><a class="post-list-link" href="/php%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E6%95%B0%E5%80%BC%E6%AF%94%E8%BE%83/">php字符串与数值比较</a></li><li class="post-list-item"><a class="post-list-link" href="/basic_web_directory/">web directory</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-date">历史：</h3>
+                    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-tags">标签：</h3>
+                    <a href="/tags/basic/" style="font-size: 20px;">basic</a> <a href="/tags/script/" style="font-size: 10px;">script</a>
+                </div>
+            </div>
+        </section>
+        <section class="sub-footer">
+            <p>© 2023 <a href="/">d0ud</a>. All Rights Reserved. Theme By <a href="https://github.com/Dreamer-Paul/Hingle" target="_blank" rel="nofollow">Hingle</a>.</p>
+        </section>
+    </div>
+</footer>
+
+
+<script src="/static/kico.js"></script>
+<script src="/static/hingle.js"></script>
+
+
+<script>var hingle = new Paul_Hingle({"copyright":false,"night":false});</script>
+
+  </body>
+</html>

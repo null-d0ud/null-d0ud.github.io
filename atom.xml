@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-09-07T02:12:42.255Z</updated>
+  <updated>2023-09-13T10:12:33.015Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SQL注入</title>
+    <link href="http://example.com/SQL%E6%B3%A8%E5%85%A5/"/>
+    <id>http://example.com/SQL%E6%B3%A8%E5%85%A5/</id>
+    <published>2023-09-13T09:08:37.671Z</published>
+    <updated>2023-09-13T10:12:33.015Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="SQL注入中的可利用的库表和列"><a href="#SQL注入中的可利用的库表和列" class="headerlink" title="SQL注入中的可利用的库表和列"></a>SQL注入中的可利用的库表和列</h1><p><code>information_schema.tables</code> <em>所有库和表的统计</em></p><pre><code>table_schema  table_name  </code></pre><p><code>information_schema.columns</code> <em>包含库名，表名，列名</em></p><pre><code>table_schema table_namecolumn_name</code></pre><p><code>mysql.innodb_table_stats</code></p><pre><code> table_name  database_name</code></pre><p><code>mysql.innodb_index_stats</code> </p><pre><code>table_name database_name</code></pre><p><code>sys.schema_table_statistics</code> </p><pre><code>table_schema table_name</code></pre><p><code>sys.schema_table_statistics_with_buffer</code> </p><pre><code>table_schema table_name</code></pre><p><code>sys.schema_auto_increment_columns</code> </p><pre><code>table_schema table_name</code></pre><h1 id="注入前的基本功"><a href="#注入前的基本功" class="headerlink" title="注入前的基本功"></a>注入前的基本功</h1><h2 id="何种注入类型"><a href="#何种注入类型" class="headerlink" title="何种注入类型"></a>何种注入类型</h2><p>主要分为字符型注入和数字型注入</p><p>在注入点用单引号双引号或单纯数字测试即可得出</p><h2 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h2><p>SQL语句的注释有 </p><p><code>#</code></p><p> <code>--</code></p><p> <code>/*.....*/</code></p><h2 id="查询的表有多少列"><a href="#查询的表有多少列" class="headerlink" title="查询的表有多少列"></a>查询的表有多少列</h2><p>在已经有注入点的前提下，利用<code>union</code>或者<code>order by</code>来判断列数</p><p><code>select a from b union select 1,2,3;</code></p><p>因为<code>union</code>要求上下两张表的列数相同，不同时则报错</p><p><code>select a from b order by 1;</code></p><p><code>order by</code>的作用是将查询的表根据某一列来排序，当需要用来排序的那一列不存在的时候就会报错</p><h2 id="关键字黑名单的绕过"><a href="#关键字黑名单的绕过" class="headerlink" title="关键字黑名单的绕过"></a>关键字黑名单的绕过</h2><ol><li>Tab和()可以用来代替空格</li><li>单次删除关键字可以采用双写绕过</li><li>多次删除关键字可以大小写并用来绕过</li><li>利用内联注释，即 <code>/*.....*/</code>也可以绕过部分关键字检测</li><li>利用<code>handler</code>来获取表的数据</li></ol><h2 id="handler的使用"><a href="#handler的使用" class="headerlink" title="handler的使用"></a>handler的使用</h2><pre><code>HANDLER tbl_name OPEN [ [AS] alias]HANDLER tbl_name READ index_name &#123; = | &lt;= | &gt;= | &lt; | &gt; &#125; (value1,value2,...)    [ WHERE where_condition ] [LIMIT ... ]HANDLER tbl_name READ index_name &#123; FIRST | NEXT | PREV | LAST &#125;    [ WHERE where_condition ] [LIMIT ... ]HANDLER tbl_name READ &#123; FIRST | NEXT &#125;    [ WHERE where_condition ] [LIMIT ... ]HANDLER tbl_name CLOSE通过HANDLER tbl_name OPEN打开一张表，无返回结果，实际上我们在这里声明了一个名为tb1_name的句柄。通过HANDLER tbl_name READ FIRST获取句柄的第一行，通过READ NEXT依次获取其它行。最后一行执行之后再执行NEXT会返回一个空的结果。通过HANDLER tbl_name CLOSE来关闭打开的句柄。通过索引去查看的话可以按照一定的顺序，获取表中的数据。通过HANDLER tbl_name READ index_name FIRST，获取句柄第一行（索引最小的一行），NEXT获取下一行，PREV获取前一行，LAST获取最后一行（索引最大的一行）。通过索引列指定一个值，可以指定从哪一行开始。通过HANDLER tbl_name READ index_name = value，指定从哪一行开始，通过NEXT继续浏览。</code></pre><p><code>handler</code>常见于过滤<code>selcet</code>的注入</p><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">handler</span> a <span class="token keyword">open</span><span class="token punctuation">;</span><span class="token keyword">handler</span> a <span class="token keyword">read</span> <span class="token keyword">first</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h1 id="判断采用何种注入方法"><a href="#判断采用何种注入方法" class="headerlink" title="判断采用何种注入方法"></a>判断采用何种注入方法</h1><h2 id="联合注入"><a href="#联合注入" class="headerlink" title="联合注入"></a>联合注入</h2><p>最简单的一种注入，利用<code>union</code>进行联合查询,</p><p><code>select a from b union select c from d;</code></p><p>当使用这种查询语句时，将会返回两张表，即a和c</p><p>a是已经固定查询的，<code>union</code>后面的就是我们的操作空间</p><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">首先，判断列数，假设是三列<span class="token keyword">select</span> a <span class="token keyword">from</span> b <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">;</span>则在此时报错，我们得知是三列获取关键信息，例如获取当前库下的所有表名<span class="token keyword">select</span> a <span class="token keyword">from</span> b <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span> <span class="token keyword">from</span> infromation_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">where</span> table_schema<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>从已知表名获取列名，假设我们已得知一表名为<span class="token string">'TA'</span><span class="token keyword">select</span> a <span class="token keyword">from</span> b <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>column_name<span class="token punctuation">)</span> <span class="token keyword">from</span> infromation_schema<span class="token punctuation">.</span><span class="token keyword">columns</span> <span class="token keyword">where</span> table_name<span class="token operator">=</span><span class="token string">'TA'</span><span class="token punctuation">;</span>获取数据，假设我们得知列名为<span class="token string">'passwd'</span><span class="token keyword">select</span> a <span class="token keyword">from</span> b <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>passwd<span class="token punctuation">)</span> <span class="token keyword">from</span> TA<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h1 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a>堆叠注入</h1><h1 id="尚在更新中"><a href="#尚在更新中" class="headerlink" title="尚在更新中"></a>尚在更新中</h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;SQL注入中的可利用的库表和列&quot;&gt;&lt;a href=&quot;#SQL注入中的可利用的库表和列&quot; class=&quot;headerlink&quot; title=&quot;SQL注入中的可利用的库表和列&quot;&gt;&lt;/a&gt;SQL注入中的可利用的库表和列&lt;/h1&gt;&lt;p&gt;&lt;code&gt;information_</summary>
+      
+    
+    
+    
+    <category term="SQL注入" scheme="http://example.com/categories/SQL%E6%B3%A8%E5%85%A5/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>一些CTF题解</title>
@@ -39,30 +61,6 @@
   </entry>
   
   <entry>
-    <title>sql注入可利用的表</title>
-    <link href="http://example.com/%E5%8F%AF%E5%88%A9%E7%94%A8%E7%9A%84%E8%A1%A8/"/>
-    <id>http://example.com/%E5%8F%AF%E5%88%A9%E7%94%A8%E7%9A%84%E8%A1%A8/</id>
-    <published>2023-09-05T02:14:08.603Z</published>
-    <updated>2023-09-06T03:32:08.533Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="MYSQL中的可利用的表"><a href="#MYSQL中的可利用的表" class="headerlink" title="MYSQL中的可利用的表"></a>MYSQL中的可利用的表</h1><p><code>information_schema.tables</code> <em>所有库和表的统计</em></p><pre><code>table_schema  table_name  </code></pre><p><code>information_schema.columns</code> <em>包含库名，表名，列名</em></p><pre><code>table_schema table_namecolumn_name</code></pre><p><code>mysql.innodb_table_stats</code></p><pre><code> table_name  database_name</code></pre><p><code>mysql.innodb_index_stats</code> </p><pre><code>table_name database_name</code></pre><p><code>sys.schema_table_statistics</code> </p><pre><code>table_schema table_name</code></pre><p><code>sys.schema_table_statistics_with_buffer</code> </p><pre><code>table_schema table_name</code></pre><p><code>sys.schema_auto_increment_columns</code> </p><pre><code>table_schema table_name</code></pre>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;MYSQL中的可利用的表&quot;&gt;&lt;a href=&quot;#MYSQL中的可利用的表&quot; class=&quot;headerlink&quot; title=&quot;MYSQL中的可利用的表&quot;&gt;&lt;/a&gt;MYSQL中的可利用的表&lt;/h1&gt;&lt;p&gt;&lt;code&gt;information_schema.table</summary>
-      
-    
-    
-    
-    <category term="SQL injection" scheme="http://example.com/categories/SQL-injection/"/>
-    
-    
-    <category term="basic" scheme="http://example.com/tags/basic/"/>
-    
-  </entry>
-  
-  <entry>
     <title>不死马</title>
     <link href="http://example.com/%E4%B8%8D%E6%AD%BB%E9%A9%AC/"/>
     <id>http://example.com/%E4%B8%8D%E6%AD%BB%E9%A9%AC/</id>
@@ -81,37 +79,6 @@
     
     
     <category term="file upload" scheme="http://example.com/categories/file-upload/"/>
-    
-    
-    <category term="basic" scheme="http://example.com/tags/basic/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>sql injection</title>
-    <link href="http://example.com/sql%20injection/"/>
-    <id>http://example.com/sql%20injection/</id>
-    <published>2023-09-05T01:29:34.696Z</published>
-    <updated>2022-04-25T05:10:20.722Z</updated>
-    
-    <content type="html"><![CDATA[<ol><li>堆叠注入</li><li>union注入</li><li>报错注入 updatexml() , extractvalue()</li><li>布尔盲注 if(,,)  、^</li></ol><p><strong>截断字符串</strong></p><ul><li>substr()</li><li>mid()</li><li>substring()</li><li>left() </li><li>right()</li></ul><p><strong>常用函数</strong></p><ul><li>database()</li><li>version()</li><li>user()</li><li>concat()</li><li>group_concat()</li><li></li></ul><p><strong>绕过</strong></p><ul><li>（）和Tab 代替空格</li><li>双写</li><li>大小写</li><li>内联注释</li><li>handler &lt;table&gt; open &lt;name&gt;;handler &lt;name&gt; read first</li></ul><p><strong>可利用的表</strong></p><ul><li>information_schema.tables    <code>table_schema</code> <code>table_name</code></li><li>information_schema.columns <code>table_schema</code> <code>table_name</code> <code>column_name</code></li><li></li><li>mysql.innodb_table_stats    <code>table_name</code> <code>database_name</code></li><li>mysql.innodb_index_stats <code>table_name</code> <code>database_name</code></li><li></li><li>sys.schema_table_statistics <code>table_schema</code> <code>table_name</code> </li><li>sys.schema_table_statistics_with_buffer <code>table_schema</code> <code>table_name</code></li><li>sys.schema_auto_increment_columns <code>table_schema</code> <code>table_name</code> </li></ul><p><strong>额外</strong></p><ul><li>无列名注入</li><li></li></ul>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;ol&gt;
-&lt;li&gt;堆叠注入&lt;/li&gt;
-&lt;li&gt;union注入&lt;/li&gt;
-&lt;li&gt;报错注入 updatexml() , extractvalue()&lt;/li&gt;
-&lt;li&gt;布尔盲注 if(,,)  、^&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;截断字符串&lt;/strong&gt;&lt;/p&gt;
-</summary>
-      
-    
-    
-    
-    <category term="SQL injection" scheme="http://example.com/categories/SQL-injection/"/>
     
     
     <category term="basic" scheme="http://example.com/tags/basic/"/>
