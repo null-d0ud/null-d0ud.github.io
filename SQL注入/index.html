@@ -17,7 +17,7 @@
     <meta property="og:site_name" content="d0ud">
     <meta property="og:title" content="SQL注入"/>
     
-    <style>body:before{ content: ''; background-image: url(https://null-d0ud.github.io/img/bgg.png) }</style>
+    <style>body:before{ content: ''; background-image: url(https://github.com/null-d0ud/d0ud/blob/main/bgg.png) }</style>
     
 <meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="d0ud" type="application/atom+xml">
 </head>
@@ -97,9 +97,14 @@ table_name
 <p><code>#</code></p>
 <p> <code>--</code></p>
 <p> <code>/*.....*/</code></p>
+<hr>
+<p><code>limit</code> 来获取想要的数据</p>
+<p><code>select a from b limit 0,2</code></p>
+<p>从第一行开始获取前两行的数据</p>
 <h2 id="查询的表有多少列"><a href="#查询的表有多少列" class="headerlink" title="查询的表有多少列"></a>查询的表有多少列</h2><p>在已经有注入点的前提下，利用<code>union</code>或者<code>order by</code>来判断列数</p>
 <p><code>select a from b union select 1,2,3;</code></p>
 <p>因为<code>union</code>要求上下两张表的列数相同，不同时则报错</p>
+<hr>
 <p><code>select a from b order by 1;</code></p>
 <p><code>order by</code>的作用是将查询的表根据某一列来排序，当需要用来排序的那一列不存在的时候就会报错</p>
 <h2 id="关键字黑名单的绕过"><a href="#关键字黑名单的绕过" class="headerlink" title="关键字黑名单的绕过"></a>关键字黑名单的绕过</h2><ol>
@@ -108,6 +113,8 @@ table_name
 <li>多次删除关键字可以大小写并用来绕过</li>
 <li>利用内联注释，即 <code>/*.....*/</code>也可以绕过部分关键字检测</li>
 <li>利用<code>handler</code>来获取表的数据</li>
+<li><code>=</code>的过滤可以用<code>in()</code>和<code>like</code>来代替</li>
+<li><code>ascii()</code>的过滤可以用<code>hex()</code>,<code>ord()</code>等等来代替，本质是将字符转为数值</li>
 </ol>
 <h2 id="handler的使用"><a href="#handler的使用" class="headerlink" title="handler的使用"></a>handler的使用</h2><pre><code>HANDLER tbl_name OPEN [ [AS] alias]
 
@@ -152,7 +159,42 @@ HANDLER tbl_name CLOSE
 获取数据，假设我们得知列名为<span class="token string">'passwd'</span>
 <span class="token keyword">select</span> a <span class="token keyword">from</span> b <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>passwd<span class="token punctuation">)</span> <span class="token keyword">from</span> TA<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h1 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a>堆叠注入</h1><h1 id="尚在更新中"><a href="#尚在更新中" class="headerlink" title="尚在更新中"></a>尚在更新中</h1>
+<h2 id="堆叠注入"><a href="#堆叠注入" class="headerlink" title="堆叠注入"></a>堆叠注入</h2><p>所谓堆叠注入，即执行多条SQL语句</p>
+<p><code>select a from b;show databases;</code></p>
+<p>是相当容易的注入，自然也极少出现</p>
+<p>一旦出现堆叠注入，我们可以执行相当多的命令，插入删除等等</p>
+<h2 id="布尔盲注"><a href="#布尔盲注" class="headerlink" title="布尔盲注"></a>布尔盲注</h2><p>存在测试点，但不返回查询结果，仅返回1或0，即可采用布尔盲注</p>
+<p>比方说一个注入点，当我们输入正确值和错误值时返回的数据包长度不同</p>
+<p>那么反复试错便可得到我们想要的数据，就像爆破密码一样</p>
+<p><code>select a from b and c;</code></p>
+<p>对于上面这句SQL语句，如果c大于0，那么语句会正常执行，否则不执行</p>
+<p>在利用时，不止有<code>and</code>，<code>or</code>等等也能够用来布尔盲注</p>
+<p>在布尔盲注中，常用的函数有如下</p>
+<pre><code>ascii(str) , 返回字符的ascii码值
+length(str) , 返回字符串长度
+left(str, len) , 返回从字符串左边开始一定长度的子字符串
+right(str, len) , 返回从字符串右边开始一定长度的子字符串
+substr(str, pos [,len]) , 从字符串某处开始截取到最后或一定长度
+    注意，str第一个字符的标号是1不是0，截取时包含pos所指的字符
+    pos可以取负数，取负则从右边开始数，但还是往右边截取
+mid(str, pos [,len]), 效果同substr()
+</code></pre>
+<h2 id="时间盲注"><a href="#时间盲注" class="headerlink" title="时间盲注"></a>时间盲注</h2><p>时间盲注与布尔盲注大同小异</p>
+<p>对于一个注入点，无论如何注入都返回相同的内容，那么我们就可以尝试时间盲注</p>
+<p>时间盲注要求使用<code>sleep()</code>函数</p>
+<p>常见的有<code>select a from b and if(length(database())&gt;5, 1, sleep(5));</code></p>
+<pre><code>if(expr1, expr2, expr3) , 如果expr1成立， 返回expr2, 否则返回expr3
+</code></pre>
+<p>通过数据包的返回时间来盲注</p>
+<h2 id="报错注入"><a href="#报错注入" class="headerlink" title="报错注入"></a>报错注入</h2><p>网站页面会将SQL查询语句的报错信息返回到用户界面，此时即可报错注入</p>
+<p>常见的有</p>
+<pre><code>and extractvalue(1, concat(0x7e, (payload), 0x7e));
+payload中的数据将会以报错的语句出现，
+
+and updatexml(1, concat(0x7e, (payload), 0x7e), 1);
+</code></pre>
+<p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1630134">更具体的参考此处</a></p>
+<h2 id="无列名注入"><a href="#无列名注入" class="headerlink" title="无列名注入"></a>无列名注入</h2><h1 id="尚在更新中"><a href="#尚在更新中" class="headerlink" title="尚在更新中"></a>尚在更新中</h1>
         </article>
         <section class="post-near">
             <ul>
@@ -169,7 +211,7 @@ HANDLER tbl_name CLOSE
         <section class="post-author">
         
             <figure class="author-avatar">
-                <img src="https://null-d0ud.github.io/img/logo.jpg" alt="d0ud" />
+                <img src="https://github.com/null-d0ud/d0ud/blob/main/logo.jpg" alt="d0ud" />
             </figure>
         
             <div class="author-info">
