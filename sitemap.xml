@@ -83,14 +83,14 @@
 
   
   <url>
-    <loc>http://example.com/tags/basic/</loc>
+    <loc>http://example.com/tags/script/</loc>
     <lastmod>2023-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/script/</loc>
+    <loc>http://example.com/tags/basic/</loc>
     <lastmod>2023-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -106,20 +106,6 @@
   </url>
   
   <url>
-    <loc>http://example.com/categories/another/</loc>
-    <lastmod>2023-09-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/categories/authentication/</loc>
-    <lastmod>2023-09-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://example.com/categories/file-upload/</loc>
     <lastmod>2023-09-14</lastmod>
     <changefreq>weekly</changefreq>
@@ -127,7 +113,21 @@
   </url>
   
   <url>
+    <loc>http://example.com/categories/another/</loc>
+    <lastmod>2023-09-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://example.com/categories/code-audit/</loc>
+    <lastmod>2023-09-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/categories/authentication/</loc>
     <lastmod>2023-09-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
