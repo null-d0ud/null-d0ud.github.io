@@ -3,7 +3,7 @@
   <head>
      
     <meta charset="UTF-8">
-    <title>script - d0ud</title>
+    <title>信息收集 - d0ud</title>
     <link rel="shortcut icon" href="/static/img/icon.png">
     <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
     
@@ -15,7 +15,7 @@
 
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
     <meta property="og:site_name" content="d0ud">
-    <meta property="og:title" content=""/>
+    <meta property="og:title" content="信息收集"/>
     
     <style>body:before{ content: ''; background-image: url(https://github.com/null-d0ud/d0ud/blob/main/bgg.png) }</style>
     
@@ -51,60 +51,140 @@
 
     <main>
     <div class="wrap min">
-        <section class="home-title">
+        <section class="post-title">
+            <h2>信息收集</h2>
+            <div class="post-meta">
+                <time class="date">2023.09.18</time>
             
-            <h1>“script”</h1>
+            </div>
         </section>
-        <section class="home-posts">
-    
-    <div class="post-item">
-        <h2>
-            <a href="/forge%20jwt/">jwt forge</a>
-        </h2>
-    
-        <p>import base64
-a = &#39;&amp;#123;&#34;alg&#34;:&#34;none&#34;,&#34;typ&#34;:&#34;JWT&#34;&amp;#125;&#39;
-b= &#39;&amp;#123;&#34;secretid&#34;:[],&#34;username&#34;:&#34;admi...</p>
-    
-        <div class="post-meta">
-            <time class="date">2022.04.13</time>
-            
-                <span class="category"><a class="category-link" href="/categories/authentication/">authentication</a></span>
-            
-            
-                <span class="tags"><a class="-none-link" href="/tags/script/" rel="tag">script</a></span>
-            
-        </div>
-    </div>
-    
-    <div class="post-item">
-        <h2>
-            <a href="/race_conditions_1/">race conditions</a>
-        </h2>
-    
-        <p>import requests
-import io
-from threading import Thread
-from time import sleep
+        <article class="post-content">
+        
+            <h1 id="域名收集"><a href="#域名收集" class="headerlink" title="域名收集"></a>域名收集</h1><p><a target="_blank" rel="noopener" href="https://www.whois.com/whois">whois网站</a></p>
+<p><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn/state/outPortal/loginPortal.action/#/Integrated/recordQuery">icp备案查询</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.tianyancha.com/">天眼查</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.google.com/">google</a></p>
+<pre><code>google部分语法
+site    指定域名
+inurl   指定url中关键字
+intext  指定网页正文中的关键字
+intitle 指定网页标题的关键字
+filetype    指定文件类型
+</code></pre>
+<h2 id="子域名"><a href="#子域名" class="headerlink" title="子域名"></a>子域名</h2><p>利用搜索引擎枚举或者扫描工具</p>
+<p>第三方聚合网站<a target="_blank" rel="noopener" href="https://dnsdumpster.com/">dnsdumpster</a></p>
+<p>查询证书授权机构的公共日志<a target="_blank" rel="noopener" href="https://crt.sh/">crt.sh</a></p>
+<p><a target="_blank" rel="noopener" href="https://search.censys.io/">censys</a></p>
+<h2 id="服务器信息"><a href="#服务器信息" class="headerlink" title="服务器信息"></a>服务器信息</h2><p>抓包看http头可以得到很多重要信息，server类型、版本,php版本等等</p>
+<h1 id="端口信息收集"><a href="#端口信息收集" class="headerlink" title="端口信息收集"></a>端口信息收集</h1><p>根据开放的端口可以制定攻击计划</p>
+<table>
+<thead>
+<tr>
+<th>文件共享服务端口</th>
+<th>端口作用</th>
+<th>攻击</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>21/22/69</td>
+<td>ftp/tftp文件传输协议</td>
+<td>匿名上传、爆破、嗅探</td>
+</tr>
+<tr>
+<td>2049</td>
+<td>nfs服务</td>
+<td>配置不当</td>
+</tr>
+<tr>
+<td>139</td>
+<td>samba服务</td>
+<td>爆破，未授权访问</td>
+</tr>
+<tr>
+<td>389</td>
+<td>ldap目录访问协议</td>
+<td>匿名访问，注入，弱口令</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>远程连接端口</th>
+<th>端口作用</th>
+<th>攻击</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>22</td>
+<td>ssh远程连接</td>
+<td>爆破，文件传输</td>
+</tr>
+<tr>
+<td>23</td>
+<td>telnet连接</td>
+<td>爆破，弱口令</td>
+</tr>
+<tr>
+<td>3389</td>
+<td>rdp远程桌面</td>
+<td>后门，爆破</td>
+</tr>
+<tr>
+<td>5900</td>
+<td>vnc</td>
+<td>弱口令</td>
+</tr>
+<tr>
+<td>5632</td>
+<td>pyanywhere</td>
+<td>代码执行</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>web应用端口</th>
+<th>端口作用</th>
+<th>攻击</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>80/443/8080</td>
+<td>web服务</td>
+<td>web攻击</td>
+</tr>
+<tr>
+<td>7001/7002</td>
+<td>WebLogic控制台</td>
+<td>java反序列化，弱口令</td>
+</tr>
+</tbody></table>
 
-ur=&#39;http://9fe5d7d...</p>
-    
-        <div class="post-meta">
-            <time class="date">2021.11.21</time>
-            
-                <span class="category"><a class="category-link" href="/categories/file-upload/">file upload</a></span>
-            
-            
-                <span class="tags"><a class="-none-link" href="/tags/script/" rel="tag">script</a></span>
-            
-        </div>
-    </div>
-    
-</section>
-
-        <section class="page-navigator">
-            <span class="page-number current">1</span>
+        </article>
+        <section class="post-near">
+            <ul>
+                
+                    <li>上一篇: 看完啦 (つд⊂)</li>
+                
+                
+                    <li>下一篇: <a href="/%E5%B7%A5%E5%85%B7/">工具</a></li>
+                
+            </ul>
         </section>
+        
+    
+        <section class="post-author">
+        
+            <figure class="author-avatar">
+                <img src="https://github.com/null-d0ud/d0ud/blob/main/logo.jpg" alt="d0ud" />
+            </figure>
+        
+            <div class="author-info">
+                <h4>d0ud</h4>
+                <p>a ctfer</p>
+            </div>
+        </section>
+    
     </div>
 </main>
 

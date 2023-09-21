@@ -3,7 +3,7 @@
   <head>
      
     <meta charset="UTF-8">
-    <title>script - d0ud</title>
+    <title>内网渗透 - d0ud</title>
     <link rel="shortcut icon" href="/static/img/icon.png">
     <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
     
@@ -15,7 +15,7 @@
 
     <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
     <meta property="og:site_name" content="d0ud">
-    <meta property="og:title" content=""/>
+    <meta property="og:title" content="内网渗透"/>
     
     <style>body:before{ content: ''; background-image: url(https://github.com/null-d0ud/d0ud/blob/main/bgg.png) }</style>
     
@@ -51,60 +51,46 @@
 
     <main>
     <div class="wrap min">
-        <section class="home-title">
+        <section class="post-title">
+            <h2>内网渗透</h2>
+            <div class="post-meta">
+                <time class="date">2023.09.16</time>
             
-            <h1>“script”</h1>
+            </div>
         </section>
-        <section class="home-posts">
-    
-    <div class="post-item">
-        <h2>
-            <a href="/forge%20jwt/">jwt forge</a>
-        </h2>
-    
-        <p>import base64
-a = &#39;&amp;#123;&#34;alg&#34;:&#34;none&#34;,&#34;typ&#34;:&#34;JWT&#34;&amp;#125;&#39;
-b= &#39;&amp;#123;&#34;secretid&#34;:[],&#34;username&#34;:&#34;admi...</p>
-    
-        <div class="post-meta">
-            <time class="date">2022.04.13</time>
-            
-                <span class="category"><a class="category-link" href="/categories/authentication/">authentication</a></span>
-            
-            
-                <span class="tags"><a class="-none-link" href="/tags/script/" rel="tag">script</a></span>
-            
-        </div>
-    </div>
-    
-    <div class="post-item">
-        <h2>
-            <a href="/race_conditions_1/">race conditions</a>
-        </h2>
-    
-        <p>import requests
-import io
-from threading import Thread
-from time import sleep
+        <article class="post-content">
+        
+            <p>内网渗透首先需要一台内网主机，可以通过攻击外网服务器，获取权限，作为跳板，攻击内网</p>
+<p>也可以直接利用内网办公电脑等等直接进行攻击</p>
+<hr>
+<p><strong>本篇主要讲述在已拥有内网主机权限的情况下，如何进行内网渗透</strong></p>
+<h1 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h1><h2 id="存活主机发现"><a href="#存活主机发现" class="headerlink" title="存活主机发现"></a>存活主机发现</h2><p>主要是通过<code>ping</code>扫描，接着端口扫描，可以利用工具也可以自行编写脚本进行扫描</p>
 
-ur=&#39;http://9fe5d7d...</p>
-    
-        <div class="post-meta">
-            <time class="date">2021.11.21</time>
-            
-                <span class="category"><a class="category-link" href="/categories/file-upload/">file upload</a></span>
-            
-            
-                <span class="tags"><a class="-none-link" href="/tags/script/" rel="tag">script</a></span>
-            
-        </div>
-    </div>
-    
-</section>
-
-        <section class="page-navigator">
-            <span class="page-number current">1</span>
+        </article>
+        <section class="post-near">
+            <ul>
+                
+                    <li>上一篇: <a href="/%E5%B7%A5%E5%85%B7/">工具</a></li>
+                
+                
+                    <li>下一篇: <a href="/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">PHP文件上传</a></li>
+                
+            </ul>
         </section>
+        
+    
+        <section class="post-author">
+        
+            <figure class="author-avatar">
+                <img src="https://github.com/null-d0ud/d0ud/blob/main/logo.jpg" alt="d0ud" />
+            </figure>
+        
+            <div class="author-info">
+                <h4>d0ud</h4>
+                <p>a ctfer</p>
+            </div>
+        </section>
+    
     </div>
 </main>
 
