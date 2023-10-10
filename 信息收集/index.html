@@ -40,7 +40,7 @@
         <div class="has-child">
             <a>分类</a>
             <div class="sub-menu">
-                <a class="category-link" href="/categories/PHP%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">PHP代码审计</a><a class="category-link" href="/categories/PHP%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">PHP文件上传</a><a class="category-link" href="/categories/SQL%E6%B3%A8%E5%85%A5/">SQL注入</a><a class="category-link" href="/categories/authentication/">authentication</a><a class="category-link" href="/categories/file-upload/">file upload</a><a class="category-link" href="/categories/wp/">wp</a>
+                <a class="category-link" href="/categories/PHP/">PHP</a><a class="category-link" href="/categories/SQL%E6%B3%A8%E5%85%A5/">SQL注入</a><a class="category-link" href="/categories/authentication/">authentication</a><a class="category-link" href="/categories/file-upload/">file upload</a><a class="category-link" href="/categories/wp/">wp</a>
             </div>
         </div>
         
@@ -158,8 +158,45 @@ filetype    指定文件类型
 <td>WebLogic控制台</td>
 <td>java反序列化，弱口令</td>
 </tr>
+<tr>
+<td>8080/8089</td>
+<td>jboss/resin/jetty/jenkins</td>
+<td>反序列化</td>
+</tr>
+<tr>
+<td>9090</td>
+<td>websphere控制台</td>
+<td>java反序列化</td>
+</tr>
+<tr>
+<td>4848</td>
+<td>GlassFish控制台</td>
+<td>弱口令</td>
+</tr>
+<tr>
+<td>1352</td>
+<td>lotus domino邮件服务</td>
+<td>弱口令，爆破</td>
+</tr>
+<tr>
+<td>10000</td>
+<td>webmin-web控制面板</td>
+<td>弱口令</td>
+</tr>
 </tbody></table>
-
+<h1 id="指纹识别"><a href="#指纹识别" class="headerlink" title="指纹识别"></a>指纹识别</h1><p>指纹识别包括CMS指纹识别、web容器识别、计算机操作系统识别</p>
+<p>CMS在线识别网站<br><a target="_blank" rel="noopener" href="https://www.whatweb.net/">whatweb</a></p>
+<h1 id="真实ip"><a href="#真实ip" class="headerlink" title="真实ip"></a>真实ip</h1><p>因为CDN的存在，得到的IP不一定是真实IP</p>
+<p>想要得到真实IP有如下几种方法</p>
+<ol>
+<li>利用在线ping网站进行多地区ping测试，对比ip</li>
+<li>ping分站域名，分站流量比主站小，有可能不设CDN</li>
+<li>寻找内部邮箱源，一般邮件服务器都在内部，不经过CDN</li>
+<li>国外访问，CDN通常加速国内访问而不加速国外访问</li>
+<li>查询域名解析，或许能找到在使用CDN之前的记录</li>
+<li>找到CDN服务商从而查找真实IP</li>
+</ol>
+<h1 id="尚在更新中"><a href="#尚在更新中" class="headerlink" title="尚在更新中"></a>尚在更新中</h1>
         </article>
         <section class="post-near">
             <ul>
@@ -197,7 +234,7 @@ filetype    指定文件类型
             <div class="row">
                 <div class="col-m-4">
                     <h3 class="title-recent">最新文章：</h3>
-                    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">信息收集</a></li><li class="post-list-item"><a class="post-list-link" href="/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="post-list-item"><a class="post-list-link" href="/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/">内网渗透</a></li><li class="post-list-item"><a class="post-list-link" href="/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/">PHP文件上传</a></li><li class="post-list-item"><a class="post-list-link" href="/PHP%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/">PHP代码审计</a></li><li class="post-list-item"><a class="post-list-link" href="/SQL%E6%B3%A8%E5%85%A5/">SQL注入</a></li></ul>
+                    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/">信息收集</a></li><li class="post-list-item"><a class="post-list-link" href="/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="post-list-item"><a class="post-list-link" href="/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/">内网渗透</a></li><li class="post-list-item"><a class="post-list-link" href="/PHP/">PHP</a></li><li class="post-list-item"><a class="post-list-link" href="/SQL%E6%B3%A8%E5%85%A5/">SQL注入</a></li><li class="post-list-item"><a class="post-list-link" href="/%E9%A2%98%E8%A7%A3/">一些CTF题解</a></li></ul>
                 </div>
                 <div class="col-m-4">
                     <h3 class="title-date">历史：</h3>
